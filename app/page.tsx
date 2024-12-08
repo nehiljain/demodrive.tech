@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Grid } from "@/components/ui/grid";
+import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Pricing", href: "#" },
@@ -14,6 +15,121 @@ const navigation = [
   { name: "Schedule demo", href: "#" },
 ];
 
+interface Feature {
+  badge: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  imageAlt: string;
+}
+
+const features: Feature[] = [
+  {
+    badge: "Error Stacktraces",
+    title: "Developer friendly summary of bugs",
+    description: "AI agents scan your docs as a technical user would. They replicate all the code guides and tutorials. You get a detailed report of whats not working.",
+    videoUrl: "/usability_recommendations.mp4",
+    imageAlt: "PR Summary",
+  },
+  {
+    badge: "Broken Links",
+    title: "List of all the invalid links and references",
+    description: "Our AI performs comprehensive testing of code samples in your documentation, ensuring they compile and run as expected. Catch issues before your users do.",
+    videoUrl: "/usability_recommendations.mp4",
+    imageAlt: "Code Analysis",
+  },
+  {
+    badge: "Usability Recommendations",
+    title: "Improve the DX of your docs",
+    description: "Get insights on documentation clarity, completeness, searchability, LLM and Human Friendliness. Our AI evaluates your docs on multiple standards that matter to your users.",
+    videoUrl: "/usability_recommendations.mp4",
+    imageAlt: "UX Assessment",
+  },
+];
+
+const logos = [
+  {
+    src: "/copilotkit-logo-dark.webp",
+    alt: "Company 1",
+  },
+  {
+    src: "/copilotkit-logo-dark.webp",
+    alt: "Company 2",
+  }
+];
+
+const FeatureSection = ({ features }: { features: Feature[] }) => {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+          Documentation Quality Report
+        </h2>
+        <p className="text-center text-muted-foreground mb-12 text-xl font-bold">
+          Detailed review of your docs for correctness and usability.{" "}
+          <Link href="#" className="text-accent hover:underline font-bold inline-flex items-center">
+            See a sample report
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </p>
+      </div>
+
+      <div className="space-y-24">
+        {features.map((feature, index) => (
+          <FeatureCard
+            key={feature.badge}
+            feature={feature}
+            className="lg:grid-cols-2"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const FeatureCard = ({
+  feature,
+  className,
+}: {
+  feature: Feature;
+  className?: string;
+}) => {
+  return (
+    <div className={cn(
+      "grid gap-12 lg:gap-8 items-start",
+      className
+    )}>
+      <div className="px-6 lg:px-12 flex flex-col justify-center">
+        <div className="space-y-4">
+          <p className="text-sm text-accent font-bold">
+            {feature.badge}
+          </p>
+          <h3 className="text-2xl font-bold">
+            {feature.title}
+          </h3>
+          <p className="text-muted-foreground">
+            {feature.description}
+          </p>
+        </div>
+      </div>
+      <Card className="bg-card border-muted overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          width={600}
+          height={400}
+          className="rounded-lg w-full h-full object-cover"
+        >
+          <source src={feature.videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </Card>
+    </div>
+  );
+};
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen dark bg-background text-foreground">
@@ -21,7 +137,7 @@ export default function LandingPage() {
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between p-4 px-6 rounded-full border border-muted bg-background/80 backdrop-blur-sm shadow-lg w-[90%] max-w-6xl">
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/placeholder.svg"
+            src="/logo.svg"
             alt="Logo"
             width={32}
             height={32}
@@ -129,113 +245,26 @@ export default function LandingPage() {
         <div className="mx-auto max-w-5xl px-6 py-12">
           <div className="flex flex-col items-center">
             <div className="flex justify-center gap-8 mb-8">
-              {[...Array(2)].map((_, i) => (
+              {logos.map((logo, i) => (
                 <div key={i} className="flex justify-center w-[120px]">
                   <Image
-                    src="/placeholder.svg"
-                    alt={`Client ${i + 1}`}
-                    width={120}
-                    height={40}
-                    className="h-8 object-contain opacity-50 hover:opacity-100 transition-opacity"
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={170}
+                    height={50}
+                    className="h-8 object-contain"
                   />
                 </div>
               ))}
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-md text-muted-foreground">
               Trusted by teams leading AI DevTool companies.
             </div>
           </div>
         </div>
 
         {/* Feature Section */}
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center">
-            Documentation Quality Report
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 text-xl font-bold">
-            Detailed review of your docs for correctness and usability.{" "}
-            <Link href="#" className="text-accent hover:underline font-bold inline-flex items-center">
-              See a sample report
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </p>
-
-          {/* First Feature */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 lg:items-start items-center mb-24">
-            <div className="px-12">
-              <p className="text-sm text-accent font-bold mb-4">
-                Error Stacktraces
-              </p>
-              <h3 className="text-2xl font-bold mb-4">
-                Developer friendly summary of bugs
-              </h3>
-              <p className="text-muted-foreground">
-                AI agents scan your docs as a technical user would. They
-                replicate all the code guides and tutorials. You get a detailed
-                report of whats not working.
-              </p>
-            </div>
-            <Card className="bg-card border-muted">
-              <Image
-                src="/placeholder.svg"
-                alt="PR Summary"
-                width={600}
-                height={400}
-                className="rounded-lg"
-              />
-            </Card>
-          </div>
-
-          {/* Second Feature */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 lg:items-start items-center mb-24">
-            <div className="lg:order-2 px-12">
-              <p className="text-sm text-accent font-bold mb-4">
-                Broken Links
-              </p>
-              <h3 className="text-2xl font-bold mb-4">
-                List of all the invalid links and references
-              </h3>
-              <p className="text-muted-foreground">
-                Our AI performs comprehensive testing of code samples in your documentation,
-                ensuring they compile and run as expected. Catch issues before your users do.
-              </p>
-            </div>
-            <Card className="bg-card border-muted lg:order-1">
-              <Image
-                src="/placeholder.svg"
-                alt="Code Analysis"
-                width={600}
-                height={400}
-                className="rounded-lg"
-              />
-            </Card>
-          </div>
-
-          {/* Third Feature */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 lg:items-start items-center">
-            <div className="px-12">
-              <p className="text-sm text-accent mb-4 font-bold">
-                Usability Recommendations
-              </p>
-              <h3 className="text-3xl font-bold mb-4">
-                Improve the DX of your docs
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                Get insights on documentation clarity, completeness, searchability, LLM and Human Friendliness.
-                Our AI evaluates your docs on multiple standards that matter to your users.
-              </p>
-            </div>
-            <Card className="bg-card border-muted">
-              <Image
-                src="/placeholder.svg"
-                alt="UX Assessment"
-                width={600}
-                height={400}
-                className="rounded-lg"
-              />
-            </Card>
-          </div>
-        </div>
+        <FeatureSection features={features} />
 
         {/* How it Works Section */}
         <div className="py-20 lg:py-24 sm:py-12 sm:px-6">
