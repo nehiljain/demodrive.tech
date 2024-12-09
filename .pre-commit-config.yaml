@@ -4,16 +4,17 @@
 default_stages: [commit, manual]
 
 repos:
-    - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.4.3
+    # Custom hook to run npm build command
+    - repo: local
       hooks:
-        - id: ruff-format
-        - id: ruff
-          args: [--fix, --exit-non-zero-on-fix]
-          types_or: [python, pyi]
-          require_serial: true
+        - id: npm-build
+          name: Run npm build
+          entry: npm run build
+          language: node
+          types: [javascript, ts]
+          always_run: true
 
-
+    # Pre-commit hooks for general code quality
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v2.2.3
       hooks:
@@ -25,13 +26,8 @@ repos:
             exclude: "^public/sample_report_landing_page_screenshot.png"
           - id: check-case-conflict # Check for files that would conflict in case-insensitive filesystems
           - id: check-merge-conflict # Check for files that contain merge conflict strings.
-          - id: requirements-txt-fixer # Sorts entries in requirements.txt
 
-    - repo: https://github.com/kynan/nbstripout
-      rev: 0.7.1
-      hooks:
-        - id: nbstripout
-
+    # Hook to detect secrets in the codebase
     - repo: https://github.com/Yelp/detect-secrets
       rev: v1.5.0  # Use the latest stable version
       hooks:
@@ -42,3 +38,23 @@ repos:
               .*\.(jpeg|jpg|png|gif|eot|woff|woff2|ttf|svg|ico)|
               \.gitignore|
             )$
+
+    # Hook for linting JavaScript and TypeScript files
+    - repo: https://github.com/pre-commit/mirrors-eslint
+      rev: v7.32.0  # Use the latest stable version
+      hooks:
+        - id: eslint
+          name: Lint JavaScript and TypeScript files
+          entry: eslint
+          language: node
+          types: [javascript, ts]
+
+    # Hook for prettifying code
+    - repo: https://github.com/pre-commit/mirrors-prettier
+      rev: v2.3.2  # Use the latest stable version
+      hooks:
+        - id: prettier
+          name: Prettify code
+          entry: prettier --write
+          language: node
+          types: [javascript, ts, json, yaml, markdown]
