@@ -3,23 +3,11 @@
 import Navigation from "@/components/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Phone, Bot, Users, FileCheck, ArrowRight, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Phone, Bot, Users, FileCheck, ArrowRight, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Grid } from "@/components/ui/grid";
 import { cn } from "@/lib/utils";
-import { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
 import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
-const navigation = [
-  { name: "Pricing", href: "#" },
-  { name: "Blog", href: "#" },
-  { name: "Docs", href: "#" },
-  { name: "Schedule demo", href: "#" },
-];
 
 interface Feature {
   badge: string;
@@ -86,7 +74,7 @@ const FeatureSection = ({ features }: { features: Feature[] }) => {
       </div>
 
       <div className="space-y-24">
-        {features.map((feature, index) => (
+        {features.map((feature) => (
           <FeatureCard
             key={feature.badge}
             feature={feature}
