@@ -3,7 +3,6 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
@@ -25,34 +24,21 @@ type PricingPlan = {
 
 const plans: PricingPlan[] = [
   {
-    title: "Starter",
-    monthlyPrice: 99,
-    yearlyPrice: 990,
-    description: "Perfect for small documentation projects",
+    title: "Pay as you go",
+    monthlyPrice: 250,
+    yearlyPrice: 2500,
+    description: "For fast growing devtool companies",
     features: [
       "Weekly automated scans",
-      "Basic error detection",
-      "Link validation",
-      "Email support"
-    ],
-    actionLabel: "Get Started",
-  },
-  {
-    title: "Professional",
-    monthlyPrice: 199,
-    yearlyPrice: 1990,
-    description: "For growing teams with complex documentation",
-    features: [
-      "Daily automated scans",
+      "Usability recommendations",
+      "Code snippet analysis",
       "Advanced error detection",
-      "Custom integrations",
-      "Priority support",
-      "Custom reporting"
+      "404 link detection",
+      "Priority support"
     ],
     actionLabel: "Get Started",
     popular: true,
   },
-
 ];
 
 const PricingCard = ({
@@ -62,7 +48,7 @@ const PricingCard = ({
   yearlyPrice,
   description,
   features,
-  actionLabel,
+  // actionLabel,
   popular,
   exclusive
 }: PricingPlan & { isYearly: boolean }) => (
@@ -88,7 +74,7 @@ const PricingCard = ({
                 ${isYearly ? yearlyPrice : monthlyPrice}
               </span>
               <span className="text-muted-foreground ml-2">
-                /{isYearly ? 'year' : 'month'}
+                / per 300 page runs
               </span>
             </>
           ) : (
@@ -108,17 +94,7 @@ const PricingCard = ({
       </div>
     </div>
 
-    {title === "Starter" ? (
-      <Button
-        variant="accent"
-        className="w-full relative inline-flex items-center justify-center"
-      >
-        <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-[#c7d2fe] to-[#8678f9] opacity-75 blur" />
-        {actionLabel}
-      </Button>
-    ) : (
-      <CalendarButton className="w-full" />
-    )}
+    <CalendarButton className="w-full" />
   </Card>
 );
 
@@ -137,12 +113,12 @@ export default function PricingPage() {
           <BlurFadeText
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-5xl mb-4"
-            text="Simple, transparent pricing"
+            text="Simple pricing"
           />
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 2}
             className="text-xl text-muted-foreground"
-            text="Choose the plan that's right for your documentation needs"
+            text="Just have one pricing plan for you"
           />
         </div>
 
