@@ -1,3 +1,6 @@
+"use client";
+
+import Navigation from "@/components/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, Phone, Bot, Users, FileCheck, ArrowRight, ChevronRight } from "lucide-react";
@@ -7,6 +10,9 @@ import { Card } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Grid } from "@/components/ui/grid";
 import { cn } from "@/lib/utils";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
+import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const navigation = [
   { name: "Pricing", href: "#" },
@@ -67,7 +73,12 @@ const FeatureSection = ({ features }: { features: Feature[] }) => {
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-xl font-bold">
           Detailed review of your docs for correctness and usability.{" "}
-          <Link href="#" className="text-accent hover:underline font-bold inline-flex items-center">
+          <Link
+            href="https://app.demodrive.tech/reports/copilotkit-ai-12-06-1733533936"
+            className="text-accent hover:underline font-bold inline-flex items-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             See a sample report
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
@@ -131,64 +142,11 @@ const FeatureCard = ({
 };
 
 export default function LandingPage() {
+  useInitCal();
+
   return (
     <div className="min-h-screen dark bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between p-4 px-6 rounded-full border border-muted bg-background/80 backdrop-blur-sm shadow-lg w-[90%] max-w-6xl">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm text-foreground hover:text-foreground transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Button variant="accent">
-            Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-9 w-9">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <div className="flex flex-col space-y-4 mt-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <Button variant="accent" className="w-full">
-                  Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="relative">
@@ -203,9 +161,7 @@ export default function LandingPage() {
             documentation.
           </p>
           <div className="mt-10 flex items-center justify-center gap-6">
-            <Button variant="accent" className="h-12 px-6">
-              Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <CalendarButton className="h-12 px-6" />
           </div>
 
           {/* Feature Pills */}
@@ -232,8 +188,8 @@ export default function LandingPage() {
           <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
             <Image
-              src="/placeholder.svg"
-              alt="Code Preview"
+              src="/sample_report_landing_page_screenshot.png"
+              alt="Sample Report Screenshot"
               width={1200}
               height={600}
               className="relative rounded-lg"
@@ -329,9 +285,7 @@ export default function LandingPage() {
               Schedule a demo with us. We promise you will be amazed.
             </p>
             <div className="mt-10 flex items-center justify-center gap-6">
-              <Button variant="accent" className="h-12 px-6">
-                Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <CalendarButton className="h-12 px-6" />
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@ repos:
           - id: check-yaml # Checks yaml files for parseable syntax.
           - id: check-json # Checks json files for parseable syntax.
           - id: check-added-large-files
+            exclude: "^public/sample_report_landing_page_screenshot.png"
           - id: check-case-conflict # Check for files that would conflict in case-insensitive filesystems
           - id: check-merge-conflict # Check for files that contain merge conflict strings.
             exclude: "^kedro/templates/|^features/steps/test_starter/"
