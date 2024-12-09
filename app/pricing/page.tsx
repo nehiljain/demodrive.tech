@@ -52,20 +52,7 @@ const plans: PricingPlan[] = [
     actionLabel: "Get Started",
     popular: true,
   },
-  {
-    title: "Enterprise",
-    description: "Custom solution for large organizations",
-    features: [
-      "Unlimited scans",
-      "Dedicated support team",
-      "Custom AI training",
-      "SLA guarantees",
-      "Advanced analytics",
-      "Custom features"
-    ],
-    actionLabel: "Contact Sales",
-    exclusive: true,
-  },
+
 ];
 
 const PricingCard = ({
@@ -80,7 +67,7 @@ const PricingCard = ({
   exclusive
 }: PricingPlan & { isYearly: boolean }) => (
   <Card className={cn(
-    "w-full md:w-80 flex flex-col justify-between p-6",
+    "w-full flex flex-col justify-between p-6",
     popular ? "border-accent" : "border-border",
     exclusive ? "bg-secondary" : "bg-card"
   )}>
@@ -172,7 +159,13 @@ export default function PricingPage() {
           </Tabs>
         </BlurFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={cn(
+          "grid gap-8 w-full justify-center",
+          // Dynamic grid columns based on number of plans
+          plans.length === 1 ? "grid-cols-1 max-w-md mx-auto" :
+          plans.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto" :
+          "grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto"
+        )}>
           {plans.map((plan, idx) => (
             <BlurFade key={plan.title} delay={BLUR_FADE_DELAY * (4 + idx)}>
               <PricingCard {...plan} isYearly={isYearly} />
