@@ -26,28 +26,28 @@ type PricingPlan = {
 const plans: PricingPlan[] = [
   {
     title: "Starter",
-    monthlyPrice: 99,
-    yearlyPrice: 990,
-    description: "Perfect for small documentation projects",
+    monthlyPrice: 10,
+    yearlyPrice: 100,
+    description: "Perfect for small OSS projects",
     features: [
-      "Weekly automated scans",
+      "Code snippet analysis for upto 10 pages",
       "Basic error detection",
       "Link validation",
-      "Email support"
+      "Standard e-mail support"
     ],
     actionLabel: "Get Started",
   },
   {
     title: "Professional",
-    monthlyPrice: 199,
-    yearlyPrice: 1990,
-    description: "For growing teams with complex documentation",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    description: "For fast growing devtool companies",
     features: [
-      "Daily automated scans",
+      "Weekly automated scans",
+      "Code snippet analysis for upto 100 pages",
       "Advanced error detection",
       "Custom integrations",
-      "Priority support",
-      "Custom reporting"
+      "Priority support"
     ],
     actionLabel: "Get Started",
     popular: true,
@@ -108,7 +108,7 @@ const PricingCard = ({
       </div>
     </div>
 
-    {title === "Starter" ? (
+    {/* {title === "" ? (
       <Button
         variant="accent"
         className="w-full relative inline-flex items-center justify-center"
@@ -118,7 +118,7 @@ const PricingCard = ({
       </Button>
     ) : (
       <CalendarButton className="w-full" />
-    )}
+    )} */}
   </Card>
 );
 
