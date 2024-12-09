@@ -8,9 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const navigation = [
-  { name: "Pricing", href: "#" },
-  { name: "Blog", href: "#" },
-  { name: "Docs", href: "#" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 export default function Navigation() {

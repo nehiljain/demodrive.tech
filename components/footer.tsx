@@ -3,9 +3,21 @@ import Image from "next/image";
 
 const Footer = () => {
   const resourceLinks = [
-    { label: "Support", href: "#support" },
-    { label: "Terms of Service", href: "#terms" },
-    { label: "Privacy Policy", href: "#privacy" },
+    {
+      label: "Support",
+      href: "mailto:founder@demodrive.tech",
+      isExternal: true
+    },
+    {
+      label: "Terms of Service",
+      href: "https://app.demodrive.tech/terms",
+      isExternal: true
+    },
+    {
+      label: "Privacy Policy",
+      href: "https://app.demodrive.tech/privacy",
+      isExternal: true
+    },
   ];
 
   return (
@@ -35,12 +47,23 @@ const Footer = () => {
               <ul className="space-y-3">
                 {resourceLinks.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.isExternal ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                        rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
