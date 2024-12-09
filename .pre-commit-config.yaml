@@ -47,7 +47,7 @@ repos:
           name: Lint JavaScript and TypeScript files
           entry: eslint
           language: node
-          types: [javascript, ts]
+          types: [javascript, ts, tsx]
 
     # Hook for prettifying code
     - repo: https://github.com/pre-commit/mirrors-prettier
@@ -57,4 +57,4 @@ repos:
           name: Prettify code
           entry: prettier --write
           language: node
-          types: [javascript, ts, json, yaml, markdown]
+          types: [javascript, ts, tsx, json, yaml, markdown]
