@@ -28,14 +28,14 @@ const BlurFadeText = ({
 }: BlurFadeTextProps) => {
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: 'blur(8px)' },
-    visible: { y: -yOffset, opacity: 1, filter: 'blur(0px)' }
+    visible: { y: 0, opacity: 1, filter: 'blur(0px)' }
   };
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => Array.from(text), [text]);
 
   if (animateByCharacter) {
     return (
-      <div className="flex">
+      <div className="flex justify-center w-full">
         <AnimatePresence>
           {characters.map((char, i) => (
             <motion.span
@@ -45,9 +45,9 @@ const BlurFadeText = ({
               exit="hidden"
               variants={combinedVariants}
               transition={{
-                yoyo: Infinity,
                 delay: delay + i * characterDelay,
-                ease: 'easeOut'
+                ease: 'easeOut',
+                duration: 0.4
               }}
               className={cn('inline-block', className)}
               style={{ width: char.trim() === '' ? '0.2em' : 'auto' }}
@@ -61,24 +61,20 @@ const BlurFadeText = ({
   }
 
   return (
-    <div className="flex">
-      <AnimatePresence>
-        <motion.span
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={combinedVariants}
-          transition={{
-            yoyo: Infinity,
-            delay,
-            ease: 'easeOut'
-          }}
-          className={cn('inline-block', className)}
-        >
-          {text}
-        </motion.span>
-      </AnimatePresence>
-    </div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={combinedVariants}
+      transition={{
+        delay,
+        ease: 'easeOut',
+        duration: 0.4
+      }}
+      className={cn('w-full text-center', className)}
+    >
+      {text}
+    </motion.div>
   );
 };
 

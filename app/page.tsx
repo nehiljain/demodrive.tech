@@ -140,8 +140,8 @@ export default function LandingPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <div className="relative">
-        <div className="mx-auto max-w-5xl px-6 pt-24 pb-24 sm:pt-32 sm:pb-12 lg:px-8 text-center">
+      <div className="relative w-full">
+        <div className="mx-auto max-w-5xl px-6 pt-24 pb-24 sm:pt-32 sm:pb-12 lg:px-8 flex flex-col items-center">
           <BlurFadeText
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
