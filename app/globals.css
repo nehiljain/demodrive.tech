@@ -23,64 +23,64 @@ body {
 @layer base {
   :root {
     /* Light theme colors based on Ayu Light */
-    --background: 220 29% 6%;  /* #fcfcfc */
-    --foreground: 220 4% 38%;  /* #5c6166 */
-    --card: 0 0% 100%;  /* #ffffff */
-    --card-foreground: 220 4% 38%;  /* #5c6166 */
-    --popover: 0 0% 100%;  /* #ffffff */
-    --popover-foreground: 220 4% 38%;  /* #5c6166 */
-    --primary: 142 100% 35%;  /* #86b300 */
-    --primary-foreground: 0 0% 100%;  /* #ffffff */
-    --secondary: 199 73% 55%;  /* #55b4d4 */
-    --secondary-foreground: 0 0% 100%;  /* #ffffff */
-    --muted: 220 7% 83%;  /* #d1d3d8 */
-    --muted-foreground: 220 4% 48%;  /* #787b80 */
-    --accent: 34 100% 66%;  /* #FFB454 */
-    --accent-foreground: 0 0% 100%;  /* #ffffff */
-    --destructive: 0 65% 65%;  /* #f07171 */
-    --destructive-foreground: 0 0% 100%;  /* #ffffff */
-    --border: 220 7% 83%;  /* #d1d3d8 */
-    --input: 220 7% 83%;  /* #d1d3d8 */
-    --ring: 199 73% 55%;  /* #55b4d4 */
+    --background: 220 29% 6%; /* #fcfcfc */
+    --foreground: 220 4% 38%; /* #5c6166 */
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 220 4% 38%; /* #5c6166 */
+    --popover: 0 0% 100%; /* #ffffff */
+    --popover-foreground: 220 4% 38%; /* #5c6166 */
+    --primary: 142 100% 35%; /* #86b300 */
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --secondary: 199 73% 55%; /* #55b4d4 */
+    --secondary-foreground: 0 0% 100%; /* #ffffff */
+    --muted: 220 7% 83%; /* #d1d3d8 */
+    --muted-foreground: 220 4% 48%; /* #787b80 */
+    --accent: 34 100% 66%; /* #FFB454 */
+    --accent-foreground: 0 0% 100%; /* #ffffff */
+    --destructive: 0 65% 65%; /* #f07171 */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    --border: 220 7% 83%; /* #d1d3d8 */
+    --input: 220 7% 83%; /* #d1d3d8 */
+    --ring: 199 73% 55%; /* #55b4d4 */
 
     /* Chart colors from Ayu Light */
-    --chart-1: 199 73% 55%;  /* #55b4d4 */
-    --chart-2: 162 50% 52%;  /* #4cbf99 */
-    --chart-3: 32 100% 60%;  /* #ffaa33 */
-    --chart-4: 272 42% 64%;  /* #a37acc */
-    --chart-5: 25 85% 61%;  /* #ed9366 */
+    --chart-1: 199 73% 55%; /* #55b4d4 */
+    --chart-2: 162 50% 52%; /* #4cbf99 */
+    --chart-3: 32 100% 60%; /* #ffaa33 */
+    --chart-4: 272 42% 64%; /* #a37acc */
+    --chart-5: 25 85% 61%; /* #ed9366 */
 
     --radius: 0.5rem;
   }
 
   .dark {
     /* Dark theme colors based on Ayu Dark */
-    --background: 220 27% 9%;  /* #0b0e14 */
-    --foreground: 210 17% 98%;  /* #f5f7fa */
-    --card: 222 24% 11%;  /* #141821 */
-    --card-foreground: 34 5% 73%;  /* #bfbdb6 */
-    --popover: 222 24% 11%;  /* #141821 */
-    --popover-foreground: 34 5% 73%;  /* #bfbdb6 */
-    --primary: 84 54% 49%;  /* #aad94c */
-    --primary-foreground: 0 0% 100%;  /* #ffffff */
-    --secondary: 223 27% 10%;  /* #131721 */
-    --secondary-foreground: 0 0% 100%;  /* #ffffff */
-    --muted: 223 9% 25%;  /* #acb6bf8c */
-    --muted-foreground: 220 8% 71%;  /* #acb6bf */
-    --accent: 68 100% 40%;  /* #e6b450 */
-    --accent-foreground: 220 29% 6%;  /* #ffffff */
-    --destructive: 0 65% 65%;  /* #f07178 */
-    --destructive-foreground: 0 0% 100%;  /* #ffffff */
-    --border: 223 9% 25%;  /* #363c49 */
-    --input: 223 9% 25%;  /* #363c49 */
-    --ring: 39 100% 61%;  /* #ffb454 */
+    --background: 220 27% 9%; /* #0b0e14 */
+    --foreground: 210 17% 98%; /* #f9fafb */
+    --card: 222 24% 11%; /* #141821 */
+    --card-foreground: 34 5% 73%; /* #bfbdb6 */
+    --popover: 222 24% 11%; /* #141821 */
+    --popover-foreground: 34 5% 73%; /* #bfbdb6 */
+    --primary: 84 54% 49%; /* #aad94c */
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --secondary: 223 27% 10%; /* #131721 */
+    --secondary-foreground: 0 0% 100%; /* #ffffff */
+    --muted: 223 9% 25%; /* #acb6bf8c */
+    --muted-foreground: 220 8% 71%; /* #acb6bf */
+    --accent: 68 100% 40%; /* #e6b450 */
+    --accent-foreground: 220 29% 6%; /* #ffffff */
+    --destructive: 0 65% 65%; /* #f07178 */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    --border: 223 9% 25%; /* #363c49 */
+    --input: 223 9% 25%; /* #363c49 */
+    --ring: 39 100% 61%; /* #ffb454 */
 
     /* Chart colors from Ayu Dark */
-    --chart-1: 210 100% 65%;  /* #59c2ff */
-    --chart-2: 170 55% 68%;  /* #95e6cb */
-    --chart-3: 39 100% 61%;  /* #ffb454 */
-    --chart-4: 280 100% 70%;  /* #d2a6ff */
-    --chart-5: 24 89% 68%;  /* #f29668 */
+    --chart-1: 210 100% 65%; /* #59c2ff */
+    --chart-2: 170 55% 68%; /* #95e6cb */
+    --chart-3: 39 100% 61%; /* #ffb454 */
+    --chart-4: 280 100% 70%; /* #d2a6ff */
+    --chart-5: 24 89% 68%; /* #f29668 */
   }
 }
 

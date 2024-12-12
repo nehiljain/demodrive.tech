@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const navigation = [
   { name: "Pricing", href: "/pricing" },
+  { name: "Audit my docs", href: "/audit-my-docs" },
 ];
 
 export default function Navigation() {
