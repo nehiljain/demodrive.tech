@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.1",
@@ -19,7 +20,7 @@
     "cobe": "^0.6.3",
     "framer-motion": "^11.13.1",
     "lucide-react": "^0.468.0",
-    "next": "14.2.16",
+    "next": "^14.2.23",
     "posthog-js": "^1.205.0",
     "posthog-node": "^4.3.2",
     "react": "^18",
@@ -31,9 +32,14 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.16",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.3.0",
     "postcss": "^8",
+    "prettier": "^3.4.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
