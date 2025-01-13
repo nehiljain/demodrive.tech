@@ -9,6 +9,7 @@ import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import Footer from "@/components/footer";
+import { Tabs } from "@/components/ui/tabs";
 
 interface Feature {
   badge: string;
@@ -57,39 +58,72 @@ const logos = [
   },
 ];
 
-// const FeatureSection = ({ features }: { features: Feature[] }) => {
-//   return (
-//     <div className="mx-auto max-w-5xl px-6 py-24">
-//       <div className="text-center mb-16">
-//         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-//           Documentation Quality Report
-//         </h2>
-//         <p className="text-center text-muted-foreground mb-12 text-xl font-bold">
-//           Detailed review of your docs for correctness and usability.{" "}
-//           <Link
-//             href="https://app.demodrive.tech/reports/copilotkit-ai-12-06-1733533936"
-//             className="text-accent hover:underline font-bold inline-flex items-center"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             See a sample report
-//             <ArrowRight className="ml-2 h-4 w-4" />
-//           </Link>
-//         </p>
-//       </div>
-
-//       <div className="space-y-24">
-//         {features.map((feature) => (
-//           <FeatureCard
-//             key={feature.badge}
-//             feature={feature}
-//             className="lg:grid-cols-2"
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
+const heroTabs = [
+  {
+    title: "Generate Tutorials",
+    value: "code-review",
+    content: (
+      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <Image
+          src="/sample_report_landing_page_screenshot.png"
+          alt="Sample Report Screenshot"
+          width={1200}
+          height={600}
+          className="relative rounded-lg"
+        />
+      </Card>
+    ),
+  },
+  {
+    title: "Automatic QA Tutorials",
+    value: "chat",
+    content: (
+      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <Image
+          src="/sample_report_landing_page_screenshot.png"
+          alt="Sample Report Screenshot"
+          width={1200}
+          height={600}
+          className="relative rounded-lg"
+        />
+      </Card>
+    ),
+  },
+  {
+    title: "Generate Screenshots",
+    value: "diagnosis",
+    content: (
+      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <Image
+          src="/sample_report_landing_page_screenshot.png"
+          alt="Sample Report Screenshot"
+          width={1200}
+          height={600}
+          className="relative rounded-lg"
+        />
+      </Card>
+    ),
+  },
+  {
+    title: "Generate How-To Videos",
+    value: "api",
+    content: (
+      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <Image
+          src="/sample_report_landing_page_screenshot.png"
+          alt="Sample Report Screenshot"
+          width={1200}
+          height={600}
+          className="relative rounded-lg"
+        />
+      </Card>
+    ),
+  },
+];
 
 const FeatureCard = ({
   feature,
@@ -145,7 +179,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <div className="relative w-full">
-        <div className="mx-auto max-w-5xl px-6 pt-24 pb-24 sm:pt-32 sm:pb-12 lg:px-8 flex flex-col items-center">
+        <div className="mx-auto max-w-5xl px-6 pt-24 pb-2 lg:pb-6 sm:pt-40 sm:pb-20 lg:px-8 flex flex-col items-center">
           <BlurFadeText
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
@@ -164,24 +198,22 @@ export default function LandingPage() {
             text="AI find bugs and generates usability report for your documentation."
           />
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="mt-10 flex items-center justify-center gap-6">
+            <div className="mt-8 sm:mt-10 flex items-center justify-center gap-6">
               <CalendarButton className="h-12 px-6" />
             </div>
           </BlurFade>
         </div>
 
         <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <div className="mx-auto max-w-6xl px-6 lg:py-6 sm:py-2">
-            <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-              <Image
-                src="/sample_report_landing_page_screenshot.png"
-                alt="Sample Report Screenshot"
-                width={1200}
-                height={600}
-                className="relative rounded-lg"
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2 lg:py-4">
+            <div className="h-[30rem] sm:h-[35rem] lg:h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-start">
+              <Tabs 
+                tabs={heroTabs}
+                containerClassName="w-full justify-center"
+                contentClassName="mt-6 sm:mt-8 lg:mt-4"
+                tabClassName="min-w-[140px] sm:min-w-[160px] lg:min-w-[200px]"
               />
-            </Card>
+            </div>
           </div>
         </BlurFade>
 
@@ -209,8 +241,8 @@ export default function LandingPage() {
         </BlurFade>
       </div>
 
-      {/* Feature Section */}
-      <div className="mx-auto max-w-5xl px-6 py-24">
+    {/* Feature Section */}
+    <div className="mx-auto max-w-5xl px-6 py-24">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 7}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
