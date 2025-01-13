@@ -9,7 +9,7 @@ import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import Footer from "@/components/footer";
-import { Tabs } from "@/components/ui/tabs";
+import { Tabs } from "@/components/ui/hero-tabs";
 
 interface Feature {
   badge: string;
