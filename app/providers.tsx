@@ -20,4 +20,4 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       {children}
     </PHProvider>
   )
-} 
+}

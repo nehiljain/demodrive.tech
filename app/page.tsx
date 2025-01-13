@@ -207,7 +207,7 @@ export default function LandingPage() {
         <BlurFade delay={BLUR_FADE_DELAY * 5}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2 lg:py-4">
             <div className="h-[30rem] sm:h-[35rem] lg:h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-start">
-              <Tabs 
+              <Tabs
                 tabs={heroTabs}
                 containerClassName="w-full justify-center"
                 contentClassName="mt-6 sm:mt-8 lg:mt-4"
