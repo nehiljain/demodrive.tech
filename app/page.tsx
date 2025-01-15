@@ -428,16 +428,29 @@ export default function LandingPage() {
                   answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first report within a week."
                 },
                 {
-                  question: "What kind of documentation do you support?",
-                  answer: "We support all types of technical documentation including API docs, tutorials, guides, and README files. Our AI can analyze documentation written in Markdown, MDX, HTML, and other common formats."
+                  question: "What kind of tutorials do you support?",
+                  answer: "We primarily support web applications and CLI-based tools. Our AI can analyze and create tutorials for your web app's features, API endpoints, and command-line interfaces."
                 },
                 {
-                  question: "How accurate are the AI-generated reports?",
+                  question: "How accurate are the AI-generated QA reports?",
                   answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
                 },
                 {
-                  question: "Do you support private repositories?",
-                  answer: "Yes, we can analyze documentation in private repositories. We'll work with you during onboarding to set up secure access to your documentation."
+                  question: "Can I add my own voice to the generated video?",
+                  answer: "Yes, you can add your own voice to the generated video. We use a voice cloning technology to add your voice to the video."
+                },
+                {
+                  question: "How accurate are the AI-generated tutorials?",
+                  answer: "We are contantly improving our AI agents. Our SaaS offering makes it easy for users to jump in and take control of the process."
+                },
+
+                {
+                  question: "Can I edit/ modify the output?",
+                  answer: "Yes, you can edit the generated tutorial, screenshot or video. In our webapp, you built in editor to allow you to make changes. However, you can also export the output to your own editor of choice."
+                },
+                {
+                  question: "What do I need to get started?",
+                  answer: "We need access to any public facing (or private) documentation you have. We also would need either a demo code against which you want to create tutorial or a demo video."
                 }
               ].map((faq, index) => (
                 <AccordionItem key={faq.question} value={`item-${index}`}>
