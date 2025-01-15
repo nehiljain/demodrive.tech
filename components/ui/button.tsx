@@ -12,6 +12,8 @@ const buttonVariants = cva(
       variant: {
         accent:
           "border-2 border-accent bg-accent/40 text-foreground hover:bg-accent/90 shadow-sm font-medium",
+        accent_no_transparent:
+          "border-4 border-accent/90 bg-accent/90 text-foreground hover:border-accent shadow-sm font-medium",
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive:

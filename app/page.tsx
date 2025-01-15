@@ -10,6 +10,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import Footer from "@/components/footer";
 import { Tabs } from "@/components/ui/hero-tabs";
+import { VideoDialog } from "@/components/video-dialog";
 
 interface Feature {
   badge: string;
@@ -63,64 +64,99 @@ const heroTabs = [
     title: "Generate Tutorials",
     value: "code-review",
     content: (
-      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <Image
-          src="/sample_report_landing_page_screenshot.png"
-          alt="Sample Report Screenshot"
-          width={1200}
-          height={600}
-          className="relative rounded-lg"
-        />
-      </Card>
-    ),
-  },
-  {
-    title: "Automatic QA Tutorials",
-    value: "chat",
-    content: (
-      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <Image
-          src="/sample_report_landing_page_screenshot.png"
-          alt="Sample Report Screenshot"
-          width={1200}
-          height={600}
-          className="relative rounded-lg"
-        />
-      </Card>
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <video
+            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-xl"
+          />
+        </div>
+      </div>
     ),
   },
   {
     title: "Generate Screenshots",
     value: "diagnosis",
     content: (
-      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <Image
-          src="/sample_report_landing_page_screenshot.png"
-          alt="Sample Report Screenshot"
-          width={1200}
-          height={600}
-          className="relative rounded-lg"
-        />
-      </Card>
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <video
+            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-xl"
+          />
+        </div>
+      </div>
     ),
   },
   {
     title: "Generate How-To Videos",
     value: "api",
     content: (
-      <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        <Image
-          src="/sample_report_landing_page_screenshot.png"
-          alt="Sample Report Screenshot"
-          width={1200}
-          height={600}
-          className="relative rounded-lg"
-        />
-      </Card>
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <video
+            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-xl"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Automatic QA Tutorials",
+    value: "chat",
+    content: (
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <Image
+            src="/sample_report_landing_page_screenshot.png"
+            alt="Sample Report Screenshot"
+            width={1200}
+            height={600}
+            className="w-full h-full rounded-xl object-cover"
+          />
+        </div>
+      </div>
     ),
   },
 ];
@@ -217,8 +253,14 @@ export default function LandingPage() {
           </div>
         </BlurFade>
 
+        <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
+          <div className="flex justify-center mt-8">
+            <VideoDialog />
+          </div>
+        </BlurFade>
+
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="mx-auto max-w-5xl px-6 py-12">
+          <div className="mx-auto max-w-5xl mt-12 px-6 py-12">
             <div className="flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
