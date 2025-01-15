@@ -22,22 +22,54 @@ type PricingPlan = {
   exclusive?: boolean;
 }
 
+const discount = 0.25;
+
 const plans: PricingPlan[] = [
   {
-    title: "Pay as you go",
+    title: "Lite",
     monthlyPrice: 250,
-    yearlyPrice: 2500,
+    yearlyPrice: Math.ceil(250 * (1 - discount) * 12),
+    description: "For small teams",
+    features: [
+      "Weekly automated quality reports",
+      "upto 50 tutorials",
+      "AI Usability recommendations",
+      "AI Code snippet analysis",
+      "AI Broken links detection",
+      "Email support"
+    ],
+    actionLabel: "Get Started",
+    popular: false,
+  },
+  {
+    title: "Pro",
+    monthlyPrice: 700,
+    yearlyPrice: Math.ceil(700 * (1 - discount) * 12),
     description: "For fast growing devtool companies",
     features: [
-      "Weekly automated scans",
-      "Usability recommendations",
-      "Code snippet analysis",
-      "Advanced error detection",
-      "404 link detection",
-      "Priority support"
+      "Everything in Lite",
+      "1 Editor User",
+      "AI Tutorial generation",
+      "AI Screenshot generation",
+      "AI Video generation",
+      "Slack support"
     ],
     actionLabel: "Get Started",
     popular: true,
+  },
+  {
+    title: "Enterprise",
+    monthlyPrice: undefined,
+    yearlyPrice: undefined,
+    description: "For established companies",
+    features: [
+      "Everything in Pro",
+      "Custom # of Editors",
+      "Volume discounts",
+      "Higher limits for AI generation",
+    ],
+    actionLabel: "Get Started",
+    popular: false,
   },
 ];
 
@@ -74,7 +106,7 @@ const PricingCard = ({
                 ${isYearly ? yearlyPrice : monthlyPrice}
               </span>
               <span className="text-muted-foreground ml-2">
-                / per 300 page runs
+
               </span>
             </>
           ) : (
@@ -113,13 +145,13 @@ export default function PricingPage() {
           <BlurFadeText
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-5xl mb-4"
-            text="Simple pricing"
+            text="Plans & Pricing"
           />
-          <BlurFadeText
+          {/* <BlurFadeText
             delay={BLUR_FADE_DELAY * 2}
             className="text-xl text-muted-foreground"
             text="Just have one pricing plan for you"
-          />
+          /> */}
         </div>
 
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
@@ -130,7 +162,10 @@ export default function PricingPage() {
           >
             <TabsList>
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
-              <TabsTrigger value="yearly">Yearly</TabsTrigger>
+              <TabsTrigger value="yearly" className="flex items-center gap-2">
+                Yearly
+                <span className="bg-accent/20 text-accent rounded-full px-2 py-0.5 text-xs font-bold">Save {Math.round(discount * 100)}%</span>
+              </TabsTrigger>
             </TabsList>
           </Tabs>
         </BlurFade>
