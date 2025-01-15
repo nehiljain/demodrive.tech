@@ -57,6 +57,10 @@ const logos = [
     src: "/whiterabbit_logo.svg",
     alt: "White Rabbit AI",
   },
+  {
+    src: "/dagworks_logo.png",
+    alt: "DagWorks Inc",
+  },
 ];
 
 const heroTabs = [
@@ -264,11 +268,11 @@ export default function LandingPage() {
             <div className="flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
-                  <div key={i} className="flex justify-center w-[120px]">
+                  <div key={i} className="flex justify-center w-[180px]">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={170}
+                      width={180}
                       height={50}
                       className="h-8 object-contain"
                     />
