@@ -11,6 +11,14 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import Footer from "@/components/footer";
 import { Tabs } from "@/components/ui/hero-tabs";
 import { VideoDialog } from "@/components/video-dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 interface Feature {
   badge: string;
@@ -165,6 +173,12 @@ const heroTabs = [
   },
 ];
 
+const loopingTexts = [
+  "Faster user onboarding",
+  "Faster aha moment",
+  "Better conversion"
+];
+
 const FeatureCard = ({
   feature,
   className,
@@ -212,6 +226,15 @@ const FeatureCard = ({
 export default function LandingPage() {
   useInitCal();
   const BLUR_FADE_DELAY = 0.04;
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((current) => (current + 1) % loopingTexts.length);
+    }, 3000); // Change text every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen dark bg-background text-foreground">
@@ -220,23 +243,42 @@ export default function LandingPage() {
       {/* Hero Section */}
       <div className="relative w-full">
         <div className="mx-auto max-w-5xl px-6 pt-24 pb-2 lg:pb-6 sm:pt-40 sm:pb-20 lg:px-8 flex flex-col items-center">
-          <BlurFadeText
+          <BlurFade
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
             yOffset={8}
-            text="Make your docs"
-          />
-          <BlurFadeText
+          >
+            <h1>Supercharge 🚀</h1>
+          </BlurFade>
+          <BlurFade
             delay={BLUR_FADE_DELAY * 2}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
             yOffset={8}
-            text="Error Proof"
-          />
+          >
+            <h1>your tutorials</h1>
+          </BlurFade>
+          <div className="h-[80px] sm:h-[100px] lg:h-[120px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={loopingTexts[currentIndex]}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-accent"
+              >
+                {loopingTexts[currentIndex]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 3}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
-            text="AI find bugs and generates usability report for your documentation."
+            className="mt-6 text-xl leading-8 text-muted-foreground"
+            text="Generate, review and publish in minutes."
           />
+
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="mt-8 sm:mt-10 flex items-center justify-center gap-6">
               <CalendarButton className="h-12 px-6" />
@@ -280,7 +322,7 @@ export default function LandingPage() {
                 ))}
               </div>
               <div className="text-md text-muted-foreground">
-                Trusted by teams leading AI DevTool companies.
+                Trusted by teams leading AI companies.
               </div>
             </div>
           </div>
@@ -310,7 +352,7 @@ export default function LandingPage() {
       </div>
 
       {/* How it Works Section */}
-      <div className="py-20 lg:py-24 sm:py-12 sm:px-6">
+      <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="how-it-works">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 12}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -366,6 +408,49 @@ export default function LandingPage() {
               </div>
             </BlurFade>
           ))}
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="py-20 lg:py-24 sm:py-12" id="faq">
+        <div className="mx-auto max-w-5xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 17}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="Frequently Asked Questions"
+          />
+
+          <BlurFade delay={BLUR_FADE_DELAY * 18}>
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  question: "How long does it take to get started?",
+                  answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first report within a week."
+                },
+                {
+                  question: "What kind of documentation do you support?",
+                  answer: "We support all types of technical documentation including API docs, tutorials, guides, and README files. Our AI can analyze documentation written in Markdown, MDX, HTML, and other common formats."
+                },
+                {
+                  question: "How accurate are the AI-generated reports?",
+                  answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
+                },
+                {
+                  question: "Do you support private repositories?",
+                  answer: "Yes, we can analyze documentation in private repositories. We'll work with you during onboarding to set up secure access to your documentation."
+                }
+              ].map((faq, index) => (
+                <AccordionItem key={faq.question} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </BlurFade>
         </div>
       </div>
 

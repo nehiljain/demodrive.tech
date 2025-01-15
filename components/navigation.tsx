@@ -8,8 +8,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const navigation = [
-  { name: "Blog", href: "https://blog.demodrive.tech/" },
+  { name: "How it works", href: "/#how-it-works" },
+  { name: "FAQ", href: "/#faq" },
   { name: "Pricing", href: "/pricing" },
+  { name: "Blog", href: "https://blog.demodrive.tech/" },
 ];
 
 export default function Navigation() {
