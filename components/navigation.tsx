@@ -25,6 +25,7 @@ export default function Navigation() {
           height={32}
           className="h-8 w-8"
         />
+        <span className="font-semibold text-lg">DemoDrive</span>
       </Link>
 
       {/* Desktop Navigation */}
