@@ -17,8 +17,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 
 interface Feature {
   badge: string;
@@ -173,11 +171,6 @@ const heroTabs = [
   },
 ];
 
-const loopingTexts = [
-  "Faster user onboarding",
-  "Faster aha moment",
-  "Better conversion"
-];
 
 const FeatureCard = ({
   feature,
@@ -226,15 +219,6 @@ const FeatureCard = ({
 export default function LandingPage() {
   useInitCal();
   const BLUR_FADE_DELAY = 0.04;
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((current) => (current + 1) % loopingTexts.length);
-    }, 3000); // Change text every 3 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen dark bg-background text-foreground">

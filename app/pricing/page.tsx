@@ -2,7 +2,7 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, FileText, Bot, MessagesSquare, Star, Target, Crown, Zap, Users, Settings, HeadphonesIcon, BarChart, Rocket, Wrench, Shield } from "lucide-react";
+import { CheckCircle2, MessagesSquare, Star, Zap, HeadphonesIcon, BarChart, Rocket, Wrench, Shield } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
