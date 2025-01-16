@@ -257,25 +257,9 @@ export default function LandingPage() {
           >
             <h1>your tutorials</h1>
           </BlurFade>
-          <div className="h-[80px] sm:h-[100px] lg:h-[120px] flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={loopingTexts[currentIndex]}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-accent"
-              >
-                {loopingTexts[currentIndex]}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 3}
-            className="mt-6 text-xl leading-8 text-muted-foreground"
+            className="mt-6 text-2xl leading-8 text-muted-foreground"
             text="Generate, review and publish in minutes."
           />
 
@@ -454,10 +438,10 @@ export default function LandingPage() {
                 }
               ].map((faq, index) => (
                 <AccordionItem key={faq.question} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
+                  <AccordionTrigger className="text-lg text-left">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-muted-foreground text-lg">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
