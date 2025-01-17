@@ -22,7 +22,7 @@
     "cobe": "^0.6.3",
     "framer-motion": "^11.13.1",
     "lucide-react": "^0.468.0",
-    "motion": "^11.18.0",
+    "motion": "^11.18.1",
     "next": "^14.2.23",
     "posthog-js": "^1.205.0",
     "posthog-node": "^4.3.2",

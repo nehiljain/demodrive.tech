@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
 import { Tabs } from "@/components/ui/hero-tabs";
 import { VideoDialog } from "@/components/video-dialog";
@@ -236,10 +237,18 @@ export default function LandingPage() {
           </BlurFade>
           <BlurFade
             delay={BLUR_FADE_DELAY * 2}
-            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl flex items-center"
             yOffset={8}
           >
-            <h1>your tutorials</h1>
+            <WordRotate
+              words={[
+                "your Tutorials",
+                "your Guides",
+                "your Demos",
+                "your Walkthroughs",
+              ]}
+              duration={2500}
+            />
           </BlurFade>
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 3}
@@ -298,7 +307,7 @@ export default function LandingPage() {
       </div>
 
     {/* Feature Section */}
-    <div className="mx-auto max-w-5xl px-6 py-24">
+    {/* <div className="mx-auto max-w-5xl px-6 py-24">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 7}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -317,7 +326,7 @@ export default function LandingPage() {
             </BlurFade>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* How it Works Section */}
       <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="how-it-works">
@@ -333,25 +342,25 @@ export default function LandingPage() {
               icon: Phone,
               title: "Onboarding Call",
               description:
-                "We schedule a call to understand your project and help you configure our AI agents.",
+                "We schedule a call to understand your projects and help you configure our AI agents.",
             },
             {
               icon: Bot,
-              title: "Weekly AI automated reports",
+              title: "You submit a request via our webapp",
               description:
-                "Based on your configuration, AI agents look at your public facing documentation and generate a report.",
+              "Based on your configuration and requests, AI agents generate videos or text based guides for you.",
             },
             {
               icon: Users,
               title: "Human in the loop",
               description:
-                "Our AI is not perfect yet. We review and correct the generated report. OSS projects are our ideal users.",
+                "Our AI is not perfect yet. We review and correct the generated report.",
             },
             {
               icon: FileCheck,
-              title: "Better Docs",
+              title: "Publish ready output",
               description:
-                "You get a detailed report of whats not working. You fix it and the cycle continues.",
+                "You get a code and assets to publish this on your docs/blog or website.",
             },
           ].map((feature, index) => (
             <BlurFade
