@@ -22,7 +22,6 @@ function PostHogPageView() {
       })
     }
   }, [pathname, searchParams, posthog])
-  
   return null
 }
 
@@ -33,4 +32,4 @@ export default function SuspendedPostHogPageView() {
       <PostHogPageView />
     </Suspense>
   )
-} 
+}

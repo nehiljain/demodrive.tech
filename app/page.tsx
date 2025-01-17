@@ -3,48 +3,19 @@
 import Navigation from "@/components/navigation";
 import Image from "next/image";
 import { Phone, Bot, Users, FileCheck, ChevronRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
-
-interface Feature {
-  badge: string;
-  title: string;
-  description: string;
-  videoUrl?: string;
-  imageAlt: string;
-  imageUrl?: string;
-}
-
-const features: Feature[] = [
-  {
-    badge: "Usability Recommendations",
-    title: "Improve the DX of your docs",
-    description:
-      "Get insights on documentation clarity, completeness, searchability, LLM and Human Friendliness. Our AI evaluates your docs on multiple standards that matter to your users.",
-    videoUrl: "/usability_recommendations.mp4",
-    imageAlt: "UX Assessment",
-  },
-  {
-    badge: "Error Stacktraces",
-    title: "Developer friendly summary of bugs",
-    description:
-      "AI agents scan your docs as a technical user would. They replicate all the code guides and tutorials. You get a detailed report of whats not working.",
-    videoUrl: "/stacktrace_recording.mp4",
-    imageAlt: "PR Summary",
-  },
-  {
-    badge: "Broken Links",
-    title: "List of all the invalid links and references",
-    description:
-      "Our AI performs comprehensive testing of code samples in your documentation, ensuring they compile and run as expected. Catch issues before your users do.",
-    imageUrl: "/404_demo_screenshot.png",
-    imageAlt: "Code Analysis",
-  },
-];
+import { Tabs } from "@/components/ui/hero-tabs";
+import { VideoDialog } from "@/components/video-dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const logos = [
   {
@@ -55,85 +26,114 @@ const logos = [
     src: "/whiterabbit_logo.svg",
     alt: "White Rabbit AI",
   },
+  {
+    src: "/dagworks_logo.png",
+    alt: "DagWorks Inc",
+  },
 ];
 
-// const FeatureSection = ({ features }: { features: Feature[] }) => {
-//   return (
-//     <div className="mx-auto max-w-5xl px-6 py-24">
-//       <div className="text-center mb-16">
-//         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-//           Documentation Quality Report
-//         </h2>
-//         <p className="text-center text-muted-foreground mb-12 text-xl font-bold">
-//           Detailed review of your docs for correctness and usability.{" "}
-//           <Link
-//             href="https://app.demodrive.tech/reports/copilotkit-ai-12-06-1733533936"
-//             className="text-accent hover:underline font-bold inline-flex items-center"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             See a sample report
-//             <ArrowRight className="ml-2 h-4 w-4" />
-//           </Link>
-//         </p>
-//       </div>
-
-//       <div className="space-y-24">
-//         {features.map((feature) => (
-//           <FeatureCard
-//             key={feature.badge}
-//             feature={feature}
-//             className="lg:grid-cols-2"
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-const FeatureCard = ({
-  feature,
-  className,
-}: {
-  feature: Feature;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("grid gap-12 lg:gap-8 items-start", className)}>
-      <div className="px-6 lg:px-12 flex flex-col justify-center">
-        <div className="space-y-4">
-          <p className="text-sm text-accent font-bold">{feature.badge}</p>
-          <h3 className="text-2xl font-bold">{feature.title}</h3>
-          <p className="text-muted-foreground">{feature.description}</p>
-        </div>
-      </div>
-      <Card className="bg-card border-muted overflow-hidden">
-        {feature.videoUrl ? (
+const heroTabs = [
+  {
+    title: "Generate Tutorials",
+    value: "code-review",
+    content: (
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
           <video
+            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.mp4"
             autoPlay
             loop
             muted
             playsInline
-            width={600}
-            height={400}
-            className="rounded-lg w-full h-full object-cover"
-          >
-            <source src={feature.videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : feature.imageUrl ? (
-          <Image
-            src={feature.imageUrl}
-            alt={feature.title}
-            width={600}
-            height={400}
-            className="rounded-lg w-full h-full object-cover"
+            className="w-full h-full rounded-xl"
           />
-        ) : null}
-      </Card>
-    </div>
-  );
-};
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Generate Screenshots",
+    value: "diagnosis",
+    content: (
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <video
+            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-xl"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Generate How-To Videos",
+    value: "api",
+    content: (
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <video
+            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full rounded-xl"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Automatic QA Tutorials",
+    value: "chat",
+    content: (
+      <div className="w-full max-w-3xl mx-auto">
+        <div
+          className="p-8 rounded-xl"
+          style={{
+            backgroundImage: 'url("/background-min.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <Image
+            src="/sample_report_landing_page_screenshot.png"
+            alt="Sample Report Screenshot"
+            width={1200}
+            height={600}
+            className="w-full h-[528px] rounded-xl object-cover"
+          />
+        </div>
+      </div>
+    ),
+  },
+];
+
 
 export default function LandingPage() {
   useInitCal();
@@ -145,56 +145,71 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <div className="relative w-full">
-        <div className="mx-auto max-w-5xl px-6 pt-24 pb-24 sm:pt-32 sm:pb-12 lg:px-8 flex flex-col items-center">
-          <BlurFadeText
+        <div className="mx-auto max-w-5xl px-6 pt-24 pb-2 lg:pb-6 sm:pt-40 sm:pb-20 lg:px-8 flex flex-col items-center">
+          <BlurFade
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
             yOffset={8}
-            text="Make your docs"
-          />
-          <BlurFadeText
+          >
+            <h1>Supercharge 🚀</h1>
+          </BlurFade>
+          <BlurFade
             delay={BLUR_FADE_DELAY * 2}
-            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl flex items-center"
             yOffset={8}
-            text="Error Proof"
-          />
+          >
+            <WordRotate
+              words={[
+                "your Tutorials",
+                "your Guides",
+                "your Demos",
+                "your Walkthroughs",
+              ]}
+              duration={2500}
+            />
+          </BlurFade>
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 3}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
-            text="AI find bugs and generates usability report for your documentation."
+            className="mt-6 text-2xl leading-8 text-muted-foreground"
+            text="Generate, review and publish in minutes."
           />
+
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="mt-10 flex items-center justify-center gap-6">
+            <div className="mt-8 sm:mt-10 flex items-center justify-center gap-6">
               <CalendarButton className="h-12 px-6" />
             </div>
           </BlurFade>
         </div>
 
         <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <div className="mx-auto max-w-6xl px-6 lg:py-6 sm:py-2">
-            <Card className="relative overflow-hidden rounded-lg border border-muted bg-background">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-              <Image
-                src="/sample_report_landing_page_screenshot.png"
-                alt="Sample Report Screenshot"
-                width={1200}
-                height={600}
-                className="relative rounded-lg"
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2 lg:py-4">
+            <div className="h-[30rem] sm:h-[35rem] lg:h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-start">
+              <Tabs
+                tabs={heroTabs}
+                containerClassName="w-full justify-center"
+                contentClassName="mt-6 sm:mt-8 lg:mt-4"
+                tabClassName="min-w-[140px] sm:min-w-[160px] lg:min-w-[200px]"
               />
-            </Card>
+            </div>
+          </div>
+        </BlurFade>
+
+        <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
+          <div className="flex justify-center mt-20">
+            <VideoDialog />
           </div>
         </BlurFade>
 
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="mx-auto max-w-5xl px-6 py-12">
+          <div className="mx-auto max-w-5xl mt-10 px-6 py-6">
             <div className="flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
-                  <div key={i} className="flex justify-center w-[120px]">
+                  <div key={i} className="flex justify-center w-[160px]">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={170}
+                      width={160}
                       height={50}
                       className="h-8 object-contain"
                     />
@@ -202,15 +217,15 @@ export default function LandingPage() {
                 ))}
               </div>
               <div className="text-md text-muted-foreground">
-                Trusted by teams leading AI DevTool companies.
+                Trusted by teams leading AI companies.
               </div>
             </div>
           </div>
         </BlurFade>
       </div>
 
-      {/* Feature Section */}
-      <div className="mx-auto max-w-5xl px-6 py-24">
+    {/* Feature Section */}
+    {/* <div className="mx-auto max-w-5xl px-6 py-24">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 7}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -229,10 +244,10 @@ export default function LandingPage() {
             </BlurFade>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* How it Works Section */}
-      <div className="py-20 lg:py-24 sm:py-12 sm:px-6">
+      <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="how-it-works">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 12}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -245,25 +260,25 @@ export default function LandingPage() {
               icon: Phone,
               title: "Onboarding Call",
               description:
-                "We schedule a call to understand your project and help you configure our AI agents.",
+                "We schedule a call to understand your projects and help you configure our AI agents.",
             },
             {
               icon: Bot,
-              title: "Weekly AI automated reports",
+              title: "You submit a request via our webapp",
               description:
-                "Based on your configuration, AI agents look at your public facing documentation and generate a report.",
+              "Based on your configuration and requests, AI agents generate videos or text based guides for you.",
             },
             {
               icon: Users,
               title: "Human in the loop",
               description:
-                "Our AI is not perfect yet. We review and correct the generated report. OSS projects are our ideal users.",
+                "Our AI is not perfect yet. We review and correct the generated report.",
             },
             {
               icon: FileCheck,
-              title: "Better Docs",
+              title: "Publish ready output",
               description:
-                "You get a detailed report of whats not working. You fix it and the cycle continues.",
+                "You get a code and assets to publish this on your docs/blog or website.",
             },
           ].map((feature, index) => (
             <BlurFade
@@ -291,9 +306,65 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* FAQ Section */}
+      <div className="py-10 lg:py-12 sm:py-6" id="faq">
+        <div className="mx-auto max-w-5xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 17}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="Frequently Asked Questions"
+          />
+
+          <BlurFade delay={BLUR_FADE_DELAY * 18}>
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  question: "How long does it take to get started?",
+                  answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first report within a week."
+                },
+                {
+                  question: "What kind of tutorials do you support?",
+                  answer: "We primarily support web applications and CLI-based tools. Our AI can analyze and create tutorials for your web app's features, API endpoints, and command-line interfaces."
+                },
+                {
+                  question: "How accurate are the AI-generated QA reports?",
+                  answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
+                },
+                {
+                  question: "Can I add my own voice to the generated video?",
+                  answer: "Yes, you can add your own voice to the generated video. We use a voice cloning technology to add your voice to the video."
+                },
+                {
+                  question: "How accurate are the AI-generated tutorials?",
+                  answer: "We are contantly improving our AI agents. Our SaaS offering makes it easy for users to jump in and take control of the process."
+                },
+
+                {
+                  question: "Can I edit/ modify the output?",
+                  answer: "Yes, you can edit the generated tutorial, screenshot or video. In our webapp, you built in editor to allow you to make changes. However, you can also export the output to your own editor of choice."
+                },
+                {
+                  question: "What do I need to get started?",
+                  answer: "We need access to any public facing (or private) documentation you have. We also would need either a demo code against which you want to create tutorial or a demo video."
+                }
+              ].map((faq, index) => (
+                <AccordionItem key={faq.question} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-lg">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </BlurFade>
+        </div>
+      </div>
+
       {/* Bottom CTA Section */}
       <div className="relative">
-        <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32 lg:px-8 text-center">
+        <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 17}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
