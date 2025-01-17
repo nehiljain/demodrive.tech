@@ -11,6 +11,12 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import Footer from "@/components/footer";
 import { Tabs } from "@/components/ui/hero-tabs";
 import { VideoDialog } from "@/components/video-dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface Feature {
   badge: string;
@@ -56,6 +62,10 @@ const logos = [
   {
     src: "/whiterabbit_logo.svg",
     alt: "White Rabbit AI",
+  },
+  {
+    src: "/dagworks_logo.png",
+    alt: "DagWorks Inc",
   },
 ];
 
@@ -161,6 +171,7 @@ const heroTabs = [
   },
 ];
 
+
 const FeatureCard = ({
   feature,
   className,
@@ -216,23 +227,26 @@ export default function LandingPage() {
       {/* Hero Section */}
       <div className="relative w-full">
         <div className="mx-auto max-w-5xl px-6 pt-24 pb-2 lg:pb-6 sm:pt-40 sm:pb-20 lg:px-8 flex flex-col items-center">
-          <BlurFadeText
+          <BlurFade
             delay={BLUR_FADE_DELAY}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
             yOffset={8}
-            text="Make your docs"
-          />
-          <BlurFadeText
+          >
+            <h1>Supercharge 🚀</h1>
+          </BlurFade>
+          <BlurFade
             delay={BLUR_FADE_DELAY * 2}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
             yOffset={8}
-            text="Error Proof"
-          />
+          >
+            <h1>your tutorials</h1>
+          </BlurFade>
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 3}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
-            text="AI find bugs and generates usability report for your documentation."
+            className="mt-6 text-2xl leading-8 text-muted-foreground"
+            text="Generate, review and publish in minutes."
           />
+
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="mt-8 sm:mt-10 flex items-center justify-center gap-6">
               <CalendarButton className="h-12 px-6" />
@@ -264,11 +278,11 @@ export default function LandingPage() {
             <div className="flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
-                  <div key={i} className="flex justify-center w-[120px]">
+                  <div key={i} className="flex justify-center w-[180px]">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={170}
+                      width={180}
                       height={50}
                       className="h-8 object-contain"
                     />
@@ -276,7 +290,7 @@ export default function LandingPage() {
                 ))}
               </div>
               <div className="text-md text-muted-foreground">
-                Trusted by teams leading AI DevTool companies.
+                Trusted by teams leading AI companies.
               </div>
             </div>
           </div>
@@ -306,7 +320,7 @@ export default function LandingPage() {
       </div>
 
       {/* How it Works Section */}
-      <div className="py-20 lg:py-24 sm:py-12 sm:px-6">
+      <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="how-it-works">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 12}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -362,6 +376,62 @@ export default function LandingPage() {
               </div>
             </BlurFade>
           ))}
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="py-20 lg:py-24 sm:py-12" id="faq">
+        <div className="mx-auto max-w-5xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 17}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="Frequently Asked Questions"
+          />
+
+          <BlurFade delay={BLUR_FADE_DELAY * 18}>
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  question: "How long does it take to get started?",
+                  answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first report within a week."
+                },
+                {
+                  question: "What kind of tutorials do you support?",
+                  answer: "We primarily support web applications and CLI-based tools. Our AI can analyze and create tutorials for your web app's features, API endpoints, and command-line interfaces."
+                },
+                {
+                  question: "How accurate are the AI-generated QA reports?",
+                  answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
+                },
+                {
+                  question: "Can I add my own voice to the generated video?",
+                  answer: "Yes, you can add your own voice to the generated video. We use a voice cloning technology to add your voice to the video."
+                },
+                {
+                  question: "How accurate are the AI-generated tutorials?",
+                  answer: "We are contantly improving our AI agents. Our SaaS offering makes it easy for users to jump in and take control of the process."
+                },
+
+                {
+                  question: "Can I edit/ modify the output?",
+                  answer: "Yes, you can edit the generated tutorial, screenshot or video. In our webapp, you built in editor to allow you to make changes. However, you can also export the output to your own editor of choice."
+                },
+                {
+                  question: "What do I need to get started?",
+                  answer: "We need access to any public facing (or private) documentation you have. We also would need either a demo code against which you want to create tutorial or a demo video."
+                }
+              ].map((faq, index) => (
+                <AccordionItem key={faq.question} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-lg">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </BlurFade>
         </div>
       </div>
 
