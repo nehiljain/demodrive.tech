@@ -3,9 +3,6 @@
 import Navigation from "@/components/navigation";
 import Image from "next/image";
 import { Phone, Bot, Users, FileCheck, ChevronRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import WordRotate from "@/components/ui/word-rotate";
@@ -18,42 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-interface Feature {
-  badge: string;
-  title: string;
-  description: string;
-  videoUrl?: string;
-  imageAlt: string;
-  imageUrl?: string;
-}
-
-const features: Feature[] = [
-  {
-    badge: "Usability Recommendations",
-    title: "Improve the DX of your docs",
-    description:
-      "Get insights on documentation clarity, completeness, searchability, LLM and Human Friendliness. Our AI evaluates your docs on multiple standards that matter to your users.",
-    videoUrl: "/usability_recommendations.mp4",
-    imageAlt: "UX Assessment",
-  },
-  {
-    badge: "Error Stacktraces",
-    title: "Developer friendly summary of bugs",
-    description:
-      "AI agents scan your docs as a technical user would. They replicate all the code guides and tutorials. You get a detailed report of whats not working.",
-    videoUrl: "/stacktrace_recording.mp4",
-    imageAlt: "PR Summary",
-  },
-  {
-    badge: "Broken Links",
-    title: "List of all the invalid links and references",
-    description:
-      "Our AI performs comprehensive testing of code samples in your documentation, ensuring they compile and run as expected. Catch issues before your users do.",
-    imageUrl: "/404_demo_screenshot.png",
-    imageAlt: "Code Analysis",
-  },
-];
+import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 
 const logos = [
   {
@@ -172,50 +134,6 @@ const heroTabs = [
   },
 ];
 
-
-const FeatureCard = ({
-  feature,
-  className,
-}: {
-  feature: Feature;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("grid gap-12 lg:gap-8 items-start", className)}>
-      <div className="px-6 lg:px-12 flex flex-col justify-center">
-        <div className="space-y-4">
-          <p className="text-sm text-accent font-bold">{feature.badge}</p>
-          <h3 className="text-2xl font-bold">{feature.title}</h3>
-          <p className="text-muted-foreground">{feature.description}</p>
-        </div>
-      </div>
-      <Card className="bg-card border-muted overflow-hidden">
-        {feature.videoUrl ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            width={600}
-            height={400}
-            className="rounded-lg w-full h-full object-cover"
-          >
-            <source src={feature.videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : feature.imageUrl ? (
-          <Image
-            src={feature.imageUrl}
-            alt={feature.title}
-            width={600}
-            height={400}
-            className="rounded-lg w-full h-full object-cover"
-          />
-        ) : null}
-      </Card>
-    </div>
-  );
-};
 
 export default function LandingPage() {
   useInitCal();
