@@ -126,7 +126,7 @@ const heroTabs = [
             alt="Sample Report Screenshot"
             width={1200}
             height={600}
-            className="w-full h-full rounded-xl object-cover"
+            className="w-full h-[528px] rounded-xl object-cover"
           />
         </div>
       </div>
@@ -195,21 +195,21 @@ export default function LandingPage() {
         </BlurFade>
 
         <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-20">
             <VideoDialog />
           </div>
         </BlurFade>
 
         <BlurFade delay={BLUR_FADE_DELAY * 6}>
-          <div className="mx-auto max-w-5xl mt-12 px-6 py-12">
+          <div className="mx-auto max-w-5xl mt-10 px-6 py-6">
             <div className="flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
-                  <div key={i} className="flex justify-center w-[180px]">
+                  <div key={i} className="flex justify-center w-[160px]">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={180}
+                      width={160}
                       height={50}
                       className="h-8 object-contain"
                     />
@@ -307,7 +307,7 @@ export default function LandingPage() {
       </div>
 
       {/* FAQ Section */}
-      <div className="py-20 lg:py-24 sm:py-12" id="faq">
+      <div className="py-10 lg:py-12 sm:py-6" id="faq">
         <div className="mx-auto max-w-5xl px-6">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 17}
@@ -364,7 +364,7 @@ export default function LandingPage() {
 
       {/* Bottom CTA Section */}
       <div className="relative">
-        <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32 lg:px-8 text-center">
+        <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 17}
             className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
