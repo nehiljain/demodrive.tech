@@ -38,16 +38,9 @@ const heroTabs = [
     value: "code-review",
     content: (
       <div className="w-full max-w-3xl mx-auto">
-        <div
-          className="p-8 rounded-xl"
-          style={{
-            backgroundImage: 'url("/background-min.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
+        <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.mp4"
+            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.webm"
             autoPlay
             loop
             muted
@@ -63,16 +56,9 @@ const heroTabs = [
     value: "diagnosis",
     content: (
       <div className="w-full max-w-3xl mx-auto">
-        <div
-          className="p-8 rounded-xl"
-          style={{
-            backgroundImage: 'url("/background-min.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
+        <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.mp4"
+            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.webm"
             autoPlay
             loop
             muted
@@ -88,16 +74,9 @@ const heroTabs = [
     value: "api",
     content: (
       <div className="w-full max-w-3xl mx-auto">
-        <div
-          className="p-8 rounded-xl"
-          style={{
-            backgroundImage: 'url("/background-min.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
+        <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.mp4"
+            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.webm"
             autoPlay
             loop
             muted
@@ -113,14 +92,7 @@ const heroTabs = [
     value: "chat",
     content: (
       <div className="w-full max-w-3xl mx-auto">
-        <div
-          className="p-8 rounded-xl"
-          style={{
-            backgroundImage: 'url("/background-min.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
+        <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <Image
             src="/sample_report_landing_page_screenshot.png"
             alt="Sample Report Screenshot"
