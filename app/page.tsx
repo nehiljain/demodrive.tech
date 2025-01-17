@@ -40,7 +40,7 @@ const heroTabs = [
       <div className="w-full max-w-3xl mx-auto">
         <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.mp4"
+            src="/landing-page-assets/tutorial-generation-gif-2025-01-15.webm"
             autoPlay
             loop
             muted
@@ -58,7 +58,7 @@ const heroTabs = [
       <div className="w-full max-w-3xl mx-auto">
         <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.mp4"
+            src="/landing-page-assets/tutorial-screenshot-generation-gif-2025-01-14.webm"
             autoPlay
             loop
             muted
@@ -76,7 +76,7 @@ const heroTabs = [
       <div className="w-full max-w-3xl mx-auto">
         <div className="p-8 rounded-xl bg-gradient-to-br from-white via-white to-accent/60">
           <video
-            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.mp4"
+            src="/landing-page-assets/tutorial-video-generation-gif-2025-01-14.webm"
             autoPlay
             loop
             muted
