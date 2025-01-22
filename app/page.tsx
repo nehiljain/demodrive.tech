@@ -98,7 +98,7 @@ const heroTabs = [
             alt="Sample Report Screenshot"
             width={1200}
             height={600}
-            className="w-full h-[528px] rounded-xl object-cover"
+            className="w-full h-[300px] sm:h-[528px] rounded-xl object-cover"
           />
         </div>
       </div>
@@ -132,10 +132,10 @@ export default function LandingPage() {
           >
             <WordRotate
               words={[
-                "your Tutorials",
                 "your Guides",
                 "your Demos",
                 "your Walkthroughs",
+                "your Tutorials",
               ]}
               duration={2500}
             />
