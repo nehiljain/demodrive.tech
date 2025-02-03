@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.1",
+    "@mux/mux-player": "^3.2.4",
+    "@mux/mux-player-react": "^3.2.4",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-slot": "^1.1.0",
@@ -24,6 +26,7 @@
     "lucide-react": "^0.468.0",
     "motion": "^11.18.1",
     "next": "^14.2.23",
+    "next-video": "^2.0.4",
     "posthog-js": "^1.205.0",
     "posthog-node": "^4.3.2",
     "react": "^18",
