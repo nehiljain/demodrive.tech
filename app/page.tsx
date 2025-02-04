@@ -6,12 +6,8 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
+
 import { HeroVideo } from '@/components/ui/hero-video'
 import { WaitlistForm } from '@/components/waitlist-form'
 import dynamic from 'next/dynamic'
@@ -233,7 +229,7 @@ export default function LandingPage() {
         </div>
 
         {/* FAQ Section */}
-        <div className="py-10 lg:py-12 sm:py-6" id="faq">
+        {/* <div className="py-10 lg:py-12 sm:py-6" id="faq">
           <div className="mx-auto max-w-5xl px-6">
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 17}
@@ -246,7 +242,7 @@ export default function LandingPage() {
                 {[
                   {
                     question: "How long does it take to get started?",
-                    answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first report within a week."
+                    answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first video/docs within a day."
                   },
                   {
                     question: "What kind of tutorials do you support?",
@@ -286,7 +282,7 @@ export default function LandingPage() {
               </Accordion>
             </BlurFade>
           </div>
-        </div>
+        </div> */}
 
         {/* Flow Diagram Section */}
 
@@ -297,12 +293,12 @@ export default function LandingPage() {
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 17}
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-              text="Ready to improve"
+              text="Ready to create"
             />
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 18}
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-              text="your documentation?"
+              text="stunning videos?"
             />
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 19}
