@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DemoDrive AI - copilot for technical GTM workflows",
+  title: "DemoDrive AI - Video and Docs Copilot",
   description: "Create stunning videos and guides with AI.",
   keywords: "video and docs creator, AI video and docs, technical writing, documentation improvement, API docs, developer experience",
   authors: [{ name: "DemoDrive AI" }],
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@demodrive_ai",
-    title: "DemoDrive AI - Video and Docs Creator",
+    title: "DemoDrive AI - Video and Docs Copilot",
     description: "Create stunning videos and guides with AI.",
     images: ["/demodrive_og_image.png"],
   },
   openGraph: {
-    title: "DemoDrive AI - Video and Docs Creator",
+    title: "DemoDrive AI - Video and Docs Copilot",
     description: "Create stunning videos and guides with AI.",
     url: "https://demodrive.tech",
     siteName: "DemoDrive AI",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: "/demodrive_og_image.png",
         width: 1200,
         height: 630,
-        alt: "DemoDrive AI - Video and Docs Creator",
+        alt: "DemoDrive AI - Video and Docs Copilot",
       },
     ],
     type: "website",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' },
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/logo.svg', type: 'image/svg+xml', sizes: '93x93' },
     ],
   },
 };
