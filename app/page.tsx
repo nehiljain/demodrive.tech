@@ -117,7 +117,7 @@ export default function LandingPage() {
       <div className="relative w-full py-20">
         <div className="mx-auto max-w-6xl px-6">
           {/* Hero Content */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 mt-24">
             <BlurFade
               delay={BLUR_FADE_DELAY}
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
