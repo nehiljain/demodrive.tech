@@ -15,17 +15,17 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DemoDrive AI - Documentation Testing",
-  description: "AI-powered documentation testing and improvement platform. Automatically test and improve your technical documentation with AI.",
-  keywords: "documentation testing, AI documentation, technical writing, documentation improvement, API docs, developer experience",
+  title: "DemoDrive AI - Video and Docs Creator",
+  description: "Create stunning videos and guides with AI.",
+  keywords: "video and docs creator, AI video and docs, technical writing, documentation improvement, API docs, developer experience",
   authors: [{ name: "DemoDrive AI" }],
   creator: "DemoDrive AI",
   publisher: "DemoDrive AI",
   twitter: {
     card: "summary_large_image",
     creator: "@demodrive_ai",
-    title: "DemoDrive AI - Documentation Testing",
-    description: "AI-powered documentation testing and improvement platform",
+    title: "DemoDrive AI - Video and Docs Creator",
+    description: "Create stunning videos and guides with AI.",
     // images: ["/sample_report_landing_page_screenshot.png"],
   },
   robots: {
