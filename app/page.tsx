@@ -2,7 +2,6 @@
 
 import Navigation from "@/components/navigation";
 import Image from "next/image";
-import { Phone, Bot, Users, FileCheck, ChevronRight } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import WordRotate from "@/components/ui/word-rotate";
@@ -15,6 +14,10 @@ import {
 } from "@/components/ui/accordion";
 import { HeroVideo } from '@/components/ui/hero-video'
 import { WaitlistForm } from '@/components/waitlist-form'
+import dynamic from 'next/dynamic'
+
+// Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
+const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 
 const logos = [
   {
@@ -157,10 +160,10 @@ export default function LandingPage() {
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <div className="max-w-4xl mx-auto">
               <HeroVideo
-                playbackId="EWUF2t6OWcgx3WGdEdYwyYZj3yp7zfxAIcwjPRYbr1s"
+                playbackId="e6coKvqHCmIwgMzzPCVB9snRcgpDmNY1WuA01L5yHIiQ"
                 title="DemoDrive Product Demo"
                 className="w-full"
-                poster="https://image.mux.com/EWUF2t6OWcgx3WGdEdYwyYZj3yp7zfxAIcwjPRYbr1s/thumbnail.png?width=1920&height=1080&time=2.6"
+                poster="https://image.mux.com/e6coKvqHCmIwgMzzPCVB9snRcgpDmNY1WuA01L5yHIiQ/thumbnail.png?width=1920&height=1080&time=2.6"
                 thumbnailTime={2.6}
               />
             </div>
@@ -213,62 +216,19 @@ export default function LandingPage() {
         </div> */}
 
         {/* How it Works Section */}
-        <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="how-it-works">
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 12}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
-            text="Here is how it works"
-          />
+        <div className="py-10 lg:py-12 sm:py-6" id="flow-diagram">
+          <div className="mx-auto max-w-5xl px-6">
+            <BlurFadeText
+              delay={BLUR_FADE_DELAY * 19}
+              className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+              text="How DemoDrive Works"
+            />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-6 relative">
-            {[
-              {
-                icon: Phone,
-                title: "Onboarding Call",
-                description:
-                  "We schedule a call to understand your projects and help you configure our AI agents.",
-              },
-              {
-                icon: Bot,
-                title: "You submit a request via our webapp",
-                description:
-                "Based on your configuration and requests, AI agents generate videos or text based guides for you.",
-              },
-              {
-                icon: Users,
-                title: "Human in the loop",
-                description:
-                  "Our AI is not perfect yet. We review and correct the generated report.",
-              },
-              {
-                icon: FileCheck,
-                title: "Publish ready output",
-                description:
-                  "You get a code and assets to publish this on your docs/blog or website.",
-              },
-            ].map((feature, index) => (
-              <BlurFade
-                key={feature.title}
-                delay={BLUR_FADE_DELAY * (13 + index)}
-              >
-                <div className="relative flex items-stretch h-full">
-                  <div className="bg-card p-6 rounded-lg border border-muted shadow-sm hover:border-muted-foreground/20 transition-colors flex-1 flex flex-col">
-                    <feature.icon className="h-8 w-8 text-accent mb-4" />
-                    <h3 className="text-lg font-semibold text-foreground mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-secondary-foreground text-sm flex-1">
-                      {feature.description}
-                    </p>
-                  </div>
-                  {index < 3 && (
-                    <div className="hidden md:flex absolute -right-8 top-1/2 -translate-y-1/2 z-10 px-4">
-                      <ChevronRight className="w-6 h-6 text-accent" />
-                    </div>
-                  )}
-                </div>
-              </BlurFade>
-            ))}
+            <BlurFade delay={BLUR_FADE_DELAY * 20}>
+              <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
+                <DemoFlow />
+              </div>
+            </BlurFade>
           </div>
         </div>
 
@@ -327,6 +287,9 @@ export default function LandingPage() {
             </BlurFade>
           </div>
         </div>
+
+        {/* Flow Diagram Section */}
+
 
         {/* Bottom CTA Section */}
         <div className="relative">
