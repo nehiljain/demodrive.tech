@@ -13,8 +13,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CalendarButton, useInitCal } from "@/components/calendar-popup";
 import { HeroVideo } from '@/components/ui/hero-video'
+import { WaitlistForm } from '@/components/waitlist-form'
 
 const logos = [
   {
@@ -107,7 +107,6 @@ const logos = [
 
 
 export default function LandingPage() {
-  useInitCal();
   const BLUR_FADE_DELAY = 0.04;
 
   return (
@@ -149,7 +148,7 @@ export default function LandingPage() {
 
             <BlurFade delay={BLUR_FADE_DELAY * 4}>
               <div className="mt-8 sm:mt-10 flex items-center justify-center gap-6">
-                <CalendarButton className="h-12 px-6" />
+                <WaitlistForm />
               </div>
             </BlurFade>
           </div>
@@ -349,7 +348,7 @@ export default function LandingPage() {
             />
             <BlurFade delay={BLUR_FADE_DELAY * 20}>
               <div className="mt-10 flex items-center justify-center gap-6">
-                <CalendarButton className="h-12 px-6" />
+                <WaitlistForm />
               </div>
             </BlurFade>
           </div>
