@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Navigation from "@/components/navigation";
 import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
@@ -14,6 +15,18 @@ import dynamic from 'next/dynamic'
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
+import { Skeleton } from "@/components/ui/skeleton";
+import { ChevronRight } from "lucide-react";
+
+interface VideoMetadata {
+  id: string;
+  title: string;
+  video_url: string;
+  author: {
+    name: string;
+    avatar_url: string;
+  };
+}
 
 const logos = [
   {
@@ -107,6 +120,45 @@ const logos = [
 
 export default function LandingPage() {
   const BLUR_FADE_DELAY = 0.04;
+  const [videos, setVideos] = useState<VideoMetadata[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [thumbnailFormat, setThumbnailFormat] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchShowcase = async () => {
+      try {
+        const response = await fetch(
+          "https://storage.googleapis.com/demodrive-media/gallery/metadata.json",
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch showcase data");
+        }
+
+        const data = await response.json();
+        console.log("Showcase data:", data);
+        setVideos(data.videos);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching showcase data:", err);
+        setError(
+          err instanceof Error ? err.message : "Failed to load showcase videos"
+        );
+        setLoading(false);
+      }
+    };
+
+    fetchShowcase();
+  }, []);
+
+  const handleImageError = (videoId: string, currentFormat: string) => {
+    const newFormat = currentFormat === "jpg" ? "png" : "jpg";
+    setThumbnailFormat((prev) => ({
+      ...prev,
+      [videoId]: newFormat,
+    }));
+  };
 
   return (
     <div className="min-h-screen dark bg-background text-foreground">
@@ -228,16 +280,116 @@ export default function LandingPage() {
           </div>
         </div>
 
+        {/* Showcase Section */}
+        <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 14}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
+            text="Generated Videos Showcase"
+          />
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 15}
+            className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+            text="Check out what others have created with DemoDrive's AI-powered tutorial generator."
+          />
+
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+              {[...Array(6)].map((_, index) => (
+                <div key={index}>
+                  <div className="overflow-hidden rounded-lg border border-muted">
+                    <Skeleton className="aspect-video w-full" />
+                  </div>
+                  <div className="p-4 text-left">
+                    <div className="flex gap-3">
+                      <Skeleton className="w-10 h-10 rounded-full" />
+                      <div className="flex-1">
+                        <Skeleton className="h-6 w-3/4 mb-2" />
+                        <Skeleton className="h-4 w-1/2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : error ? (
+            <div className="flex justify-center items-center min-h-[200px] text-red-500">
+              Error: {error}
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+                {videos.map((video, index) => {
+                  const videoPath = video.video_url
+                    .split("demodrive-media/")[1]
+                    .split("/metadata.json")[0];
+                  const format = thumbnailFormat[video.id] || "jpg";
+                  return (
+                    <BlurFade
+                      key={video.id}
+                      delay={BLUR_FADE_DELAY * (16 + index * 0.2)}
+                    >
+                      <a
+                        href={`https://app.demodrive.tech/video-player/${btoa(videoPath)}`}
+                        className="group cursor-pointer"
+                      >
+                        <div className="overflow-hidden rounded-lg border border-muted shadow-sm hover:border-muted-foreground/20 transition-colors">
+                          <div className="aspect-video relative overflow-hidden">
+                            <img
+                              src={`https://storage.googleapis.com/demodrive-media/${videoPath}/thumbnail.${format}`}
+                              alt={video.title}
+                              className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
+                              onError={() => handleImageError(video.id, format)}
+                            />
+                          </div>
+                        </div>
+                        <div className="p-4 text-left">
+                          <div className="flex gap-3">
+                            <div className="w-10 h-10 rounded-full overflow-hidden relative">
+                              <img
+                                src={video.author.avatar_url}
+                                alt={video.author.name}
+                                className="object-cover"
+                              />
+                            </div>
+                            <div>
+                              <h3 className="font-semibold text-lg line-clamp-1">
+                                {video.title}
+                              </h3>
+                              <p className="text-sm text-muted-foreground">
+                                {video.author.name}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </BlurFade>
+                  );
+                })}
+              </div>
+
+              <BlurFade delay={BLUR_FADE_DELAY * 17}>
+                <div className="text-center mt-12">
+                  <a href="https://app.demodrive.tech/showcase" className="text-accent hover:text-accent/80 font-medium flex items-center justify-center gap-2">
+                    View all showcase videos <ChevronRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </BlurFade>
+            </>
+          )}
+        </div>
+
+
         {/* FAQ Section */}
         {/* <div className="py-10 lg:py-12 sm:py-6" id="faq">
           <div className="mx-auto max-w-5xl px-6">
             <BlurFadeText
-              delay={BLUR_FADE_DELAY * 17}
+              delay={BLUR_FADE_DELAY * 18}
               className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
               text="Frequently Asked Questions"
             />
 
-            <BlurFade delay={BLUR_FADE_DELAY * 18}>
+            <BlurFade delay={BLUR_FADE_DELAY * 19}>
               <Accordion type="single" collapsible className="w-full">
                 {[
                   {
@@ -291,21 +443,21 @@ export default function LandingPage() {
         <div className="relative">
           <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
             <BlurFadeText
-              delay={BLUR_FADE_DELAY * 17}
+              delay={BLUR_FADE_DELAY * 20}
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
               text="Ready to create"
             />
             <BlurFadeText
-              delay={BLUR_FADE_DELAY * 18}
+              delay={BLUR_FADE_DELAY * 21}
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
               text="stunning videos?"
             />
             <BlurFadeText
-              delay={BLUR_FADE_DELAY * 19}
+              delay={BLUR_FADE_DELAY * 22}
               className="mt-6 text-lg leading-8 text-muted-foreground"
               text="Schedule a demo with us. We promise you will be amazed."
             />
-            <BlurFade delay={BLUR_FADE_DELAY * 20}>
+            <BlurFade delay={BLUR_FADE_DELAY * 23}>
               <div className="mt-10 flex items-center justify-center gap-6">
                 <WaitlistForm />
               </div>
