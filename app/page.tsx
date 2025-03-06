@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic'
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
+import AnimationShowcase from "@/components/animation-showcase";
 
 interface VideoMetadata {
   id: string;
@@ -379,6 +380,21 @@ export default function LandingPage() {
           )}
         </div>
 
+        {/* Animation Showcase Section */}
+        <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="animations">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 18}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
+            text="Animation Library"
+          />
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 19}
+            className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+            text="Explore our collection of customizable animations for your videos and presentations."
+          />
+
+          <AnimationShowcase />
+        </div>
 
         {/* FAQ Section */}
         {/* <div className="py-10 lg:py-12 sm:py-6" id="faq">
