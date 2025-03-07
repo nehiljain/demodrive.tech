@@ -64,6 +64,7 @@ export const OpacityFlashReveal: React.FC<OpacityFlashRevealProps> = ({
           alignItems: "center",
         }}
       >
+        <div className="relative w-full h-full flex flex-col items-center justify-center">
         <div
           style={{
             width: containerWidth,
@@ -80,7 +81,8 @@ export const OpacityFlashReveal: React.FC<OpacityFlashRevealProps> = ({
             transition: "opacity 0.1s ease-in-out",
           }}
         >
-          {text}
+            {text}
+          </div>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

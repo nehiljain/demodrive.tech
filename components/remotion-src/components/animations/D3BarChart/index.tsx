@@ -230,7 +230,7 @@ export const D3BarChart: React.FC<D3BarChartProps> = ({
         .attr(`transform`, `translate(${finalConfig.marginLeft},0)`)
         .call(yAxis);
     }
-  }, [height, animation, width, data, finalConfig]);
+  }, [height, animation, width, data, finalConfig, yDomain]);
 
   return (
     <AbsoluteFill

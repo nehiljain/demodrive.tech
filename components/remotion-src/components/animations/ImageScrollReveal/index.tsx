@@ -8,6 +8,7 @@ import {
 import { z } from "zod";
 import { baseTemplateSchema } from "../../../shared/types";
 import { registerAnimation } from "../registry";
+import Image from 'next/image';
 
 export const imageScrollRevealSchema = baseTemplateSchema.extend({
   imagePath: z.string(),
@@ -25,7 +26,6 @@ export const ImageScrollReveal: React.FC<ImageScrollRevealProps> = ({
   targetYPosition,
   startFrame = 0,
   scrollDuration = 90,
-  pauseDuration = 60,
   containerClassName = "",
 }) => {
   const frame = useCurrentFrame();
@@ -74,13 +74,15 @@ export const ImageScrollReveal: React.FC<ImageScrollRevealProps> = ({
               maxWidth: "2542px",
             }}
           >
-            <img
+            <Image
               src={staticFile(imagePath)}
               alt="Scrolling content"
               className="w-full h-auto"
               style={{
                 transformOrigin: "top center",
               }}
+              width={2542}
+              height={1000}
             />
           </div>
         </div>
@@ -95,14 +97,13 @@ registerAnimation({
   name: "Image Scroll Reveal",
   description:
     "A smooth scrolling animation for showcasing long images or screenshots",
-  component: ImageScrollReveal,
+  component: ImageScrollReveal as React.FC<ImageScrollRevealProps>,
   schema: imageScrollRevealSchema,
   defaultProps: {
     imagePath: "screenshots/website-screenshot.png",
     targetYPosition: 1000,
     startFrame: 0,
     scrollDuration: 90,
-    pauseDuration: 60,
   },
   category: "Content Animations",
   thumbnail: "/thumbnails/image-scroll-reveal.png",

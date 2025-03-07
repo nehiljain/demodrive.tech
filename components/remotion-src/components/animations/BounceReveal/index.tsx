@@ -8,7 +8,7 @@ import {
   staticFile,
 } from "remotion";
 import { z } from "zod";
-import { baseTemplateSchema, TemplateConfig } from "../../../shared/types";
+import { baseTemplateSchema } from "../../../shared/types";
 import { AVAILABLE_FONTS, FontFamily } from "../../../shared/fonts";
 import { registerAnimation } from "../registry";
 

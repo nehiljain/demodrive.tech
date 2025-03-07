@@ -87,7 +87,6 @@ const IconMap = {
 
 const Icon: React.FC<{
   name: keyof typeof IconMap;
-  delay: number;
   frame: number;
   config: ReturnType<typeof useVideoConfig>;
   size?: number;
@@ -101,7 +100,7 @@ const Icon: React.FC<{
     muted?: boolean;
     loop?: boolean;
   };
-}> = ({ name, delay, frame, config, size = 32, color, audio }) => {
+}> = ({ name, frame, config, size = 32, color, audio }) => {
   const progress = spring({
     frame,
     fps: config.fps,
@@ -305,7 +304,6 @@ const TextContainer: React.FC<{
                 >
                   <Icon
                     name={icon.name}
-                    delay={0}
                     frame={frame}
                     config={config}
                     size={icon.size}

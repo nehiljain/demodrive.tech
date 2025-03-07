@@ -141,11 +141,8 @@ const VideoZoomReveal: React.FC<VideoZoomRevealProps> = ({
     }
   } else {
     // Constants for timing
-    const totalDuration =
-      activeZoomConfig.endFrame - activeZoomConfig.startFrame;
     const zoomInDuration = fps; // 1 second for zoom in
     const zoomOutDuration = fps; // 1 second for zoom out
-    const holdDuration = totalDuration - (zoomInDuration + zoomOutDuration);
 
     // Calculate phase boundaries
     const ZOOM_IN_START = activeZoomConfig.startFrame;
@@ -400,10 +397,10 @@ registerAnimation({
   id: "VideoZoomReveal",
   name: "Video Zoom Reveal",
   description: "A video player with configurable zoom and pan effects",
-  component: VideoZoomReveal,
+  component: VideoZoomReveal as React.FC<unknown>,
   schema: videoZoomRevealSchema,
   defaultProps: {
-    videoUrl: `${window.location.origin}/static/placeholder_video.mp4`,
+    videoUrl: `https://app.demodrive.tech/static/placeholder_video.mp4`,
     containerWidth: 800,
     containerHeight: 450,
     backgroundColor: "#03001C",

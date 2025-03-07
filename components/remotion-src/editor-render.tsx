@@ -1,10 +1,10 @@
 import { registerRoot, Composition } from "remotion";
 import { AbsoluteFill, Sequence, OffthreadVideo, Audio } from "remotion";
 import React from "react";
-import { getAnimationById } from "@/remotion-src/components/animations/registry";
+import { getAnimationById } from "@/components/remotion-src/components/animations/registry";
 
 // Import all animations to ensure they're registered
-import "@/remotion-src/components/animations";
+import "@/components/remotion-src/components/animations";
 
 // Types for timeline items (same as in your editor)
 type BaseItem = {
@@ -32,7 +32,7 @@ type VideoItem = BaseItem & {
 // Generic type for dynamically registered animations
 type AnimationItem = BaseItem & {
   type: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 type VoiceItem = BaseItem & {
@@ -122,9 +122,7 @@ const TrackRenderer: React.FC<{
 // Main composition component
 const EditorVideoComposition: React.FC<{
   tracks: Track[];
-  fps: number;
-  durationInFrames: number;
-}> = ({ tracks, fps, durationInFrames }) => {
+}> = ({ tracks }) => {
   return (
     <AbsoluteFill className="bg-gray-900">
       {tracks.map((track) => (
@@ -147,8 +145,6 @@ const RemotionRoot: React.FC = () => {
         height={720}
         defaultProps={{
           tracks: [],
-          fps: 30,
-          durationInFrames: 600,
         }}
       />
     </>

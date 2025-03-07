@@ -80,5 +80,9 @@ export const useAutoFontSize = ({
     calculateFontSize();
   }, []);
 
+  useEffect(() => {
+    calculateFontSize();
+  }, [...existingDependencies, calculateFontSize]);
+
   return fontSize;
 };

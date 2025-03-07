@@ -94,10 +94,8 @@ export const LogoReveal: React.FC<LogoRevealProps> = ({
   companyName,
   tagline,
   backgroundColor,
-  containerWidth,
   fontFamily = "Montserrat",
   audio,
-  isLight = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

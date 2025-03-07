@@ -8,26 +8,6 @@ import { z } from "zod";
 import { baseTemplateSchema } from "../../../shared/types";
 import { AnimatedEmoji } from "@remotion/animated-emoji";
 
-// Helper function to convert Tailwind gradient to CSS
-const convertTailwindToCSS = (gradientString: string) => {
-  if (gradientString.includes("bg-gradient-to-br")) {
-    const fromColor = gradientString.match(/from-([^\s]+)/)?.[1];
-    const toColor = gradientString.match(/to-([^\s]+)/)?.[1];
-
-    const colorMap: Record<string, string> = {
-      "pink-200": "#fbcfe8",
-      "purple-200": "#e9d5ff",
-      "violet-200": "#ddd6fe",
-    };
-
-    const fromCssColor = colorMap[fromColor || ""] || "#000000";
-    const toCssColor = colorMap[toColor || ""] || "#000000";
-
-    return `linear-gradient(135deg, ${fromCssColor}, ${toCssColor})`;
-  }
-  return gradientString;
-};
-
 export const metricRevealSchema = baseTemplateSchema.extend({
   startNumber: z.number().default(0),
   endNumber: z.number().default(111),
@@ -70,13 +50,9 @@ export const MetricReveal: React.FC<MetricRevealProps> = ({
   fontFamily,
   textColor,
   backgroundImage,
-  backgroundColor,
   durationInFrames,
-  emoji,
-  emojiSize,
 }) => {
   const frame = useCurrentFrame();
-  const cssBackgroundColor = convertTailwindToCSS(backgroundColor);
 
   // Calculate animation duration (total duration minus pause)
   const animationDuration = durationInFrames - 180;
@@ -165,7 +141,6 @@ export const MetricReveal: React.FC<MetricRevealProps> = ({
           <div style={{ position: "relative" }}>
             <AnimatedEmoji
               emoji="yawn"
-              size={emojiSize}
               style={{
                 display: "block",
                 transform: "scale(1.5)",

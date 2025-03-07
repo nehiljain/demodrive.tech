@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useCurrentFrame,
   interpolate,
@@ -79,7 +79,6 @@ export const LogoAnimation: React.FC<LogoAnimationProps> = ({
   color = "#000000",
   backgroundColor = "#FFFFFF",
   strokeWidth = 2,
-  durationInFrames = 90,
   svgPath = "cravd_svg_logo.svg",
   delayBetweenPaths = 5,
   fillDelay = 1,

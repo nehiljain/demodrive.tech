@@ -1,7 +1,6 @@
 import {
   AbsoluteFill,
   OffthreadVideo,
-  staticFile,
   useCurrentFrame,
   useVideoConfig,
   interpolate,
@@ -166,17 +165,12 @@ export const VideoCombinedEffects: React.FC<VideoCombinedEffectsProps> = ({
   let currentScale = 1;
 
   if (activeZoomConfig) {
-    const totalDuration =
-      activeZoomConfig.endFrame - activeZoomConfig.startFrame;
     const zoomInDuration = fps;
     const zoomOutDuration = fps;
-    const holdDuration = totalDuration - (zoomInDuration + zoomOutDuration);
 
     const ZOOM_IN_START = activeZoomConfig.startFrame;
     const ZOOM_IN_END = ZOOM_IN_START + zoomInDuration;
-    const HOLD_START = ZOOM_IN_END;
-    const HOLD_END = activeZoomConfig.endFrame - zoomOutDuration;
-    const ZOOM_OUT_START = HOLD_END;
+    const ZOOM_OUT_START = activeZoomConfig.endFrame - zoomOutDuration;
     const ZOOM_OUT_END = activeZoomConfig.endFrame;
 
     let normalizedTime = 0;
@@ -184,9 +178,7 @@ export const VideoCombinedEffects: React.FC<VideoCombinedEffectsProps> = ({
       normalizedTime = 0;
     } else if (frame < ZOOM_IN_END) {
       normalizedTime = interpolate(frame, [ZOOM_IN_START, ZOOM_IN_END], [0, 1]);
-    } else if (frame < HOLD_END) {
-      normalizedTime = 1;
-    } else {
+    } else if (frame < ZOOM_OUT_END) {
       normalizedTime = interpolate(
         frame,
         [ZOOM_OUT_START, ZOOM_OUT_END],
@@ -220,7 +212,7 @@ export const VideoCombinedEffects: React.FC<VideoCombinedEffectsProps> = ({
         [0, 1],
         [activeZoomConfig.startScale, activeZoomConfig.holdScale],
       );
-    } else if (frame < HOLD_END) {
+    } else if (frame < ZOOM_OUT_END) {
       currentX = activeZoomConfig.holdX;
       currentY = activeZoomConfig.holdY;
       currentScale = activeZoomConfig.holdScale;

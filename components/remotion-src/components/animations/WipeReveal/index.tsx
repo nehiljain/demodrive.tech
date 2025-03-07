@@ -62,7 +62,6 @@ type WipeRevealProps = z.infer<typeof wipeRevealSchema>;
 
 export const WipeReveal: React.FC<WipeRevealProps> = ({
   text,
-  direction = "left-to-right",
   fontSize = 140,
   primaryColor = "#1e293b",
   backgroundColor = "bg-gradient-to-br from-amber-300 via-orange-400 to-yellow-500",
@@ -239,7 +238,7 @@ export const templateConfig: TemplateConfig = {
   id: "WipeReveal",
   name: "Wipe Reveal",
   description: "A sleek text reveal animation with a wipe effect",
-  component: WipeReveal,
+  component: WipeReveal as React.FC<unknown>,
   schema: wipeRevealSchema,
   defaultProps: {
     text: "WELCOME",

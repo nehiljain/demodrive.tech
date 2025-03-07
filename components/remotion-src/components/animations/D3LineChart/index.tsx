@@ -16,44 +16,6 @@ export interface LineDataPoint {
   y: number;
 }
 
-interface TitleConfig {
-  text: string;
-  fontSize?: number;
-  fontWeight?: number;
-  marginBottom?: number;
-}
-
-interface AxisLabelConfig {
-  text: string;
-  fontSize?: number;
-  fontWeight?: number;
-  marginTop?: number;
-  marginRight?: number;
-}
-
-interface LegendConfig {
-  fontSize?: number;
-  fontWeight?: number;
-  itemSpacing?: number;
-}
-
-interface TickConfig {
-  fontSize?: number;
-  fontWeight?: number;
-  padding?: number;
-}
-
-interface ReferenceLine {
-  y: number;
-  color: string;
-  label?: string;
-  startFrame?: number;
-  strokeWidth?: number;
-  labelFontSize?: number;
-  labelFontWeight?: number;
-  labelPadding?: number;
-}
-
 // Schema for D3LineChart props
 export const d3LineChartSchema = baseTemplateSchema.extend({
   lines: z.array(
@@ -367,7 +329,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
     });
 
     // Style for axes with enhanced styling
-    const axisStyle = (g: any) => {
+    const axisStyle = (g: SVGGElement) => {
       g.style(
         "font-size",
         `${finalConfig.ticks?.fontSize || finalConfig.fontSize}px`,
@@ -487,7 +449,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
       .append("feFuncA")
       .attr("type", "linear")
       .attr("slope", 0.2);
-  }, [width, height, lines, animation, finalConfig]);
+  }, [width, height, lines, animation, finalConfig, frame]);
 
   return (
     <AbsoluteFill

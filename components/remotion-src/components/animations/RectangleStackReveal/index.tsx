@@ -95,8 +95,6 @@ export const RectangleStackReveal: React.FC<RectangleStackRevealProps> = ({
   backgroundColor,
   marginTop,
   containerWidth,
-  width,
-  height,
   audio,
 }) => {
   const frame = useCurrentFrame();
@@ -110,7 +108,6 @@ export const RectangleStackReveal: React.FC<RectangleStackRevealProps> = ({
   const delayEnd = wipeEnd + delayAfterWipe;
   const expansionEnd = delayEnd + expansionDuration;
   const holdEnd = expansionEnd + holdDuration;
-  const collapseEnd = holdEnd + collapseDuration;
 
   // Calculate initial wipe progress
   const wipeProgress = spring({

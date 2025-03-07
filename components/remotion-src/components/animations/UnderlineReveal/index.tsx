@@ -55,7 +55,6 @@ export const UnderlineReveal: React.FC<UnderlineRevealProps> = ({
 
     return words.map((word, index) => {
       const isWordToHighlight = highlightWords.includes(word.trim());
-      const wordRef = `word-${index}`;
 
       // Skip animation for spaces
       if (word.trim() === "") {

@@ -8,7 +8,6 @@ import {
 import { z } from "zod";
 import { baseTemplateSchema } from "../../../shared/types";
 import { registerAnimation } from "../registry";
-import { AVAILABLE_FONTS, FontFamily } from "../../../shared/fonts";
 
 // Schema for colored word
 const coloredWordSchema = z.object({

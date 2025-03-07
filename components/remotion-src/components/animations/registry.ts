@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ReactNode } from "react";
+import { ZodRawShape } from "zod";
 // import { VideoZoomReveal, videoZoomRevealSchema } from "./VideoZoomReveal";
 
 // Define the animation registry type
@@ -7,9 +8,9 @@ export interface AnimationRegistryEntry {
   id: string;
   name: string;
   description: string;
-  component: React.FC<any>;
-  schema: z.ZodObject<any>;
-  defaultProps: Record<string, any>;
+  component: React.FC<unknown>;
+  schema: z.ZodObject<ZodRawShape>;
+  defaultProps: Record<string, unknown>;
   thumbnail?: string; // Optional thumbnail for UI display
   category?: string; // Optional category for grouping
 }
@@ -52,9 +53,6 @@ export function getAnimationsByCategory(
 
 // Helper to generate property controls based on schema
 export function generatePropertyControls(
-  schema: z.ZodObject<any>,
-  currentValues: Record<string, any>,
-  onChange: (newValues: Record<string, any>) => void,
 ): ReactNode {
   // This would be implemented to dynamically generate UI controls
   // based on the schema types (string, number, boolean, etc.)

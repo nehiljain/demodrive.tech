@@ -4,9 +4,6 @@ import { baseTemplateSchema } from "../../../shared/types";
 import { registerAnimation } from "../registry";
 import { AbsoluteFill } from "remotion";
 
-// Create a type that extracts the valid emoji values
-type ValidEmoji = AnimatedEmoji["emoji"];
-
 export const emojiRevealSchema = baseTemplateSchema.extend({
   emoji: z.string().default("smile"),
   emojiSize: z.number().default(200),

@@ -64,8 +64,8 @@ export interface TemplateConfig {
   id: string;
   name: string;
   description: string;
-  component: React.FC<any>;
-  schema: z.ZodType<any>;
-  defaultProps: any;
-  variants?: Record<string, any>;
+  component: React.FC<unknown>;
+  schema: z.ZodType<unknown>;
+  defaultProps: unknown;
+  variants?: Record<string, unknown>;
 }

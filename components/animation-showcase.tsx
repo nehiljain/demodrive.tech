@@ -11,10 +11,7 @@ import {
   FadeReveal,
   TypewriterReveal,
   UnderlineReveal,
-  StaggeredTextReveal,
-  MetricReveal,
   LogoReveal,
-  VideoZoomReveal,
   OpacityFlashReveal,
   RectangleStackReveal,
   D3BarChart,
@@ -25,8 +22,8 @@ interface AnimationItem {
   id: string;
   name: string;
   description: string;
-  component: React.ComponentType<any>;
-  demoProps: any;
+  component: React.ComponentType<unknown>;
+  demoProps: Record<string, unknown>;
   category: string;
 }
 
@@ -35,8 +32,8 @@ const AnimationWrapper = ({
   component,
   demoProps
 }: {
-  component: React.ComponentType<any>;
-  demoProps: any
+  component: React.ComponentType<unknown>;
+  demoProps: Record<string, unknown>;
 }) => {
   return (
     <Player
@@ -67,7 +64,7 @@ export default function AnimationShowcase() {
       id: "bounce-reveal",
       name: "Bounce Reveal",
       description: "A dynamic bouncing text reveal with physics-based animation",
-      component: BounceReveal,
+      component: BounceReveal as React.ComponentType<unknown>,
       demoProps: {
         text: "BOUNCE IN",
         fontSize: 40,
@@ -80,13 +77,13 @@ export default function AnimationShowcase() {
       id: "directional-blur",
       name: "Directional Blur Reveal",
       description: "Text reveal with directional motion blur effect",
-      component: DirectionalBlurReveal,
+      component: DirectionalBlurReveal as React.ComponentType<unknown>,
       demoProps: {
-        text: "Blur Reveal",
+        text: "Blur Reveal...",
         fontSize: 40,
         primaryColor: "#ffffff",
         backgroundColor: "bg-gradient-to-br from-purple-600 to-blue-700",
-        containerWidth: 600,
+        containerWidth: 1200,
         lineHeight: 1.2,
         direction: "left",
       },
@@ -96,7 +93,7 @@ export default function AnimationShowcase() {
       id: "fade-reveal",
       name: "Fade Reveal",
       description: "Simple fade-in text animation with customizable timing",
-      component: FadeReveal,
+      component: FadeReveal as React.ComponentType<unknown>,
       demoProps: {
         text: "Fade In Text",
         fontSize: 40,
@@ -110,7 +107,7 @@ export default function AnimationShowcase() {
       id: "typewriter",
       name: "Typewriter Reveal",
       description: "Text typing effect with cursor animation",
-      component: TypewriterReveal,
+      component: TypewriterReveal as React.ComponentType<unknown>,
       demoProps: {
         text: "Typing effect...",
         fontSize: 40,
@@ -159,7 +156,7 @@ export default function AnimationShowcase() {
         id: "rectangle-stack",
         name: "Rectangle Stack Reveal",
         description: "Animated stacking rectangles reveal effect",
-        component: RectangleStackReveal,
+        component: RectangleStackReveal as React.ComponentType<unknown>,
         demoProps: {
             rectangleColor: "#3b82f6",
             rectangleWidth: 300,
@@ -189,7 +186,7 @@ export default function AnimationShowcase() {
           id: "underline-reveal",
           name: "Underline Reveal",
           description: "Text with animated underline highlighting effect",
-          component: UnderlineReveal,
+          component: UnderlineReveal as React.ComponentType<unknown>,
           demoProps: {
               text: "Highlight important words in your text",
               highlightWords: ["important", "words"],
@@ -207,7 +204,7 @@ export default function AnimationShowcase() {
           id: "opacity-flash",
           name: "Opacity Flash Reveal",
           description: "Text reveal with flashing opacity effect",
-          component: OpacityFlashReveal,
+          component: OpacityFlashReveal as React.ComponentType<unknown>,
           demoProps: {
               text: "Flash Text",
               fontSize: 40,
@@ -223,7 +220,7 @@ export default function AnimationShowcase() {
           id: "d3-bar-chart",
           name: "D3 Bar Chart",
           description: "Animated data visualization using D3.js bar charts",
-          component: D3BarChart,
+          component: D3BarChart as React.ComponentType<unknown>,
           demoProps: {
               data: [
                   { label: "Category A", value: 0.45 },
@@ -238,7 +235,7 @@ export default function AnimationShowcase() {
           id: "d3-line-chart",
           name: "D3 Line Chart",
           description: "Animated line chart for time-series data visualization",
-          component: D3LineChart,
+          component: D3LineChart as React.ComponentType<unknown>,
           demoProps: {
               lines: [
                   {
@@ -286,7 +283,7 @@ export default function AnimationShowcase() {
           id: "logo-reveal",
           name: "Logo Reveal",
           description: "Animated logo reveal with company name and tagline",
-          component: LogoReveal,
+          component: LogoReveal as React.ComponentType<unknown>,
           demoProps: {
               logo: {
                   src: "/logo.svg",
