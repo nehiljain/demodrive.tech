@@ -139,7 +139,7 @@ registerAnimation({
   id: "BounceReveal",
   name: "Bounce Reveal",
   description: "A dynamic bouncing text reveal with physics-based animation",
-  component: BounceReveal,
+  component: BounceReveal as React.FC<unknown>,
   schema: bounceRevealSchema,
   defaultProps: {
     text: "BOUNCE IN",

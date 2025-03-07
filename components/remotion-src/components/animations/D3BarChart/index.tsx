@@ -248,7 +248,7 @@ registerAnimation({
   id: "D3BarChart",
   name: "D3 Bar Chart",
   description: "A dynamic bar chart visualization using D3",
-  component: D3BarChart,
+  component: D3BarChart as React.FC<unknown>,
   schema: d3BarChartSchema,
   defaultProps: {
     data: [

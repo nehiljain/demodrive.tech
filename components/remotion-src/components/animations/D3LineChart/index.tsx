@@ -55,6 +55,46 @@ export const d3LineChartSchema = baseTemplateSchema.extend({
       axisColor: z.string().optional(),
       axisWidth: z.number().optional(),
       pointRadius: z.number().optional(),
+      referenceLines: z.array(
+        z.object({
+          y: z.number(),
+          color: z.string(),
+          label: z.string().optional(),
+          startFrame: z.number().optional(),
+          strokeWidth: z.number().optional(),
+          labelPadding: z.number().optional(),
+          labelFontSize: z.number().optional(),
+          labelFontWeight: z.number().optional(),
+        })
+      ).optional(),
+      title: z.object({
+        text: z.string(),
+        fontSize: z.number().optional(),
+        fontWeight: z.number().optional(),
+        marginBottom: z.number().optional(),
+      }).optional(),
+      xLabel: z.object({
+        text: z.string(),
+        fontSize: z.number().optional(),
+        fontWeight: z.number().optional(),
+        marginTop: z.number().optional(),
+      }).optional(),
+      yLabel: z.object({
+        text: z.string(),
+        fontSize: z.number().optional(),
+        fontWeight: z.number().optional(),
+        marginRight: z.number().optional(),
+      }).optional(),
+      legend: z.object({
+        fontSize: z.number().optional(),
+        fontWeight: z.number().optional(),
+        itemSpacing: z.number().optional(),
+      }).optional(),
+      ticks: z.object({
+        fontSize: z.number().optional(),
+        fontWeight: z.number().optional(),
+        padding: z.number().optional(),
+      }).optional(),
     })
     .optional()
     .default({}),
@@ -136,7 +176,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
 
     const yScale = d3
       .scaleLinear()
-      .domain(finalConfig.yDomain)
+      .domain(finalConfig.yDomain || [0, 1])
       .range([chartHeight, 0]);
 
     // Add grid
@@ -173,13 +213,13 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
 
     // Add reference lines with animation based on start frame
     g.selectAll(".reference-line")
-      .data(finalConfig.referenceLines)
+      .data(finalConfig.referenceLines || [])
       .enter()
       .append("g")
       .attr("class", "reference-line")
       .each(function (d) {
         const group = d3.select(this);
-        const startFrame = d.startFrame || 0;
+        const startFrame = (d as any).startFrame || 0;
         const relativeFrame = frame - finalConfig.delay;
         const opacity = relativeFrame >= startFrame ? 0.7 : 0;
 
