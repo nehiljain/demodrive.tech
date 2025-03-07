@@ -187,7 +187,7 @@ registerAnimation({
   id: "TypewriterReveal",
   name: "Typewriter Reveal",
   description: "A typewriter-style text reveal animation",
-  component: TypewriterReveal,
+  component: TypewriterReveal as React.FC<unknown>,
   schema: typewriterRevealSchema,
   defaultProps: {
     text: "Typewriter Reveal....",

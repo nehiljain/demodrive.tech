@@ -97,7 +97,7 @@ registerAnimation({
   name: "Image Scroll Reveal",
   description:
     "A smooth scrolling animation for showcasing long images or screenshots",
-  component: ImageScrollReveal as React.FC<ImageScrollRevealProps>,
+  component: ImageScrollReveal as React.FC<unknown>,
   schema: imageScrollRevealSchema,
   defaultProps: {
     imagePath: "screenshots/website-screenshot.png",

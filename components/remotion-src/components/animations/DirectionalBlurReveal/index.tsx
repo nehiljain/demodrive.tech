@@ -114,10 +114,10 @@ export const DirectionalBlurReveal: React.FC<DirectionalBlurRevealProps> = ({
 
 // Register the animation
 registerAnimation({
-  id: "DirectionalBlurReveal",
+  id: "directional-blur-reveal",
   name: "Directional Blur Reveal",
   description: "A text reveal animation with directional blur effect",
-  component: DirectionalBlurReveal,
+  component: DirectionalBlurReveal as React.FC<unknown>,
   schema: directionalBlurRevealSchema,
   defaultProps: {
     text: "BLUR REVEAL",

@@ -31,7 +31,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   volume,
   playbackRate,
   muted,
-  loop,
   objectFit,
   backgroundColor,
 }) => {
@@ -59,7 +58,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             volume={volume}
             playbackRate={playbackRate}
             muted={muted}
-            loop={loop}
             style={{
               width: "100%",
               height: "100%",
@@ -77,7 +75,7 @@ registerAnimation({
   id: "VideoPlayer",
   name: "Video Player",
   description: "A simple video player with configuration options",
-  component: VideoPlayer,
+  component: VideoPlayer as React.FC<unknown>,
   schema: videoPlayerSchema,
   defaultProps: {
     videoUrl: "http://127.0.0.1:8000/static/placeholder_video.mp4",

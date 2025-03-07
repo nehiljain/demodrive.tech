@@ -5,7 +5,7 @@ import {
   Audio,
   staticFile,
 } from "remotion";
-import { WipeRevealConfig } from "@/remotion-src/shared/types";
+import { WipeRevealConfig } from "../../../shared/types";
 
 export const WipeReveal: React.FC<WipeRevealConfig> = ({
   text,

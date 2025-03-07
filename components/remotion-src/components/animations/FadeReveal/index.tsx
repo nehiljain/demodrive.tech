@@ -96,7 +96,7 @@ registerAnimation({
   id: "FadeReveal",
   name: "Fade Reveal",
   description: "A smooth fade-in text reveal animation",
-  component: FadeReveal,
+  component: FadeReveal as React.FC<unknown>,
   schema: fadeRevealSchema,
   defaultProps: {
     text: "FADE IN",

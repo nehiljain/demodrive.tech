@@ -70,6 +70,7 @@ export const rectangleStackRevealSchema = baseTemplateSchema.extend({
   holdDuration: z.number(),
   marginTop: z.number(),
   containerWidth: z.number(),
+  backgroundColor: z.string(),
   springConfig: z.object({
     damping: z.number(),
     mass: z.number(),
@@ -265,7 +266,7 @@ registerAnimation({
   name: "Rectangle Stack Reveal",
   description:
     "A dynamic animation of stacked rectangles that expand and collapse",
-  component: RectangleStackReveal,
+  component: RectangleStackReveal as React.FC<unknown>,
   schema: rectangleStackRevealSchema,
   defaultProps: {
     rectangleColor: "#ffffff",

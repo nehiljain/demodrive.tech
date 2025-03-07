@@ -12,7 +12,6 @@ import {
   TypewriterReveal,
   UnderlineReveal,
   LogoReveal,
-  OpacityFlashReveal,
   RectangleStackReveal,
   D3BarChart,
   D3LineChart,
@@ -200,22 +199,47 @@ export default function AnimationShowcase() {
           },
           category: "text",
       },
-      {
-          id: "opacity-flash",
-          name: "Opacity Flash Reveal",
-          description: "Text reveal with flashing opacity effect",
-          component: OpacityFlashReveal as React.ComponentType<unknown>,
-          demoProps: {
-              text: "Flash Text",
-              fontSize: 40,
-              primaryColor: "#ffffff",
-              backgroundColor: "bg-gradient-to-br from-red-600 to-purple-700",
-              containerWidth: 600,
-              lineHeight: 1.2,
-              flashSpeed: 8,
-          },
-          category: "text",
+    {
+      id: "logo-reveal",
+      name: "Logo Reveal",
+      description: "Animated logo reveal with company name and tagline",
+      component: LogoReveal as React.ComponentType<unknown>,
+      demoProps: {
+        logo: {
+          src: "/logo.svg",
+          size: 80,
+        },
+        companyName: {
+          text: "Company Name",
+          fontSize: 40,
+          color: "#FFFFFF",
+        },
+        tagline: {
+          lines: ["Your awesome tagline"],
+          fontSize: 24,
+          color: "#FFFFFF",
+        },
+        backgroundColor: "bg-secondary",
+        containerWidth: 600,
       },
+      category: "media",
+    },
+    // {
+    //       id: "opacity-flash",
+    //       name: "Opacity Flash Reveal",
+    //       description: "Text reveal with flashing opacity effect",
+    //       component: OpacityFlashReveal as React.ComponentType<unknown>,
+    //       demoProps: {
+    //           text: "Flash Text",
+    //           fontSize: 40,
+    //           primaryColor: "#ffffff",
+    //           backgroundColor: "bg-gradient-to-br from-red-600 to-purple-700",
+    //           containerWidth: 600,
+    //           lineHeight: 1.2,
+    //           flashSpeed: 8,
+    //       },
+    //       category: "text",
+    //   },
       {
           id: "d3-bar-chart",
           name: "D3 Bar Chart",
@@ -278,32 +302,7 @@ export default function AnimationShowcase() {
               },
           },
           category: "data",
-      },
-      {
-          id: "logo-reveal",
-          name: "Logo Reveal",
-          description: "Animated logo reveal with company name and tagline",
-          component: LogoReveal as React.ComponentType<unknown>,
-          demoProps: {
-              logo: {
-                  src: "/logo.svg",
-                  size: 80,
-              },
-              companyName: {
-                  text: "Company Name",
-                  fontSize: 40,
-                  color: "#FFFFFF",
-              },
-              tagline: {
-                  lines: ["Your awesome tagline"],
-                  fontSize: 24,
-                  color: "#FFFFFF",
-              },
-              backgroundColor: "bg-secondary",
-              containerWidth: 600,
-          },
-          category: "media",
-      },
+      }
   ];
 
   useEffect(() => {

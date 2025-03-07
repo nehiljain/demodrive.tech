@@ -16,6 +16,18 @@ export interface LineDataPoint {
   y: number;
 }
 
+// Define the ReferenceLine interface based on the schema
+interface ReferenceLine {
+  y: number;
+  color: string;
+  label?: string;
+  startFrame?: number;
+  strokeWidth?: number;
+  labelPadding?: number;
+  labelFontSize?: number;
+  labelFontWeight?: number;
+}
+
 // Schema for D3LineChart props
 export const d3LineChartSchema = baseTemplateSchema.extend({
   lines: z.array(
@@ -219,7 +231,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
       .attr("class", "reference-line")
       .each(function (d) {
         const group = d3.select(this);
-        const startFrame = (d as any).startFrame || 0;
+        const startFrame = (d as ReferenceLine).startFrame || 0;
         const relativeFrame = frame - finalConfig.delay;
         const opacity = relativeFrame >= startFrame ? 0.7 : 0;
 
@@ -369,10 +381,10 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
     });
 
     // Style for axes with enhanced styling
-    const axisStyle = (g: SVGGElement) => {
+    const axisStyle = (g: d3.Selection<SVGGElement, unknown, null, undefined>) => {
       g.style(
         "font-size",
-        `${finalConfig.ticks?.fontSize || finalConfig.fontSize}px`,
+        `${finalConfig.ticks?.fontSize || finalConfig.fontSize}px`
       )
         .style("font-weight", finalConfig.ticks?.fontWeight || 500)
         .style("font-family", "Inter, system-ui, -apple-system, sans-serif")
@@ -392,7 +404,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
         .style("fill", finalConfig.axisColor)
         .style(
           "font-size",
-          `${finalConfig.ticks?.fontSize || finalConfig.fontSize}px`,
+          `${finalConfig.ticks?.fontSize || finalConfig.fontSize}px`
         )
         .style("font-family", "Inter, system-ui, -apple-system, sans-serif")
         .style("font-weight", finalConfig.ticks?.fontWeight || 500)
@@ -400,7 +412,7 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
           "dy",
           finalConfig.ticks?.padding
             ? `${finalConfig.ticks.padding}px`
-            : "0.32em",
+            : "0.32em"
         );
     };
 
@@ -507,7 +519,7 @@ registerAnimation({
   id: "D3LineChart",
   name: "D3 Line Chart",
   description: "A dynamic line chart visualization using D3",
-  component: D3LineChart,
+  component: D3LineChart as React.FC<unknown>,
   schema: d3LineChartSchema,
   defaultProps: {
     lines: [
