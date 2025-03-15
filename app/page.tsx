@@ -174,7 +174,7 @@ export default function LandingPage() {
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
               yOffset={8}
             >
-              <h1 className="pr-5">AI Editor for</h1>
+              <h1 className="pr-5">AI Video Editor for</h1>
             </BlurFade>
             <BlurFade
               delay={BLUR_FADE_DELAY * 2}
@@ -185,7 +185,7 @@ export default function LandingPage() {
                 words={[
                   "your Guides",
                   "your Demos",
-                  "your Walkthroughs",
+                  "your Marketing",
                   "your Tutorials",
                 ]}
                 duration={2500}
