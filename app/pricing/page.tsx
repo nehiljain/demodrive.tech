@@ -31,19 +31,20 @@ const discount = 0.25;
 const plans: PricingPlan[] = [
   {
     title: "Lite",
-    monthlyPrice: 250,
-    yearlyPrice: Math.ceil(250 * (1 - discount) * 12),
+    monthlyPrice: 89,
+    yearlyPrice: Math.ceil(89 * (1 - discount) * 12),
     description: "For small teams",
     features: [
       {
-        title: "Automatic QA Tutorials",
+        title: " Video Generation",
         icon: BarChart,
         subFeatures: [
-          "Weekly automated reports",
-          "Up to 20 tutorials",
-          "Usability recommendations",
-          "Code snippet analysis",
-          "Broken links detection"
+          "3 editor seats",
+          "Stock Audio & Video(Pexels)",
+          "No watermark",
+          "Auto - Captions",
+          "1080p Exports",
+          "Unlimited projects"
         ]
       },
       {
@@ -68,15 +69,18 @@ const plans: PricingPlan[] = [
         title: "Everything in Lite",
         icon: Star,
         subFeatures: [
+          "4k UHD exports",
+          "10 editor seats",
         ]
       },
       {
-        title: "AI Generation",
+        title: "AI Assistant",
         icon: Zap,
         subFeatures: [
-          "Generate Tutorials",
-          "Generate Screenshots",
-          "Generate How-to videos"
+          "Generate Storyboards",
+          "Audio Translation to 10+ languages",
+          "AI Voiceover",
+          "AI Avatar",
         ]
       },
       {
