@@ -18,6 +18,7 @@ const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
 import AnimationShowcase from "@/components/animation-showcase";
+import FeatureTimeline from "@/components/ui/feature-timeline";
 
 interface VideoMetadata {
   id: string;
@@ -175,7 +176,7 @@ export default function LandingPage() {
               className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
               yOffset={8}
             >
-              <h1>Supercharge 🚀</h1>
+              <h1 className="pr-5">AI Editor for</h1>
             </BlurFade>
             <BlurFade
               delay={BLUR_FADE_DELAY * 2}
@@ -206,7 +207,7 @@ export default function LandingPage() {
           </div>
 
           {/* Featured Video */}
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          {/* <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <div className="max-w-4xl mx-auto">
               <HeroVideo
                 playbackId="e6coKvqHCmIwgMzzPCVB9snRcgpDmNY1WuA01L5yHIiQ"
@@ -216,7 +217,7 @@ export default function LandingPage() {
                 thumbnailTime={2.6}
               />
             </div>
-          </BlurFade>
+          </BlurFade> */}
 
           {/* Logos Section */}
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
@@ -242,247 +243,277 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Feature Section */}
-      {/* <div className="mx-auto max-w-5xl px-6 py-24">
+      {/* Feature Timeline Section */}
+      <div className="" id="features">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 7}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
-            text="Documentation Quality Report"
-          />
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 8}
-            className="text-center text-muted-foreground mb-12 text-xl font-bold"
-            text="Detailed review of your docs for correctness and usability."
-          />
-
-          <div className="space-y-24">
-            {features.map((feature, idx) => (
-              <BlurFade key={feature.badge} delay={BLUR_FADE_DELAY * (9 + idx)}>
-                <FeatureCard feature={feature} className="lg:grid-cols-2" />
-              </BlurFade>
-            ))}
-          </div>
-        </div> */}
-
-        {/* How it Works Section */}
-        <div className="py-10 lg:py-12 sm:py-6" id="flow-diagram">
-          <div className="mx-auto max-w-5xl px-6">
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 19}
               className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-              text="How DemoDrive Works"
-            />
+          text="Key Features"
+        />
 
-            <BlurFade delay={BLUR_FADE_DELAY * 20}>
-              <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
-                <DemoFlow />
-              </div>
-            </BlurFade>
-          </div>
+        <FeatureTimeline
+          baseDelay={BLUR_FADE_DELAY * 8}
+          features={[
+            {
+              title: "Rich Editor",
+              description: "Edit your video scripts, add images, videos, and more with our rich web native editor.",
+              media: {
+                type: 'video',
+                src: '/features/rich_editor.mp4',
+                alt: 'Video demo showcase'
+              }
+            },
+            {
+              title: "AI Copilot",
+              description: "AI script generation for your product demos, tutorials and walkthroughs.",
+              media: {
+                type: 'video',
+                src: '/features/storyboard.mp4',
+                alt: 'Video demo showcase'
+              }
+            },
+            {
+              title: "B-Roll Generation",
+              description: "Generate stunning, interactive video demonstrations of your product with AI-powered narration and automatic scene transitions. Perfect for onboarding and training materials.",
+              media: {
+                type: 'video',
+                src: '/features/b_roll.mp4',
+                alt: 'Video demo showcase'
+              }
+            },
+            {
+              title: "Short Videos",
+              description: "Generate videos of different length, quality and aspect ratio.",
+              media: {
+                type: 'video',
+                src: '/features/create_project.mp4',
+                alt: 'Project management interface'
+              }
+            }
+          ]}
+        />
         </div>
 
-        {/* Showcase Section */}
-        <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
+      {/* How it Works Section */}
+      <div className="py-10 lg:py-12 sm:py-6" id="flow-diagram">
+        <div className="mx-auto max-w-5xl px-6">
           <BlurFadeText
-            delay={BLUR_FADE_DELAY * 14}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
-            text="Generated Videos Showcase"
-          />
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 15}
-            className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
-            text="Check out what others have created with DemoDrive's AI-powered tutorial generator."
+            delay={BLUR_FADE_DELAY * 19}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="How DemoDrive Works"
           />
 
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
-              {[...Array(6)].map((_, index) => (
-                <div key={index}>
-                  <div className="overflow-hidden rounded-lg border border-muted">
-                    <Skeleton className="aspect-video w-full" />
-                  </div>
-                  <div className="p-4 text-left">
-                    <div className="flex gap-3">
-                      <Skeleton className="w-10 h-10 rounded-full" />
-                      <div className="flex-1">
-                        <Skeleton className="h-6 w-3/4 mb-2" />
-                        <Skeleton className="h-4 w-1/2" />
-                      </div>
+          <BlurFade delay={BLUR_FADE_DELAY * 20}>
+            <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
+              <DemoFlow />
+            </div>
+          </BlurFade>
+        </div>
+      </div>
+
+
+      {/* Showcase Section */}
+      <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 14}
+          className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
+          text="Generated Videos Showcase"
+        />
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 15}
+          className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+          text="Check out what others have created with DemoDrive's AI-powered tutorial generator."
+        />
+
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+            {[...Array(6)].map((_, index) => (
+              <div key={index}>
+                <div className="overflow-hidden rounded-lg border border-muted">
+                  <Skeleton className="aspect-video w-full" />
+                </div>
+                <div className="p-4 text-left">
+                  <div className="flex gap-3">
+                    <Skeleton className="w-10 h-10 rounded-full" />
+                    <div className="flex-1">
+                      <Skeleton className="h-6 w-3/4 mb-2" />
+                      <Skeleton className="h-4 w-1/2" />
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : error ? (
-            <div className="flex justify-center items-center min-h-[200px] text-red-500">
-              Error: {error}
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
-                {videos.map((video, index) => {
-                  const videoPath = video.video_url
-                    .split("demodrive-media/")[1]
-                    .split("/metadata.json")[0];
-                  const format = thumbnailFormat[video.id] || "jpg";
-                  return (
-                    <BlurFade
-                      key={video.id}
-                      delay={BLUR_FADE_DELAY * (16 + index * 0.2)}
+              </div>
+            ))}
+          </div>
+        ) : error ? (
+          <div className="flex justify-center items-center min-h-[200px] text-red-500">
+            Error: {error}
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+              {videos.map((video, index) => {
+                const videoPath = video.video_url
+                  .split("demodrive-media/")[1]
+                  .split("/metadata.json")[0];
+                const format = thumbnailFormat[video.id] || "jpg";
+                return (
+                  <BlurFade
+                    key={video.id}
+                    delay={BLUR_FADE_DELAY * (16 + index * 0.2)}
+                  >
+                    <a
+                      href={`https://app.demodrive.tech/video-player/${btoa(videoPath)}`}
+                      className="group cursor-pointer"
                     >
-                      <a
-                        href={`https://app.demodrive.tech/video-player/${btoa(videoPath)}`}
-                        className="group cursor-pointer"
-                      >
-                        <div className="overflow-hidden rounded-lg border border-muted shadow-sm hover:border-muted-foreground/20 transition-colors">
-                          <div className="aspect-video relative overflow-hidden">
+                      <div className="overflow-hidden rounded-lg border border-muted shadow-sm hover:border-muted-foreground/20 transition-colors">
+                        <div className="aspect-video relative overflow-hidden">
+                          <img
+                            src={`https://storage.googleapis.com/demodrive-media/${videoPath}/thumbnail.${format}`}
+                            alt={video.title}
+                            className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
+                            onError={() => handleImageError(video.id, format)}
+                          />
+                        </div>
+                      </div>
+                      <div className="p-4 text-left">
+                        <div className="flex gap-3">
+                          <div className="w-10 h-10 rounded-full overflow-hidden relative">
                             <img
-                              src={`https://storage.googleapis.com/demodrive-media/${videoPath}/thumbnail.${format}`}
-                              alt={video.title}
-                              className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
-                              onError={() => handleImageError(video.id, format)}
+                              src={video.author.avatar_url}
+                              alt={video.author.name}
+                              className="object-cover"
                             />
                           </div>
-                        </div>
-                        <div className="p-4 text-left">
-                          <div className="flex gap-3">
-                            <div className="w-10 h-10 rounded-full overflow-hidden relative">
-                              <img
-                                src={video.author.avatar_url}
-                                alt={video.author.name}
-                                className="object-cover"
-                              />
-                            </div>
-                            <div>
-                              <h3 className="font-semibold text-lg line-clamp-1">
-                                {video.title}
-                              </h3>
-                              <p className="text-sm text-muted-foreground">
-                                {video.author.name}
-                              </p>
-                            </div>
+                          <div>
+                            <h3 className="font-semibold text-lg line-clamp-1">
+                              {video.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {video.author.name}
+                            </p>
                           </div>
                         </div>
-                      </a>
-                    </BlurFade>
-                  );
-                })}
+                      </div>
+                    </a>
+                  </BlurFade>
+                );
+              })}
+            </div>
+
+            <BlurFade delay={BLUR_FADE_DELAY * 17}>
+              <div className="text-center mt-12">
+                <a href="https://app.demodrive.tech/showcase" className="text-accent hover:text-accent/80 font-medium flex items-center justify-center gap-2">
+                  View all showcase videos <ChevronRight className="h-4 w-4" />
+                </a>
               </div>
+            </BlurFade>
+          </>
+        )}
+      </div>
 
-              <BlurFade delay={BLUR_FADE_DELAY * 17}>
-                <div className="text-center mt-12">
-                  <a href="https://app.demodrive.tech/showcase" className="text-accent hover:text-accent/80 font-medium flex items-center justify-center gap-2">
-                    View all showcase videos <ChevronRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </BlurFade>
-            </>
-          )}
-        </div>
+      {/* Animation Showcase Section */}
+      {/* <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="animations">
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 18}
+          className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
+          text="Animation Library"
+        />
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 19}
+          className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+          text="Explore our collection of customizable animations for your videos and presentations."
+        />
 
-        {/* Animation Showcase Section */}
-        <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="animations">
+        <AnimationShowcase />
+      </div> */}
+
+      {/* FAQ Section */}
+      {/* <div className="py-10 lg:py-12 sm:py-6" id="faq">
+        <div className="mx-auto max-w-5xl px-6">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 18}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
-            text="Animation Library"
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="Frequently Asked Questions"
+          />
+
+          <BlurFade delay={BLUR_FADE_DELAY * 19}>
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  question: "How long does it take to get started?",
+                  answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first video/docs within a day."
+                },
+                {
+                  question: "What kind of tutorials do you support?",
+                  answer: "We primarily support web applications and CLI-based tools. Our AI can analyze and create tutorials for your web app's features, API endpoints, and command-line interfaces."
+                },
+                {
+                  question: "How accurate are the AI-generated QA reports?",
+                  answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
+                },
+                {
+                  question: "Can I add my own voice to the generated video?",
+                  answer: "Yes, you can add your own voice to the generated video. We use a voice cloning technology to add your voice to the video."
+                },
+                {
+                  question: "How accurate are the AI-generated tutorials?",
+                  answer: "We are contantly improving our AI agents. Our SaaS offering makes it easy for users to jump in and take control of the process."
+                },
+
+                {
+                  question: "Can I edit/ modify the output?",
+                  answer: "Yes, you can edit the generated tutorial, screenshot or video. In our webapp, you built in editor to allow you to make changes. However, you can also export the output to your own editor of choice."
+                },
+                {
+                  question: "What do I need to get started?",
+                  answer: "We need access to any public facing (or private) documentation you have. We also would need either a demo code against which you want to create tutorial or a demo video."
+                }
+              ].map((faq, index) => (
+                <AccordionItem key={faq.question} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-lg">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </BlurFade>
+        </div>
+      </div> */}
+
+      {/* Flow Diagram Section */}
+
+
+      {/* Bottom CTA Section */}
+      <div className="relative">
+        <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 20}
+            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            text="Ready to create"
           />
           <BlurFadeText
-            delay={BLUR_FADE_DELAY * 19}
-            className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
-            text="Explore our collection of customizable animations for your videos and presentations."
+            delay={BLUR_FADE_DELAY * 21}
+            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            text="stunning videos?"
           />
-
-          <AnimationShowcase />
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 22}
+            className="mt-6 text-lg leading-8 text-muted-foreground"
+            text="Schedule a demo with us. We promise you will be amazed."
+          />
+          <BlurFade delay={BLUR_FADE_DELAY * 23}>
+            <div className="mt-10 flex items-center justify-center gap-6">
+              <WaitlistForm />
+            </div>
+          </BlurFade>
         </div>
+      </div>
 
-        {/* FAQ Section */}
-        {/* <div className="py-10 lg:py-12 sm:py-6" id="faq">
-          <div className="mx-auto max-w-5xl px-6">
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 18}
-              className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-              text="Frequently Asked Questions"
-            />
-
-            <BlurFade delay={BLUR_FADE_DELAY * 19}>
-              <Accordion type="single" collapsible className="w-full">
-                {[
-                  {
-                    question: "How long does it take to get started?",
-                    answer: "You can get started immediately after our onboarding call. The initial setup takes about 30 minutes, and you'll receive your first video/docs within a day."
-                  },
-                  {
-                    question: "What kind of tutorials do you support?",
-                    answer: "We primarily support web applications and CLI-based tools. Our AI can analyze and create tutorials for your web app's features, API endpoints, and command-line interfaces."
-                  },
-                  {
-                    question: "How accurate are the AI-generated QA reports?",
-                    answer: "Our AI reports are highly accurate thanks to our human-in-the-loop process. Every report is reviewed by our team before being sent to ensure quality and accuracy."
-                  },
-                  {
-                    question: "Can I add my own voice to the generated video?",
-                    answer: "Yes, you can add your own voice to the generated video. We use a voice cloning technology to add your voice to the video."
-                  },
-                  {
-                    question: "How accurate are the AI-generated tutorials?",
-                    answer: "We are contantly improving our AI agents. Our SaaS offering makes it easy for users to jump in and take control of the process."
-                  },
-
-                  {
-                    question: "Can I edit/ modify the output?",
-                    answer: "Yes, you can edit the generated tutorial, screenshot or video. In our webapp, you built in editor to allow you to make changes. However, you can also export the output to your own editor of choice."
-                  },
-                  {
-                    question: "What do I need to get started?",
-                    answer: "We need access to any public facing (or private) documentation you have. We also would need either a demo code against which you want to create tutorial or a demo video."
-                  }
-                ].map((faq, index) => (
-                  <AccordionItem key={faq.question} value={`item-${index}`}>
-                    <AccordionTrigger className="text-lg text-left">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-lg">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </BlurFade>
-          </div>
-        </div> */}
-
-        {/* Flow Diagram Section */}
-
-
-        {/* Bottom CTA Section */}
-        <div className="relative">
-          <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 20}
-              className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-              text="Ready to create"
-            />
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 21}
-              className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-              text="stunning videos?"
-            />
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 22}
-              className="mt-6 text-lg leading-8 text-muted-foreground"
-              text="Schedule a demo with us. We promise you will be amazed."
-            />
-            <BlurFade delay={BLUR_FADE_DELAY * 23}>
-              <div className="mt-10 flex items-center justify-center gap-6">
-                <WaitlistForm />
-              </div>
-            </BlurFade>
-          </div>
-        </div>
-
-        {/* Add the Footer */}
-        <Footer />
+      {/* Add the Footer */}
+      <Footer />
     </div>
   );
 }
