@@ -2,7 +2,6 @@
 
 import { FC } from 'react'
 import BlurFade from '@/components/magicui/blur-fade'
-import BlurFadeText from '@/components/magicui/blur-fade-text'
 import Image from 'next/image'
 
 interface FeatureItem {

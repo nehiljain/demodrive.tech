@@ -9,7 +9,6 @@ import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
 
 
-import { HeroVideo } from '@/components/ui/hero-video'
 import { WaitlistForm } from '@/components/waitlist-form'
 import dynamic from 'next/dynamic'
 
@@ -17,7 +16,6 @@ import dynamic from 'next/dynamic'
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
-import AnimationShowcase from "@/components/animation-showcase";
 import FeatureTimeline from "@/components/ui/feature-timeline";
 
 interface VideoMetadata {
