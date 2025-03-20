@@ -222,7 +222,7 @@ export default function LandingPage() {
             <div className="mt-16 flex flex-col items-center">
               <div className="flex justify-center gap-8 mb-8">
                 {logos.map((logo, i) => (
-                  <div key={i} className="flex justify-center w-[160px]">
+                  <div key={i} className="flex justify-center sm:w-[160px] w-[120px]">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
