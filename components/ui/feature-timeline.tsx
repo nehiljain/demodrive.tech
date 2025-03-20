@@ -20,36 +20,24 @@ interface FeatureTimelineProps {
   delayIncrement?: number
 }
 
-const FeatureTimeline: FC<FeatureTimelineProps> = ({
+const FeatureGrid: FC<FeatureTimelineProps> = ({
   features,
   baseDelay = 0.1,
   delayIncrement = 0.2
 }) => {
   return (
-    <div className="relative mx-auto max-w-6xl px-6">
-      {/* Timeline line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-muted/70 -translate-x-1/2"></div>
-
-      {/* Features */}
-      <div className="relative">
+    <div className="relative mx-auto max-w-6xl px-6 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         {features.map((feature, index) => (
           <BlurFade
             key={index}
             delay={baseDelay + (index * delayIncrement)}
-            className="mb-24 last:mb-0"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-              {/* Circle marker on timeline */}
-              <div className="absolute left-1/2 top-8 w-4 h-4 rounded-full bg-accent -translate-x-1/2 md:block hidden"></div>
-
-              {/* Left side: Text content */}
-              <div className="flex flex-col justify-center order-2 md:order-1">
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground text-lg">{feature.description}</p>
-              </div>
-
-              {/* Right side: Media content */}
-              <div className="rounded-xl overflow-hidden border border-muted order-1 md:order-2 shadow-sm">
+            <div className="flex flex-col h-full group hover:translate-y-[-4px] transition-transform duration-300">
+              {/* Media content */}
+              <div className="rounded-2xl overflow-hidden border border-muted/50 shadow-lg mb-8
+                            transition-all duration-300 group-hover:shadow-xl
+                            group-hover:border-muted/80">
                 {feature.media.type === 'video' ? (
                   <video
                     src={feature.media.src}
@@ -69,6 +57,17 @@ const FeatureTimeline: FC<FeatureTimelineProps> = ({
                   />
                 )}
               </div>
+
+              {/* Text content */}
+              <div className="flex flex-col px-2">
+                <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent
+                             bg-gradient-to-r from-foreground to-foreground/70">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground/90 text-lg leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           </BlurFade>
         ))}
@@ -77,4 +76,4 @@ const FeatureTimeline: FC<FeatureTimelineProps> = ({
   )
 }
 
-export default FeatureTimeline
+export default FeatureGrid

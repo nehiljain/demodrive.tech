@@ -4,19 +4,11 @@ import { memo } from 'react'
 import { Handle, Position } from '@xyflow/react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import {
-  IconPalette,
-  IconSettings,
-  IconMessageChatbot,
-  IconFileDescription,
-  IconVideo,
-  IconBrandOpenai
-} from '@tabler/icons-react'
 
 type CustomCardNodeProps = {
   data: {
     label: string
-    icon?: string
+    icon?: React.ElementType
     logoPath?: string
     description?: string
     className?: string
@@ -27,15 +19,6 @@ type CustomCardNodeProps = {
   className?: string
 }
 
-const iconMap = {
-  'palette': IconPalette,
-  'settings': IconSettings,
-  'prompt': IconMessageChatbot,
-  'steps': IconFileDescription,
-  'video': IconVideo,
-  'openai': IconBrandOpenai,
-}
-
 const CustomCardNode = memo(({
   data,
   isConnectable = false,
@@ -43,7 +26,7 @@ const CustomCardNode = memo(({
   targetPosition,
   className,
 }: CustomCardNodeProps) => {
-  const Icon = data.icon ? iconMap[data.icon as keyof typeof iconMap] : null
+  const IconComponent = data.icon
 
   return (
     <div className={cn("relative", className)}>
@@ -69,15 +52,15 @@ const CustomCardNode = memo(({
               sizes="24px"
             />
           </div>
-        ) : Icon && (
+        ) : IconComponent && (
           <div className="flex-shrink-0 text-muted-foreground">
-            <Icon size={24} stroke={1.5} />
+            <IconComponent className="h-5 w-5" />
           </div>
         )}
         <div className="flex flex-col min-w-[150px]">
-          <div className="text-sm font-medium whitespace-pre-wrap">{data.label}</div>
+          <div className="whitespace-pre-wrap">{data.label}</div>
           {data.description && (
-            <p className="text-xs text-muted-foreground line-clamp-2">{data.description}</p>
+            <p className="text-sm text-foreground line-clamp-2">{data.description}</p>
           )}
         </div>
       </div>

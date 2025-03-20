@@ -183,12 +183,12 @@ export default function LandingPage() {
             >
               <WordRotate
                 words={[
-                  "your Guides",
-                  "your Demos",
-                  "your Marketing",
-                  "your Tutorials",
+                  "Product Guides",
+                  "Product Demos",
+                  "Marketing Videos",
                 ]}
                 duration={2500}
+                className="text-accent"
               />
             </BlurFade>
             <BlurFadeText
@@ -241,6 +241,89 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* Problem Statement Section */}
+      <div className="py-20 bg-gradient-to-b from-background to-background/80" id="problem">
+        <div className="mx-auto max-w-6xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 6.5}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="The Problem"
+          />
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <BlurFade delay={BLUR_FADE_DELAY * 6.6}>
+                <Image src="/video_editing.svg" alt="Video Editing" width={400} height={400} />
+            </BlurFade>
+
+            <BlurFade delay={BLUR_FADE_DELAY * 6.7}>
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="space-y-6">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Marketing teams are drowning in video project backlogs. With time spent on repetitive tasks like voice alignment and brand consistency,
+                      creating quality video content remains costly and time-consuming.
+                    </p>
+                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                      <div className="text-3xl font-bold text-destructive">60%</div>
+                      <div className="text-muted-foreground">
+                        of time is spent on repetitive video editing tasks
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                      <div className="text-3xl font-bold text-accent">85%</div>
+                      <div className="text-muted-foreground">
+                        creators report video production costs are too high to scale effectively
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-accent">The Impact</h3>
+                  <div className="grid gap-4">
+                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                      <div className="text-3xl font-bold text-accent">3.3x</div>
+                      <div className="text-muted-foreground">
+                        Improved customer understanding with video content
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                      <div className="text-3xl font-bold text-accent">3x</div>
+                      <div className="text-muted-foreground">
+                        More leads generated compared to static content
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    DemoDrive eliminates the grunt work, enabling scalable content creation
+                    and unlocking new efficiency in product marketing and customer education.
+                  </p>
+                </div>
+              </div>
+            </BlurFade>
+          </div>
+        </div>
+      </div>
+
+      {/* How it Works Section */}
+      <div className="py-24 lg:py-24 sm:py-6" id="flow-diagram">
+        <div className="mx-auto max-w-6xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 19}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="How DemoDrive Works"
+          />
+
+          <BlurFade delay={BLUR_FADE_DELAY * 20}>
+            <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
+              <DemoFlow />
+            </div>
+          </BlurFade>
+        </div>
+      </div>
       {/* Feature Timeline Section */}
       <div className="" id="features">
           <BlurFadeText
@@ -280,7 +363,7 @@ export default function LandingPage() {
               }
             },
             {
-              title: "Short Videos",
+              title: "Customize Formats",
               description: "Generate videos of different length, quality and aspect ratio.",
               media: {
                 type: 'video',
@@ -291,24 +374,6 @@ export default function LandingPage() {
           ]}
         />
         </div>
-
-      {/* How it Works Section */}
-      <div className="py-10 lg:py-12 sm:py-6" id="flow-diagram">
-        <div className="mx-auto max-w-5xl px-6">
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 19}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-            text="How DemoDrive Works"
-          />
-
-          <BlurFade delay={BLUR_FADE_DELAY * 20}>
-            <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
-              <DemoFlow />
-            </div>
-          </BlurFade>
-        </div>
-      </div>
-
 
       {/* Showcase Section */}
       <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">

@@ -3,6 +3,7 @@
 import { ReactFlow, type Node, type Edge, Position } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import CustomCardNode from './custom-card-node'
+import { MessageSquare, Palette, Film, InstagramIcon, YoutubeIcon } from 'lucide-react'
 
 const nodeTypes = {
   customCard: CustomCardNode,
@@ -10,7 +11,7 @@ const nodeTypes = {
 
 type CustomNode = Node<{
   label: string
-  icon?: string
+  icon?: React.ComponentType
   logoPath?: string
   description?: string
   className?: string
@@ -21,9 +22,9 @@ const nodes: CustomNode[] = [
     id: '1',
     type: 'customCard',
     data: {
-      label: 'App Creds + Docs',
-      icon: 'settings',
-      description: 'Configure access for our AI',
+      label: 'Media Library',
+      icon: Film,
+      description: 'Upload any existing videos',
     },
     position: { x: 0, y: 0 },
     sourcePosition: Position.Right,
@@ -33,8 +34,8 @@ const nodes: CustomNode[] = [
     type: 'customCard',
     data: {
       label: 'Generation Prompt',
-      icon: 'prompt',
-      description: 'Rough screen recording of your product',
+      icon: MessageSquare,
+      description: 'Describe what you want to create',
     },
     position: { x: 0, y: 100 },
     sourcePosition: Position.Right,
@@ -44,7 +45,7 @@ const nodes: CustomNode[] = [
     type: 'customCard',
     data: {
       label: 'Brand Guidelines',
-      icon: 'palette',
+      icon: Palette,
       description: 'Your brand style and guidelines',
     },
     position: { x: 0, y: 200 },
@@ -57,7 +58,7 @@ const nodes: CustomNode[] = [
       label: 'DemoDrive',
       logoPath: '/logo.svg',
       description: 'AI creator for your product',
-      className: 'glow',
+      className: 'glow bg-accent text-foreground',
     },
     position: { x: 350, y: 100 },
     sourcePosition: Position.Right,
@@ -68,9 +69,9 @@ const nodes: CustomNode[] = [
     id: '5',
     type: 'customCard',
     data: {
-      label: 'Written Guide',
-      icon: 'steps',
-      description: 'Step-by-step tutorial in md',
+      label: 'Short Clips',
+      icon: InstagramIcon,
+      description: 'Short Marketing Videos',
     },
     position: { x: 700, y: 200 },
     targetPosition: Position.Left,
@@ -79,9 +80,9 @@ const nodes: CustomNode[] = [
     id: '6',
     type: 'customCard',
     data: {
-      label: 'Video(s)',
-      icon: 'video',
-      description: 'Magical videos in multiple formats',
+      label: 'Youtube Video',
+      icon: YoutubeIcon,
+      description: 'HD Landscape Videos',
     },
     position: { x: 700, y: 0 },
     targetPosition: Position.Left,
