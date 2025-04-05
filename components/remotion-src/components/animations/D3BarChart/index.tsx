@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import {
   AbsoluteFill,
   spring,
@@ -78,15 +78,23 @@ export const D3BarChart: React.FC<D3BarChartProps> = ({
   const frame = useCurrentFrame();
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // Merge default config with provided config
-  const finalConfig = { ...defaultConfig, ...config };
+  // Merge default config with provided config using useMemo
+  const finalConfig = useMemo(
+    () => ({ ...defaultConfig, ...config }),
+    [config]
+  );
 
-  const yDomain = new d3.InternSet(
-    d3.groupSort(
-      data,
-      ([d]) => -d.value,
-      (d) => d.label,
-    ),
+  // Calculate yDomain using useMemo
+  const yDomain = useMemo(
+    () =>
+      new d3.InternSet(
+        d3.groupSort(
+          data,
+          ([d]) => -d.value,
+          (d) => d.label
+        )
+      ),
+    [data]
   );
 
   const animation = spring({

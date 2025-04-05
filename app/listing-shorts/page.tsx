@@ -1,35 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Navigation from "@/components/navigation";
 import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
-import dynamic from 'next/dynamic'
 import { VideoMarquee } from "@/components/video-marquee";
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
-import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
 import FeatureTimeline from "@/components/ui/feature-timeline";
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
-  
-  const [error, setError] = useState<string | null>(null);
-  const [thumbnailFormat, setThumbnailFormat] = useState<Record<string, string>>({});
-
-
-  const handleImageError = (videoId: string, currentFormat: string) => {
-    const newFormat = currentFormat === "jpg" ? "png" : "jpg";
-    setThumbnailFormat((prev) => ({
-      ...prev,
-      [videoId]: newFormat,
-    }));
-  };
 
   return (
     <div className="min-h-screen dark bg-background text-foreground">
@@ -199,4 +182,4 @@ export default function ListingShorts() {
       <Footer />
     </div>
   );
-} 
+}

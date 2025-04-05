@@ -430,7 +430,7 @@ export default function LandingPage() {
                     >
                       <div className="overflow-hidden rounded-lg border border-muted shadow-sm hover:border-muted-foreground/20 transition-colors">
                         <div className="aspect-video relative overflow-hidden">
-                          <img
+                          <Image
                             src={`https://storage.googleapis.com/demodrive-media/${videoPath}/thumbnail.${format}`}
                             alt={video.title}
                             className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
@@ -441,7 +441,7 @@ export default function LandingPage() {
                       <div className="p-4 text-left">
                         <div className="flex gap-3">
                           <div className="w-10 h-10 rounded-full overflow-hidden relative">
-                            <img
+                            <Image
                               src={video.author.avatar_url}
                               alt={video.author.name}
                               className="object-cover"

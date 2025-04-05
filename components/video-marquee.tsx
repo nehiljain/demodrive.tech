@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/magicui/marquee"
+import { CSSProperties } from "react"
 
 const MOBILE_HEIGHT = 250
 const DESKTOP_HEIGHT = 350
@@ -25,24 +26,24 @@ const VIDEOS = [
   }
 ]
 
-const VideoCard = ({ url, aspectRatio, mobileWidth, desktopWidth }: { 
-  url: string; 
-  aspectRatio: string; 
+const VideoCard = ({ url, aspectRatio, mobileWidth, desktopWidth }: {
+  url: string;
+  aspectRatio: string;
   mobileWidth: number;
   desktopWidth: number;
 }) => {
   return (
-    <div 
+    <div
       className={cn(
         "relative h-full overflow-hidden rounded-xl border mx-2",
       )}
-      style={{ 
+      style={{
         width: `var(--card-width)`,
         "--card-width": `${mobileWidth}px`,
         "@media (min-width: 768px)": {
           "--card-width": `${desktopWidth}px`
         }
-      } as any}
+      } as CSSProperties}
     >
       <video
         className="h-[250px] md:h-[350px] w-full object-cover"

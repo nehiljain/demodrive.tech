@@ -75,11 +75,7 @@ export const useAutoFontSize = ({
     calculateFontSize();
   }, [calculateFontSize, text, width, height]);
 
-  // Also recalculate on mount to handle initial size
-  useEffect(() => {
-    calculateFontSize();
-  }, []);
-
+  // Also recalculate on mount and when calculateFontSize changes
   useEffect(() => {
     calculateFontSize();
   }, [calculateFontSize]);
