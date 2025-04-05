@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import Navigation from "@/components/navigation";
-import Image from "next/image";
-import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
-import Footer from "@/components/footer";
-import { VideoMarquee } from "@/components/video-marquee";
+import Navigation from '@/components/navigation';
+import Image from 'next/image';
+import BlurFade from '@/components/magicui/blur-fade';
+import BlurFadeText from '@/components/magicui/blur-fade-text';
+import Footer from '@/components/footer';
+import { VideoMarquee } from '@/components/video-marquee';
+import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { ChevronRight } from "lucide-react";
-import FeatureTimeline from "@/components/ui/feature-timeline";
+import { ChevronRight } from 'lucide-react';
+import FeatureTimeline from '@/components/ui/feature-timeline';
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
@@ -23,19 +24,23 @@ export default function ListingShorts() {
         <div className="mx-auto max-w-6xl px-6">
           {/* Hero Content */}
           <div className="text-center mb-12 mt-24">
+            <BlurFade delay={BLUR_FADE_DELAY * 0.5} yOffset={8}>
+              <AnnouncementBanner />
+            </BlurFade>
             <BlurFade
               delay={BLUR_FADE_DELAY}
-              className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+              className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl mt-8"
               yOffset={8}
             >
-              <h2>Turn photos into viral short <span className="text-[#ff4d00]">tours</span></h2>
+              <h2>
+                Turn photos into viral short <span className="text-[#ff4d00]">tours</span>
+              </h2>
             </BlurFade>
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 2}
               className="mt-6 text-lg leading-8 text-muted-foreground"
               text="In Minutes. With AI. No editing required. For Free."
             />
-
 
             {/* Image to Video Transformation Section */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -106,9 +111,9 @@ export default function ListingShorts() {
 
       {/* Feature Timeline Section */}
       <div className="" id="features">
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 8}
-              className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 8}
+          className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
           text="Key Features"
         />
 
@@ -116,46 +121,48 @@ export default function ListingShorts() {
           baseDelay={BLUR_FADE_DELAY * 9}
           features={[
             {
-              title: "Vertical Video Format",
-              description: "Create attention-grabbing vertical videos perfect for social media and mobile viewing.",
+              title: 'Vertical Video Format',
+              description:
+                'Create attention-grabbing vertical videos perfect for social media and mobile viewing.',
               media: {
                 type: 'video',
                 src: '/features/rich_editor.mp4',
-                alt: 'Video demo showcase'
-              }
+                alt: 'Video demo showcase',
+              },
             },
             {
-              title: "AI Script Generator",
-              description: "Generate compelling scripts tailored for short-form content that highlight key product features.",
+              title: 'AI Script Generator',
+              description:
+                'Generate compelling scripts tailored for short-form content that highlight key product features.',
               media: {
                 type: 'video',
                 src: '/features/storyboard.mp4',
-                alt: 'Video demo showcase'
-              }
+                alt: 'Video demo showcase',
+              },
             },
             {
-              title: "Visual Effects Library",
-              description: "Access our library of transitions, animations, and text effects to make your product shorts stand out.",
+              title: 'Visual Effects Library',
+              description:
+                'Access our library of transitions, animations, and text effects to make your product shorts stand out.',
               media: {
                 type: 'video',
                 src: '/features/b_roll.mp4',
-                alt: 'Video demo showcase'
-              }
+                alt: 'Video demo showcase',
+              },
             },
             {
-              title: "Batch Processing",
-              description: "Create multiple product shorts at once to efficiently scale your content production.",
+              title: 'Batch Processing',
+              description:
+                'Create multiple product shorts at once to efficiently scale your content production.',
               media: {
                 type: 'video',
                 src: '/features/create_project.mp4',
-                alt: 'Project management interface'
-              }
-            }
+                alt: 'Project management interface',
+              },
+            },
           ]}
         />
-        </div>
-
-
+      </div>
 
       {/* Bottom CTA Section */}
       <div className="relative">
@@ -171,9 +178,7 @@ export default function ListingShorts() {
             text="Use it while it's free."
           />
           <BlurFade delay={BLUR_FADE_DELAY * 23}>
-            <div className="mt-10 flex items-center justify-center gap-6">
-
-            </div>
+            <div className="mt-10 flex items-center justify-center gap-6"></div>
           </BlurFade>
         </div>
       </div>
