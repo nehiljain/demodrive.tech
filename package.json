@@ -40,7 +40,8 @@
     "react-dom": "^18",
     "remotion": "^4.0.286",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
