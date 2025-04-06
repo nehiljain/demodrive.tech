@@ -9,8 +9,8 @@ import { VideoMarquee } from '@/components/video-marquee';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { ChevronRight } from 'lucide-react';
-import FeatureTimeline from '@/components/ui/feature-timeline';
+import { ChevronRight, FileText, Bell, Share2, Calendar } from 'lucide-react';
+import { BentoGrid, BentoCard } from '@/components/magicui/bento-grid';
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
@@ -111,57 +111,86 @@ export default function ListingShorts() {
 
       {/* Feature Timeline Section */}
       <div className="" id="features">
-        <BlurFadeText
+        <BlurFade
           delay={BLUR_FADE_DELAY * 8}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-          text="Key Features"
-        />
+        >
+          <div className="flex flex-col gap-2">
+            <div>Everything you need to</div>
+            <div className="text-[#ff4d00]">grow your reputation</div>
+          </div>
+        </BlurFade>
 
-        <FeatureTimeline
-          baseDelay={BLUR_FADE_DELAY * 9}
-          features={[
+        <BentoGrid>
+          {[
+            {
+              title: 'Photos to Motion Magic',
+              description: 'Take photos of your listing and turn them into a video using AI moving the camera around.',
+              Icon: FileText,
+              className: 'col-span-3 lg:col-span-2',
+              background: (
+                <video
+                  src="/features/rich_editor.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                />
+              ),
+            },
+            {
+              title: 'Auto sync with Music',
+              description: 'Automatic syncing of music to the video to make every transition feel perfect.',
+              Icon: Bell,
+              className: 'col-span-3 lg:col-span-1',
+              background: (
+                <video
+                  src="/features/storyboard.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                />
+              ),
+            },
             {
               title: 'Vertical Video Format',
-              description:
-                'Create attention-grabbing vertical videos perfect for social media and mobile viewing.',
-              media: {
-                type: 'video',
-                src: '/features/rich_editor.mp4',
-                alt: 'Video demo showcase',
-              },
+              description: 'Get more leads with vertical videos that are perfect for YouTube, TikTok, and Instagram.',
+              Icon: Share2,
+              className: 'col-span-3 lg:col-span-1',
+              background: (
+                <video
+                  src="/features/b_roll.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                />
+              ),
             },
             {
-              title: 'AI Script Generator',
-              description:
-                'Generate compelling scripts tailored for short-form content that highlight key product features.',
-              media: {
-                type: 'video',
-                src: '/features/storyboard.mp4',
-                alt: 'Video demo showcase',
-              },
+              title: 'No editing required',
+              description: 'You go from inputting photos to a finished video with one click. "Generate"',
+              Icon: Calendar,
+              className: 'col-span-3 lg:col-span-2',
+              background: (
+                <video
+                  src="/features/create_project.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                />
+              ),
             },
-            {
-              title: 'Visual Effects Library',
-              description:
-                'Access our library of transitions, animations, and text effects to make your product shorts stand out.',
-              media: {
-                type: 'video',
-                src: '/features/b_roll.mp4',
-                alt: 'Video demo showcase',
-              },
-            },
-            {
-              title: 'Batch Processing',
-              description:
-                'Create multiple product shorts at once to efficiently scale your content production.',
-              media: {
-                type: 'video',
-                src: '/features/create_project.mp4',
-                alt: 'Project management interface',
-              },
-            },
-          ]}
-        />
+          ].map((feature, idx) => (
+            <BentoCard key={idx} {...feature} />
+          ))}
+        </BentoGrid>
       </div>
 
       {/* Bottom CTA Section */}
