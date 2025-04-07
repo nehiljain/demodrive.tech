@@ -40,6 +40,12 @@ export default function ListingShorts() {
               text="In Minutes. With AI. No editing required. For Free."
             />
 
+            <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
+              <Button variant="golden" size="lg">
+                Create Free Tour
+              </Button>
+            </BlurFade>
+
             {/* Image to Video Transformation Section */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
               <div className="mt-16 flex flex-row gap-8 max-w-6xl mx-auto items-center justify-center px-4">
@@ -212,7 +218,7 @@ export default function ListingShorts() {
               size="xl"
               className="w-[280px]"
             >
-              Generate Video
+              Create Free Tour
             </Button>
           </div>
         </div>
