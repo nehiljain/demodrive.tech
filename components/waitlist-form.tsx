@@ -48,25 +48,25 @@ export function WaitlistForm({ className = '' }: WaitlistFormProps) {
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
 				required
-				className="w-full h-14 rounded-full bg-[#1a1a1a] border-[#333]
-					text-white text-lg pl-6 pr-48"
+				className="w-full h-14 rounded-full bg-card/60 border-border backdrop-blur-sm
+					text-foreground text-lg pl-6 pr-48 shadow-sm border-accent-glow"
 			/>
 			<Button
 				type="submit"
 				disabled={isLoading}
+				variant="golden"
 				className="absolute right-1.5 h-11 px-8 rounded-full
-					bg-[#d1ff1a] hover:bg-[#c5f00f] text-black font-medium
-					transition-colors duration-200"
+					transition-all duration-300"
 			>
 				{isLoading ? 'Joining...' : success ? 'Joined!' : 'Join Waitlist'}
 			</Button>
 			{error && (
-				<p className="absolute -bottom-6 left-0 text-sm text-red-500">
+				<p className="absolute -bottom-6 left-0 text-sm text-destructive">
 					{error}
 				</p>
 			)}
 			{success && (
-				<p className="absolute -bottom-6 left-0 text-sm text-green-500">
+				<p className="absolute -bottom-6 left-0 text-sm text-[#10b981]">
 					Thanks for joining! We&apos;ll be in touch soon.
 				</p>
 			)}

@@ -7,7 +7,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
-
+import { Button } from "@/components/ui/button";
 
 import { WaitlistForm } from '@/components/waitlist-form'
 import dynamic from 'next/dynamic'
@@ -161,12 +161,12 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen dark bg-background text-foreground">
+    <div className="min-h-screen dark text-foreground bg-radial-fancy">
       <Navigation />
 
       {/* Hero Section */}
       <div className="relative w-full py-20">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 relative z-[1]">
           {/* Hero Content */}
           <div className="text-center mb-12 mt-24">
             <BlurFade
@@ -242,8 +242,8 @@ export default function LandingPage() {
       </div>
 
       {/* Problem Statement Section */}
-      <div className="py-20 bg-gradient-to-b from-background to-background/80" id="problem">
-        <div className="mx-auto max-w-6xl px-6">
+      <div className="py-20" id="problem">
+        <div className="mx-auto max-w-6xl px-6 relative z-[1]">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 6.5}
             className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
@@ -263,13 +263,13 @@ export default function LandingPage() {
                       Marketing teams are drowning in video project backlogs. With time spent on repetitive tasks like voice alignment and brand consistency,
                       creating quality video content remains costly and time-consuming.
                     </p>
-                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted card-highlight">
                       <div className="text-3xl font-bold text-destructive">60%</div>
                       <div className="text-muted-foreground">
                         of time is spent on repetitive video editing tasks
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted bg-muted/5">
+                    <div className="flex items-center gap-4 p-4 rounded-lg border border-muted card-highlight">
                       <div className="text-3xl font-bold text-accent">85%</div>
                       <div className="text-muted-foreground">
                         creators report video production costs are too high to scale effectively
@@ -550,28 +550,35 @@ export default function LandingPage() {
 
 
       {/* Bottom CTA Section */}
-      <div className="relative">
+      <div className="relative py-24">
         <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center">
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 20}
-            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-            text="Ready to create"
-          />
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 21}
-            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-            text="stunning videos?"
-          />
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 22}
-            className="mt-6 text-lg leading-8 text-muted-foreground"
-            text="Schedule a demo with us. We promise you will be amazed."
-          />
-          <BlurFade delay={BLUR_FADE_DELAY * 23}>
-            <div className="mt-10 flex items-center justify-center gap-6">
-              <WaitlistForm />
+          <div className="max-w-xl mx-auto flex flex-col items-center">
+            <div className="space-y-4 mb-10">
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+                More videos,
+              </h2>
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+                more views,
+              </h2>
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+                more leads.
+              </h2>
+
+              <p className="mt-8 text-xl leading-8 text-[#f5f2eb]/80">
+                Use it while it&apos;s free.
+              </p>
             </div>
-          </BlurFade>
+
+            <a href="/listing-shorts">
+              <Button
+                variant="golden"
+                size="xl"
+                className="w-[280px]"
+              >
+                Generate Video
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
 
