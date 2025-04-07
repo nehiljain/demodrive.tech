@@ -191,8 +191,8 @@ export default function ListingShorts() {
       </div>
 
       {/* Bottom CTA Section */}
-      <div className="relative py-24">
-        <div className="mx-auto max-w-5xl px-6 py-12 sm:py-12 lg:px-8 text-center relative z-[1]">
+      <div className="relative py-16">
+        <div className="mx-auto max-w-5xl px-6 py-2 sm:py-12 lg:px-8 text-center relative z-[1]">
           <div className="max-w-xl mx-auto flex flex-col items-center">
             <div className="space-y-4 mb-10">
               <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">

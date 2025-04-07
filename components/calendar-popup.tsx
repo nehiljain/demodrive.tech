@@ -32,7 +32,8 @@ export function CalendarButton({ className }: { className?: string }) {
       data-cal-link="demodrive/30min"
       data-cal-config='{"layout":"month_view"}'
     >
-      Schedule Demo <ArrowRight className="h-4 w-4" />
+      Schedule Demo 
+      {/* <ArrowRight className="h-4 w-4" /> */}
     </Button>
   );
 }

@@ -40,7 +40,7 @@ const VideoCard = ({ url, aspectRatio, mobileWidth, desktopWidth }: {
       style={{
         width: `var(--card-width)`,
         "--card-width": `${mobileWidth}px`,
-        "@media (min-width: 768px)": {
+        "@media(minWidth: 768px)": {
           "--card-width": `${desktopWidth}px`
         }
       } as CSSProperties}
@@ -62,14 +62,15 @@ const videos = VIDEOS
 
 export function VideoMarquee() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-4">
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mt-4 bg-background/10 backdrop-blur-sm rounded-xl">
       <Marquee pauseOnHover className="[--duration:30s]">
         {videos.map((video, idx) => (
           <VideoCard key={idx} {...video} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[hsla(240,10%,3%,1)]" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[hsla(240,10%,3%,1)]" />
+      {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#363034] to-transparent z-10" /> */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-background to-transparent z-10 opacity-70 rounded-xl" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-background to-transparent z-10 opacity-70 rounded-xl" />
     </div>
   )
 }
