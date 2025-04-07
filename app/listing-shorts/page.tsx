@@ -1,6 +1,5 @@
 'use client';
 
-import Navigation from '@/components/navigation';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
@@ -18,8 +17,6 @@ export default function ListingShorts() {
 
   return (
     <div className="min-h-screen dark text-foreground overflow-hidden bg-radial-fancy">
-      <Navigation />
-
       {/* Hero Section */}
       <div className="relative w-full py-6">
         <div className="mx-auto max-w-6xl px-6 relative z-[1]">

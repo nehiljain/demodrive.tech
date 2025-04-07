@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { CheckCircle2, MessagesSquare, Star, Zap, HeadphonesIcon, BarChart, Rocket, Wrench, Shield } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import BlurFade from "@/components/magicui/blur-fade";
@@ -206,8 +205,6 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-
       <div className="max-w-7xl mx-auto px-4 py-24">
         <div className="text-center mb-16">
           <BlurFadeText

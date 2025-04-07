@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Navigation from "@/components/navigation";
 import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -162,8 +161,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen dark text-foreground bg-radial-fancy">
-      <Navigation />
-
       {/* Hero Section */}
       <div className="relative w-full py-20">
         <div className="mx-auto max-w-6xl px-6 relative z-[1]">
