@@ -11,7 +11,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { ChevronRight, FileText, Bell } from 'lucide-react';
+import { FileText, Bell } from 'lucide-react'
+import { TransformingArrow } from '@/components/ui/transforming-arrow'
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
@@ -52,10 +53,11 @@ export default function ListingShorts() {
 
             {/* Image to Video Transformation Section */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <div className="mt-16 flex flex-row gap-8 max-w-6xl mx-auto items-center justify-center px-4">
+              <div className="mt-16 flex flex-col sm:flex-row gap-4 sm:gap-8 max-w-6xl mx-auto items-center justify-center px-1 sm:px-4">
                 {/* Left Column - Three Images */}
-                <div className="flex flex-col gap-4 w-[160px] sm:w-[200px]">
-                  <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
+                <div className="flex flex-row sm:flex-col gap-4 w-full sm:w-[160px] md:w-[200px] justify-center">
+                  {/* Image 1 */}
+                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
                     <Image
                       src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-5.png"
                       alt="Listing photo 1"
@@ -63,7 +65,8 @@ export default function ListingShorts() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
+                  {/* Image 2 */}
+                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
                     <Image
                       src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img2.png"
                       alt="Listing photo 2"
@@ -71,7 +74,8 @@ export default function ListingShorts() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
+                  {/* Image 3 */}
+                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
                     <Image
                       src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-1.png"
                       alt="Listing photo 3"
@@ -82,12 +86,15 @@ export default function ListingShorts() {
                 </div>
 
                 {/* Arrow Icon */}
-                <div className="flex items-center justify-center w-12 sm:w-24">
-                  <ChevronRight className="w-8 h-8 sm:w-12 sm:h-12 text-primary" />
+                <div className="flex items-center justify-center w-12 h-auto sm:w-12 sm:h-12 md:w-24">
+                  {/* <ChevronRight className="w-8 h-8 sm:w-12 sm:h-12 text-primary transform rotate-90 sm:rotate-0" /> */}
+                  <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
+                    <TransformingArrow />
+                  </BlurFade>
                 </div>
 
                 {/* Right Column - Vertical Video */}
-                <div className="w-[200px] sm:w-[300px]">
+                <div className="w-full max-w-[280px] sm:w-[200px] md:w-[300px] mx-auto">
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
                     <video
                       src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a.mp4"
