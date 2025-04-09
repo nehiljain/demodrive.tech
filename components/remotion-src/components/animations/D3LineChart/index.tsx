@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import {
   AbsoluteFill,
   spring,
@@ -142,13 +142,16 @@ export const D3LineChart: React.FC<D3LineChartProps> = ({
   const frame = useCurrentFrame();
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // Merge default config with provided config
-  const finalConfig = {
-    ...defaultConfig,
-    ...config,
-    margin: { ...defaultConfig.margin, ...config.margin },
-    springConfig: { ...defaultConfig.springConfig, ...config.springConfig },
-  };
+  // Merge default config with provided config using useMemo
+  const finalConfig = useMemo(
+    () => ({
+      ...defaultConfig,
+      ...config,
+      margin: { ...defaultConfig.margin, ...config.margin },
+      springConfig: { ...defaultConfig.springConfig, ...config.springConfig },
+    }),
+    [config]
+  );
 
   const animation = spring({
     fps,

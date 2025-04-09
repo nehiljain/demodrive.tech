@@ -7,6 +7,7 @@ import {
   useVideoConfig,
   Audio,
   staticFile,
+  Img,
 } from "remotion";
 import { z } from "zod";
 import { baseTemplateSchema } from "../../../shared/types";
@@ -148,13 +149,13 @@ export const LogoReveal: React.FC<LogoRevealProps> = ({
               marginBottom: "30px",
             }}
           >
-            <img
+            <Img
               src={staticFile(logo.src)}
               alt="Logo"
               style={{
                 width: logo.size,
                 height: logo.size,
-                objectFit: "contain",
+                objectFit: 'contain',
               }}
             />
           </div>

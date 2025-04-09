@@ -22,65 +22,65 @@ body {
 
 @layer base {
   :root {
-    /* Light theme colors based on Ayu Light */
-    --background: 220 29% 6%;  /* #fcfcfc */
-    --foreground: 220 4% 38%;  /* #5c6166 */
+    /* Light theme colors based on Airbnb design aesthetic */
+    --background: 0 0% 98%;  /* #fafafa */
+    --foreground: 220 10% 20%;  /* #2e3440 */
     --card: 0 0% 100%;  /* #ffffff */
-    --card-foreground: 220 4% 38%;  /* #5c6166 */
+    --card-foreground: 220 10% 20%;  /* #2e3440 */
     --popover: 0 0% 100%;  /* #ffffff */
-    --popover-foreground: 220 4% 38%;  /* #5c6166 */
-    --primary: 142 100% 35%;  /* #86b300 */
+    --popover-foreground: 220 10% 20%;  /* #2e3440 */
+    --primary: 244 76% 67%;  /* #6366f1 - purple accent */
     --primary-foreground: 0 0% 100%;  /* #ffffff */
-    --secondary: 199 73% 55%;  /* #55b4d4 */
+    --secondary: 222 13% 47%;  /* #64748b - medium gray */
     --secondary-foreground: 0 0% 100%;  /* #ffffff */
-    --muted: 220 7% 83%;  /* #d1d3d8 */
-    --muted-foreground: 220 4% 48%;  /* #787b80 */
-    --accent: 34 100% 66%;  /* #FFB454 */
-    --accent-foreground: 0 0% 100%;  /* #ffffff */
-    --destructive: 0 65% 65%;  /* #f07171 */
+    --muted: 220 10% 92%;  /* #e9edf1 */
+    --muted-foreground: 220 10% 45%;  /* #94a3b8 - light gray */
+    --accent: 22 80% 87%;  /* #ffcca5 - warm peach */
+    --accent-foreground: 220 10% 20%;  /* #2e3440 */
+    --destructive: 0 84% 60%;  /* #ef4444 */
     --destructive-foreground: 0 0% 100%;  /* #ffffff */
-    --border: 220 7% 83%;  /* #d1d3d8 */
-    --input: 220 7% 83%;  /* #d1d3d8 */
-    --ring: 199 73% 55%;  /* #55b4d4 */
+    --border: 220 13% 91%;  /* #e2e8f0 */
+    --input: 220 13% 91%;  /* #e2e8f0 */
+    --ring: 244 76% 67%;  /* #6366f1 - purple accent */
 
-    /* Chart colors from Ayu Light */
-    --chart-1: 199 73% 55%;  /* #55b4d4 */
-    --chart-2: 162 50% 52%;  /* #4cbf99 */
-    --chart-3: 32 100% 60%;  /* #ffaa33 */
-    --chart-4: 272 42% 64%;  /* #a37acc */
-    --chart-5: 25 85% 61%;  /* #ed9366 */
+    /* Chart colors inspired by the gradient palette */
+    --chart-1: 244 76% 67%;  /* #6366f1 - purple accent */
+    --chart-2: 7 38% 60%;  /* #c97b6d - dusty rose */
+    --chart-3: 22 80% 87%;  /* #ffcca5 - warm peach */
+    --chart-4: 346 42% 85%;  /* #f9b8c9 - soft pink */
+    --chart-5: 2 34% 46%;  /* #a05d54 - terracotta */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark theme colors based on Ayu Dark */
-    --background: 220 27% 9%;  /* #0b0e14 */
-    --foreground: 210 17% 98%;  /* #f5f7fa */
-    --card: 222 24% 11%;  /* #141821 */
-    --card-foreground: 34 5% 73%;  /* #bfbdb6 */
-    --popover: 222 24% 11%;  /* #141821 */
-    --popover-foreground: 34 5% 73%;  /* #bfbdb6 */
-    --primary: 84 54% 49%;  /* #aad94c */
+    /* Dark theme colors with more varied accents */
+    --background: 222 26% 11%;  /* #141824 - dark navy/charcoal */
+    --foreground: 210 40% 96%;  /* #f8fafc - white/off-white */
+    --card: 222 26% 16%;  /* #1e2130 - slightly lighter than background */
+    --card-foreground: 210 40% 96%;  /* #f8fafc - white/off-white */
+    --popover: 222 26% 16%;  /* #1e2130 */
+    --popover-foreground: 210 40% 96%;  /* #f8fafc */
+    --primary: 244 76% 67%;  /* #6366f1 - purple accent */
     --primary-foreground: 0 0% 100%;  /* #ffffff */
-    --secondary: 223 27% 10%;  /* #131721 */
+    --secondary: 222 13% 47%;  /* #64748b - medium gray */
     --secondary-foreground: 0 0% 100%;  /* #ffffff */
-    --muted: 223 9% 25%;  /* #acb6bf8c */
-    --muted-foreground: 220 8% 71%;  /* #acb6bf */
-    --accent: 68 100% 40%;  /* #e6b450 */
-    --accent-foreground: 220 29% 6%;  /* #ffffff */
-    --destructive: 0 65% 65%;  /* #f07178 */
+    --muted: 217 33% 17%;  /* #1e293b - gradient to */
+    --muted-foreground: 215 20% 65%;  /* #94a3b8 - light gray */
+    --accent: 37 71% 66%;  /* #ffcca5 - warm peach */
+    --accent-foreground: 220 10% 20%;  /* #2e3440 */
+    --destructive: 0 62% 65%;  /* #ef4444 */
     --destructive-foreground: 0 0% 100%;  /* #ffffff */
-    --border: 223 9% 25%;  /* #363c49 */
-    --input: 223 9% 25%;  /* #363c49 */
-    --ring: 39 100% 61%;  /* #ffb454 */
+    --border: 217 33% 17%;  /* #1e293b */
+    --input: 217 33% 17%;  /* #1e293b */
+    --ring: 244 76% 67%;  /* #6366f1 - purple accent */
 
-    /* Chart colors from Ayu Dark */
-    --chart-1: 210 100% 65%;  /* #59c2ff */
-    --chart-2: 170 55% 68%;  /* #95e6cb */
-    --chart-3: 39 100% 61%;  /* #ffb454 */
-    --chart-4: 280 100% 70%;  /* #d2a6ff */
-    --chart-5: 24 89% 68%;  /* #f29668 */
+    /* Chart colors from provided gradient colors */
+    --chart-1: 244 76% 67%;  /* #6366f1 - purple accent */
+    --chart-2: 7 38% 60%;  /* #c97b6d - dusty rose */
+    --chart-3: 22 80% 87%;  /* #ffcca5 - warm peach */
+    --chart-4: 346 42% 85%;  /* #f9b8c9 - soft pink */
+    --chart-5: 2 34% 46%;  /* #a05d54 - terracotta */
   }
 }
 
@@ -102,6 +102,110 @@ body {
 
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+
+/* Gradient background utility classes */
+.bg-gradient-brand {
+  background: linear-gradient(to bottom, rgba(20, 24, 36, 0.98), rgba(30, 41, 59, 0.96));
+  position: relative;
+}
+
+.bg-gradient-brand::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 204, 165, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.bg-gradient-subtle {
+  position: relative;
+  background-color: rgba(20, 24, 36, 0.96);
+  overflow: hidden;
+}
+
+.bg-gradient-subtle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(1200px circle at 0% 0%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    radial-gradient(1200px circle at 100% 100%, rgba(255, 204, 165, 0.06) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.bg-gradient-subtle > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Beautiful radial gradient background from the provided style */
+.bg-radial-fancy {
+  background-color:hsla(240,10%,3%,1);
+  background-image:
+  radial-gradient(at 100% 100%, hsla(2,34%,46%,0.51) 0px, transparent 50%),
+  radial-gradient(at 72% 58%, hsla(37,70%,65%,0.45) 0px, transparent 50%),
+  radial-gradient(at 76% 41%, hsla(225,59%,10%,1) 0px, transparent 50%),
+  radial-gradient(at 26% 93%, hsla(256,11%,26%,1) 0px, transparent 50%),
+  radial-gradient(at 67% 27%, hsla(211,22%,24%,1) 0px, transparent 50%),
+  radial-gradient(at 29% 100%, hsla(346,42%,85%,0.54) 0px, transparent 50%),
+  radial-gradient(at 15% 54%, hsla(0,4%,13%,1) 0px, transparent 50%),
+  radial-gradient(at 11% 88%, hsla(2,34%,46%,0.23) 0px, transparent 50%),
+  radial-gradient(at 62% 57%, hsla(0,4%,13%,1) 0px, transparent 50%),
+  radial-gradient(at 31% 67%, hsla(267,72%,2%,1) 0px, transparent 50%),
+  radial-gradient(at 80% 100%, hsla(267,72%,2%,1) 0px, transparent 50%),
+  radial-gradient(at 100% 4%, hsla(346,23%,28%,0.82) 0px, transparent 50%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-radial-fancy > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-highlight {
+  border: 1px solid rgba(255, 204, 165, 0.08);
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 
+              0 1px 2px rgba(255, 204, 165, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 204, 165, 0.03) 0%, 
+    rgba(99, 102, 241, 0.03) 100%
+  );
+  z-index: 0;
+}
+
+.card-highlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+.border-accent-glow {
+  box-shadow: 0 0 15px rgba(255, 204, 165, 0.15);
+  border: 1px solid rgba(255, 204, 165, 0.15);
 }
 
 

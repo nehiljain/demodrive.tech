@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/magicui/marquee"
+import { CSSProperties } from "react"
 
 const MOBILE_HEIGHT = 250
 const DESKTOP_HEIGHT = 350
@@ -25,24 +26,24 @@ const VIDEOS = [
   }
 ]
 
-const VideoCard = ({ url, aspectRatio, mobileWidth, desktopWidth }: { 
-  url: string; 
-  aspectRatio: string; 
+const VideoCard = ({ url, aspectRatio, mobileWidth, desktopWidth }: {
+  url: string;
+  aspectRatio: string;
   mobileWidth: number;
   desktopWidth: number;
 }) => {
   return (
-    <div 
+    <div
       className={cn(
         "relative h-full overflow-hidden rounded-xl border mx-2",
       )}
-      style={{ 
+      style={{
         width: `var(--card-width)`,
         "--card-width": `${mobileWidth}px`,
-        "@media (min-width: 768px)": {
+        "@media(minWidth: 768px)": {
           "--card-width": `${desktopWidth}px`
         }
-      } as any}
+      } as CSSProperties}
     >
       <video
         className="h-[250px] md:h-[350px] w-full object-cover"
@@ -61,14 +62,15 @@ const videos = VIDEOS
 
 export function VideoMarquee() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-4">
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mt-4 bg-background/10 backdrop-blur-sm rounded-xl">
       <Marquee pauseOnHover className="[--duration:30s]">
         {videos.map((video, idx) => (
           <VideoCard key={idx} {...video} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background" />
+      {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#363034] to-transparent z-10" /> */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-background to-transparent z-10 opacity-70 rounded-xl" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-background to-transparent z-10 opacity-70 rounded-xl" />
     </div>
   )
 }
