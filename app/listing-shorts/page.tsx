@@ -7,13 +7,14 @@ import { VideoMarquee } from '@/components/video-marquee';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import { Button } from '@/components/ui/button';
 import React from 'react'
+import Link from 'next/link';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { ChevronRight, FileText, Bell, Share2, Calendar } from 'lucide-react';
-import { BentoGrid, BentoCard } from '@/components/magicui/bento-grid';
+import { ChevronRight, FileText, Bell, Share2 } from 'lucide-react';
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
+  const listingShortUrl = 'http://app-staging.demodrive.tech/open/listing-shorts';
 
   return (
     <div className="min-h-screen dark text-foreground overflow-hidden bg-radial-fancy">
@@ -21,7 +22,7 @@ export default function ListingShorts() {
       <div className="relative w-full py-6">
         <div className="mx-auto max-w-6xl px-6 relative z-[1]">
           {/* Hero Content */}
-          <div className="text-center mb-12 mt-16">
+          <div className="text-center mb-12 mt-20 lg:mt-24">
             <BlurFade delay={BLUR_FADE_DELAY * 0.5} yOffset={8}>
               <AnnouncementBanner />
             </BlurFade>
@@ -41,9 +42,11 @@ export default function ListingShorts() {
             />
 
             <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
-              <Button variant="golden" size="lg">
-                Create Free Tour
-              </Button>
+              <Link href={listingShortUrl} className="inline-block">
+                <Button variant="golden" size="lg">
+                  Create Free Tour
+                </Button>
+              </Link>
             </BlurFade>
 
             {/* Image to Video Transformation Section */}
@@ -107,9 +110,9 @@ export default function ListingShorts() {
         </div>
       </div>
 
-      {/* Feature Timeline Section */}
+      {/* Feature Section */}
       <div className="py-12" id="features">
-        <div className="mx-auto max-w-7xl px-6 relative z-[1]">
+        <div className="mx-auto max-w-3xl px-6 relative z-[1]">
           <BlurFade
             delay={BLUR_FADE_DELAY * 8}
             className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
@@ -120,76 +123,75 @@ export default function ListingShorts() {
             </div>
           </BlurFade>
 
-          <BentoGrid>
-            {[
-              {
-                title: 'Photos to Motion Magic',
-                description: 'Take photos of your listing and turn them into a video using AI moving the camera around.',
-                Icon: FileText,
-                className: 'col-span-3 lg:col-span-2 card-highlight',
-                background: (
-                  <video
-                    src="/features/rich_editor.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                  />
-                ),
-              },
-              {
-                title: 'Auto sync with Music',
-                description: 'Automatic syncing of music to the video to make every transition feel perfect.',
-                Icon: Bell,
-                className: 'col-span-3 lg:col-span-1 card-highlight',
-                background: (
-                  <video
-                    src="/features/storyboard.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                  />
-                ),
-              },
-              {
-                title: 'Vertical Video Format',
-                description: 'Get more leads with vertical videos that are perfect for YouTube, TikTok, and Instagram.',
-                Icon: Share2,
-                className: 'col-span-3 lg:col-span-1 card-highlight',
-                background: (
-                  <video
-                    src="/features/b_roll.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                  />
-                ),
-              },
-              {
-                title: 'No editing required',
-                description: 'You go from inputting photos to a finished video with one click. "Generate"',
-                Icon: Calendar,
-                className: 'col-span-3 lg:col-span-2 card-highlight',
-                background: (
-                  <video
-                    src="/features/create_project.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                  />
-                ),
-              },
-            ].map((feature, idx) => (
-              <BentoCard key={idx} {...feature} />
-            ))}
-          </BentoGrid>
+          <div className="flex flex-col gap-6">
+            {/* Feature Card 1 - horizontal (16:9) */}
+            <div className="relative h-[280px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
+              <div className="absolute inset-0">
+                <video
+                  src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-4 md:p-6">
+                <div className="flex items-center mb-2">
+                  <FileText className="h-5 w-5 md:h-6 md:w-6 text-white mr-2" />
+                  <h3 className="font-bold text-xl md:text-2xl text-white">Photos to Motion Magic</h3>
+                </div>
+                <p className="text-sm md:text-base text-white/90">Take photos of your listing and turn them into a video using AI moving the camera around.</p>
+              </div>
+            </div>
+
+            {/* Feature Card 2 - vertical (9:16) */}
+            {/* <div className="relative h-[500px] md:h-[600px] overflow-hidden rounded-lg shadow-lg">
+              <div className="absolute inset-0">
+                <video
+                  src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+vertical.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-4 md:p-6">
+                <div className="flex items-center mb-2">
+                  <Share2 className="h-5 w-5 md:h-6 md:w-6 text-white mr-2" />
+                  <h3 className="font-bold text-xl md:text-2xl text-white">Vertical Video Format</h3>
+                </div>
+                <p className="text-sm md:text-base text-white/90">Get more leads with vertical videos that are perfect for YouTube, TikTok, and Instagram.</p>
+              </div>
+            </div> */}
+
+            {/* Feature Card 3 - horizontal (16:9) */}
+            <div className="relative h-[280px] md:h-[350px] overflow-hidden rounded-lg shadow-lg">
+              <div className="absolute inset-0">
+                <video
+                  src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+beat+sync.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-4 md:p-6">
+                <div className="flex items-center mb-2">
+                  <Bell className="h-5 w-5 md:h-6 md:w-6 text-white mr-2" />
+                  <h3 className="font-bold text-xl md:text-2xl text-white">Auto sync with Music</h3>
+                </div>
+                <p className="text-sm md:text-base text-white/90">Automatic syncing of music to the video to make every transition feel perfect.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -213,13 +215,15 @@ export default function ListingShorts() {
               </p>
             </div>
 
-            <Button
-              variant="golden"
-              size="xl"
-              className="w-[280px]"
-            >
-              Create Free Tour
-            </Button>
+            <Link href={listingShortUrl} className="inline-block">
+              <Button
+                variant="golden"
+                size="xl"
+                className="w-[280px]"
+              >
+                Create Free Tour
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
