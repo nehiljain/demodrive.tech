@@ -8,6 +8,7 @@ import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import { Button } from '@/components/ui/button';
 import React from 'react'
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 import { ChevronRight, FileText, Bell } from 'lucide-react';
@@ -55,19 +56,28 @@ export default function ListingShorts() {
                 {/* Left Column - Three Images */}
                 <div className="flex flex-col gap-4 w-[160px] sm:w-[200px]">
                   <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <div className="absolute inset-0 bg-muted flex items-center justify-center">
-                      <span className="text-xs text-muted-foreground">Photo 1</span>
-                    </div>
+                    <Image
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-5.png"
+                      alt="Listing photo 1"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <div className="absolute inset-0 bg-muted flex items-center justify-center">
-                      <span className="text-xs text-muted-foreground">Photo 2</span>
-                    </div>
+                    <Image
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img2.png"
+                      alt="Listing photo 2"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <div className="absolute inset-0 bg-muted flex items-center justify-center">
-                      <span className="text-xs text-muted-foreground">Photo 3</span>
-                    </div>
+                    <Image
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-1.png"
+                      alt="Listing photo 3"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
 
@@ -80,7 +90,7 @@ export default function ListingShorts() {
                 <div className="w-[200px] sm:w-[300px]">
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
                     <video
-                      src="https://storage.googleapis.com/demodrive-media/20250128/output/www_getmaple_ca__2025_01_28_134124/161455-823541644_small.mp4"
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a.mp4"
                       autoPlay
                       loop
                       muted
