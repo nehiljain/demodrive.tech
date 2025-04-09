@@ -11,7 +11,28 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'prod-assets.demodrive.tech',
       },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.demodrive.tech',
+      },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/listing-shorts',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          }
+        ],
+      },
+    ]
   },
 };
 

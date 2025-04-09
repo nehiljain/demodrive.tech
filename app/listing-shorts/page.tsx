@@ -15,7 +15,7 @@ import { ChevronRight, FileText, Bell } from 'lucide-react';
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
-  const listingShortUrl = 'http://app-staging.demodrive.tech/open/listing-shorts';
+  const listingShortUrl = 'http://app.demodrive.tech/open/listing-shorts';
 
   return (
     <div className="min-h-screen dark text-foreground overflow-hidden bg-radial-fancy">
