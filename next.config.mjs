@@ -7,7 +7,28 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'placehold.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.demodrive.tech',
+      },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/listing-shorts',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          }
+        ],
+      },
+    ]
   },
 };
 

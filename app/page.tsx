@@ -430,6 +430,8 @@ export default function LandingPage() {
                           <Image
                             src={`https://storage.googleapis.com/demodrive-media/${videoPath}/thumbnail.${format}`}
                             alt={video.title}
+                            width={400}
+                            height={400}
                             className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
                             onError={() => handleImageError(video.id, format)}
                           />
@@ -441,6 +443,8 @@ export default function LandingPage() {
                             <Image
                               src={video.author.avatar_url}
                               alt={video.author.name}
+                              width={40}
+                              height={40}
                               className="object-cover"
                             />
                           </div>
