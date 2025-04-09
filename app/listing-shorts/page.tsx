@@ -10,7 +10,7 @@ import React from 'react'
 import Link from 'next/link';
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { ChevronRight, FileText, Bell, Share2 } from 'lucide-react';
+import { ChevronRight, FileText, Bell } from 'lucide-react';
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;

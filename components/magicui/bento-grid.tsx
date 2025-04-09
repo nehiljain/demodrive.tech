@@ -49,7 +49,7 @@ export function BentoCard({
       <div className="absolute inset-0 z-0">
         {background}
       </div>
-      
+
       {/* Text content overlay at the bottom - with higher z-index and stronger contrast */}
       <div className="absolute bottom-0 left-0 right-0 z-20 bg-black shadow-lg">
         <div className="relative p-6 z-30">
