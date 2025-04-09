@@ -11,6 +11,7 @@ const navigation = [
   // { name: "How it works", href: "/#how-it-works" },
   // { name: "FAQ", href: "/#faq" },
   { name: "Pricing", href: "/pricing" },
+  { name: "Listing Shorts AI", href: "/listing-shorts" },
   // { name: "Blog", href: "https://blog.demodrive.tech/" },
 ];
 
@@ -37,7 +38,7 @@ export default function Navigation() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm text-foreground hover:text-foreground transition-colors"
+              className="text-sm text-foreground hover:text-accent transition-all duration-300"
             >
               {item.name}
             </Link>
@@ -60,7 +61,7 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-lg text-muted-foreground hover:text-accent transition-all duration-300"
                   >
                     {item.name}
                   </Link>
