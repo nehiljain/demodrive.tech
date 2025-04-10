@@ -2,7 +2,7 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
-import { MessagesSquare, Star, Zap, Captions, GalleryHorizontalEnd, HeadphonesIcon, BarChart, Rocket, Wrench, Shield, Video, Timer, FileAudio, Ban, Tv2, Palette, ArrowRight, Sparkles, FileText, Mic, Bot, Volume2, Mail, Clock, MessageSquare, Slack, Users, Gauge, TerminalSquare, BellRing, HeartHandshake } from "lucide-react";
+import { MessagesSquare, Star, Zap, Captions, GalleryHorizontalEnd, HeadphonesIcon, BarChart, Rocket, Wrench, Shield, Video, Timer, FileAudio, Ban, Palette, ArrowRight, Sparkles, Mic, Bot, Volume2, Mail, Clock, Slack, Users, Gauge, TerminalSquare, BellRing, HeartHandshake } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
