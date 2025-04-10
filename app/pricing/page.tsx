@@ -2,7 +2,7 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, MessagesSquare, Star, Zap, HeadphonesIcon, BarChart, Rocket, Wrench, Shield } from "lucide-react";
+import { MessagesSquare, Star, Zap, Captions, GalleryHorizontalEnd, HeadphonesIcon, BarChart, Rocket, Wrench, Shield, Video, Timer, FileAudio, Ban, Tv2, Palette, ArrowRight, Sparkles, FileText, Mic, Bot, Volume2, Mail, Clock, MessageSquare, Slack, Users, Gauge, TerminalSquare, BellRing, HeartHandshake } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
@@ -18,7 +18,10 @@ type PricingPlan = {
   features: {
     title: string;
     icon: React.ElementType;
-    subFeatures: string[];
+    subFeatures: {
+      text: string;
+      icon: React.ElementType;
+    }[];
   }[];
   actionLabel: string;
   popular?: boolean;
@@ -30,28 +33,36 @@ const discount = 0.25;
 const plans: PricingPlan[] = [
   {
     title: "Lite",
-    monthlyPrice: 89,
-    yearlyPrice: Math.ceil(89 * (1 - discount) * 12),
-    description: "For small teams",
+    monthlyPrice: undefined,
+    yearlyPrice: undefined,
+    description: "To make fast, easy short videos",
     features: [
       {
         title: " Video Generation",
         icon: BarChart,
         subFeatures: [
-          "3 editor seats",
-          "Stock Audio & Video(Pexels)",
-          "No watermark",
-          "Auto - Captions",
-          "1080p Exports",
-          "Unlimited projects"
+          { text: "20 videos/month", icon: Video },
+          { text: "Max 1 min/video", icon: Timer },
+          { text: "Free B-rolls & Audio", icon: FileAudio },
+          { text: "No watermark", icon: Ban },
+          { text: "1080p Exports", icon: Video },
+          { text: "2 Custom Branded Template", icon: Palette }
+        ]
+      },
+      {
+        title: "AI Assistant",
+        icon: Zap,
+        subFeatures: [
+          { text: "3 Motion magic/video", icon: Sparkles },
+          { text: "Auto Beat Sync", icon: FileAudio }
         ]
       },
       {
         title: "Support",
         icon: MessagesSquare,
         subFeatures: [
-          "Email support",
-          "48hr response time",
+          { text: "Email support", icon: Mail },
+          { text: "24hr response time", icon: Clock },
         ]
       }
     ],
@@ -68,26 +79,27 @@ const plans: PricingPlan[] = [
         title: "Everything in Lite",
         icon: Star,
         subFeatures: [
-          "4k UHD exports",
-          "10 editor seats",
+          { text: "4k exports", icon: Video },
+          { text: "10 Custom Branded Templates", icon: Palette }
         ]
       },
       {
         title: "AI Assistant",
         icon: Zap,
         subFeatures: [
-          "Generate Storyboards",
-          "Audio Translation to 10+ languages",
-          "AI Voiceover",
-          "AI Avatar",
+          { text: "Auto - Captions", icon: Captions },
+          { text: "Generate Storyboards", icon: GalleryHorizontalEnd },
+          { text: "AI Voiceover", icon: Mic },
+          { text: "AI Avatar", icon: Bot },
+          { text: "Auto volume adjustment", icon: Volume2 }
         ]
       },
       {
         title: "Enhanced Support",
         icon: HeadphonesIcon,
         subFeatures: [
-          "Slack support",
-          "24hr response time",
+          { text: "Slack support", icon: Slack },
+          { text: "8hr response time", icon: Clock },
         ]
       }
     ],
@@ -104,25 +116,25 @@ const plans: PricingPlan[] = [
         title: "Everything in Pro",
         icon: Rocket,
         subFeatures: [
+          { text: "All Pro features", icon: ArrowRight }
         ]
       },
       {
         title: "Custom Solutions",
         icon: Wrench,
         subFeatures: [
-          "Custom # of Editors",
-          "Higher usage limits",
-          "Volume discounts",
-          "Custom AI models"
+          { text: "Custom # of Editors", icon: Users },
+          { text: "Higher usage limits", icon: Gauge },
+          { text: "Volume discounts", icon: TerminalSquare },
+          { text: "Custom AI models", icon: Sparkles }
         ]
       },
       {
         title: "Premium Support",
         icon: Shield,
         subFeatures: [
-          "Dedicated support",
-          "8hr response time",
-          "Custom SLA"
+          { text: "Dedicated support", icon: HeartHandshake },
+          { text: "Custom SLA", icon: BellRing }
         ]
       }
     ],
@@ -182,9 +194,9 @@ const PricingCard = ({
             </div>
             <div className="space-y-2 pl-8">
               {feature.subFeatures.map((subFeature) => (
-                <div key={subFeature} className="flex items-center gap-2 text-muted-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0" />
-                  <span className="text-sm">{subFeature}</span>
+                <div key={subFeature.text} className="flex items-center gap-2 text-muted-foreground">
+                  <subFeature.icon className="h-4 w-4 text-accent flex-shrink-0" />
+                  <span className="text-sm">{subFeature.text}</span>
                 </div>
               ))}
             </div>
