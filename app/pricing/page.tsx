@@ -2,7 +2,7 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
-import { MessagesSquare, Star, Zap, Captions, GalleryHorizontalEnd, HeadphonesIcon, BarChart, Rocket, Wrench, Shield, Video, Timer, FileAudio, Ban, Palette, ArrowRight, Sparkles, Mic, Bot, Volume2, Mail, Clock, Slack, Users, Gauge, TerminalSquare, BellRing, HeartHandshake } from "lucide-react";
+import { MessagesSquare, Star, ChevronsLeftRightEllipsis, Zap, Captions, GalleryHorizontalEnd, HeadphonesIcon, BarChart, Rocket, Wrench, Shield, Video, Timer, FileAudio, Ban, Palette, ArrowRight, Sparkles, Mic, Bot, Volume2, Mail, Clock, Slack, Users, Gauge, TerminalSquare, BellRing, HeartHandshake } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
@@ -38,7 +38,7 @@ const plans: PricingPlan[] = [
     description: "To make fast, easy short videos",
     features: [
       {
-        title: " Video Generation",
+        title: "Video Generation",
         icon: BarChart,
         subFeatures: [
           { text: "20 videos/month", icon: Video },
@@ -80,7 +80,10 @@ const plans: PricingPlan[] = [
         icon: Star,
         subFeatures: [
           { text: "4k exports", icon: Video },
-          { text: "10 Custom Branded Templates", icon: Palette }
+          { text: "100 videos/month", icon: Video },
+          { text: "20 Motion magic/video", icon: Sparkles },
+          { text: "10 Custom Branded Templates", icon: Palette },
+          { text: "API Access", icon: ChevronsLeftRightEllipsis }
         ]
       },
       {
@@ -90,8 +93,8 @@ const plans: PricingPlan[] = [
           { text: "Auto - Captions", icon: Captions },
           { text: "Generate Storyboards", icon: GalleryHorizontalEnd },
           { text: "AI Voiceover", icon: Mic },
-          { text: "AI Avatar", icon: Bot },
-          { text: "Auto volume adjustment", icon: Volume2 }
+          { text: "Background Removal", icon: Bot },
+          { text: "Auto volume adjustment", icon: Volume2 },
         ]
       },
       {
