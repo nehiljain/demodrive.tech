@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useRef, useEffect } from 'react';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
@@ -13,6 +14,78 @@ import Image from 'next/image';
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 import { FileText, Bell } from 'lucide-react'
 import { TransformingArrow } from '@/components/ui/transforming-arrow'
+
+// Video loading component with better error handling
+const VideoPlayer = ({
+  src,
+  className = '',
+  aspectRatio = 'aspect-video',
+  objectFit = 'object-cover'
+}: {
+  src: string;
+  className?: string;
+  aspectRatio?: string;
+  objectFit?: string;
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const handleLoadedData = () => {
+      setIsLoading(false);
+      videoElement.play().catch(() => {
+        // Handle any play promise rejection silently
+      });
+    };
+
+    const handleError = () => {
+      setHasError(true);
+      setIsLoading(false);
+      console.error(`Error loading video: ${src}`);
+    };
+
+    videoElement.load();
+
+    videoElement.addEventListener('loadeddata', handleLoadedData);
+    videoElement.addEventListener('error', handleError);
+
+    return () => {
+      videoElement.removeEventListener('loadeddata', handleLoadedData);
+      videoElement.removeEventListener('error', handleError);
+    };
+  }, [src]);
+
+  return (
+    <div className={`relative ${aspectRatio} w-full overflow-hidden ${className}`}>
+      {isLoading && (
+        <div className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center z-10">
+          <div className="h-8 w-8 rounded-full border-2 border-accent border-t-transparent animate-spin"></div>
+        </div>
+      )}
+
+      <video
+        ref={videoRef}
+        className={`w-full h-full ${objectFit}`}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        src={src}
+      />
+
+      {hasError && (
+        <div className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center z-10">
+          <p className="text-sm text-red-400">Failed to load video</p>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
@@ -63,6 +136,7 @@ export default function ListingShorts() {
                       alt="Listing photo 1"
                       fill
                       className="object-cover"
+                      priority
                     />
                   </div>
                   {/* Image 2 */}
@@ -72,6 +146,7 @@ export default function ListingShorts() {
                       alt="Listing photo 2"
                       fill
                       className="object-cover"
+                      priority
                     />
                   </div>
                   {/* Image 3 */}
@@ -81,6 +156,7 @@ export default function ListingShorts() {
                       alt="Listing photo 3"
                       fill
                       className="object-cover"
+                      priority
                     />
                   </div>
                 </div>
@@ -96,13 +172,9 @@ export default function ListingShorts() {
                 {/* Right Column - Vertical Video */}
                 <div className="w-full max-w-[280px] sm:w-[200px] md:w-[300px] mx-auto">
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
-                    <video
+                    <VideoPlayer
                       src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
+                      aspectRatio="aspect-[9/16]"
                     />
                   </div>
                 </div>
@@ -144,13 +216,8 @@ export default function ListingShorts() {
             {/* Feature Card 1 - horizontal (16:9) */}
             <div className="relative h-[280px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
               <div className="absolute inset-0">
-                <video
+                <VideoPlayer
                   src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
                 />
                 {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
@@ -164,38 +231,11 @@ export default function ListingShorts() {
               </div>
             </div>
 
-            {/* Feature Card 2 - vertical (9:16) */}
-            {/* <div className="relative h-[500px] md:h-[600px] overflow-hidden rounded-lg shadow-lg">
-              <div className="absolute inset-0">
-                <video
-                  src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+vertical.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 z-10 p-4 md:p-6">
-                <div className="flex items-center mb-2">
-                  <Share2 className="h-5 w-5 md:h-6 md:w-6 text-white mr-2" />
-                  <h3 className="font-bold text-xl md:text-2xl text-white">Vertical Video Format</h3>
-                </div>
-                <p className="text-sm md:text-base text-white/90">Get more leads with vertical videos that are perfect for YouTube, TikTok, and Instagram.</p>
-              </div>
-            </div> */}
-
             {/* Feature Card 3 - horizontal (16:9) */}
             <div className="relative h-[280px] md:h-[350px] overflow-hidden rounded-lg shadow-lg">
               <div className="absolute inset-0">
-                <video
+                <VideoPlayer
                   src="https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+beat+sync.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
                 />
                 {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
