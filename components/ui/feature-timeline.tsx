@@ -64,7 +64,7 @@ const FeatureGrid: FC<FeatureTimelineProps> = ({
                              bg-gradient-to-r from-foreground to-foreground/70">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground/90 text-lg leading-relaxed">
+                <p className="text-foreground/90 text-lg leading-relaxed">
                   {feature.description}
                 </p>
               </div>

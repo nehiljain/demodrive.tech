@@ -14,7 +14,6 @@ import dynamic from 'next/dynamic'
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronRight } from "lucide-react";
 import FeatureTimeline from "@/components/ui/feature-timeline";
 
 interface VideoMetadata {
@@ -29,6 +28,10 @@ interface VideoMetadata {
 
 const logos = [
   {
+    src: "/revive_logo.avif",
+    alt: "Revive AI",
+  },
+  {
     src: "/copilotkit-logo-dark.webp",
     alt: "Copilotkit AI",
   },
@@ -40,6 +43,7 @@ const logos = [
     src: "/dagworks_logo.png",
     alt: "DagWorks Inc",
   },
+
 ];
 
 // const heroTabs = [
@@ -180,9 +184,9 @@ export default function LandingPage() {
             >
               <WordRotate
                 words={[
-                  "Product Guides",
-                  "Product Demos",
                   "Marketing Videos",
+                  "Viral Shorts",
+                  "Product Demos",
                 ]}
                 duration={2500}
                 className="text-accent"
@@ -190,7 +194,7 @@ export default function LandingPage() {
             </BlurFade>
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 3}
-              className="mt-6 text-2xl leading-8 text-muted-foreground"
+              className="mt-6 text-2xl leading-8 text-foreground"
               text="Generate, review and publish in minutes."
             />
 
@@ -217,7 +221,10 @@ export default function LandingPage() {
           {/* Logos Section */}
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <div className="mt-16 flex flex-col items-center">
-              <div className="flex justify-center gap-8 mb-8">
+              <div className="text-md text-foreground mb-8">
+                Trusted by
+              </div>
+              <div className="flex justify-center gap-8">
                 {logos.map((logo, i) => (
                   <div key={i} className="flex justify-center sm:w-[160px] w-[120px]">
                     <Image
@@ -229,9 +236,6 @@ export default function LandingPage() {
                     />
                   </div>
                 ))}
-              </div>
-              <div className="text-md text-muted-foreground">
-                Trusted by teams leading AI companies.
               </div>
             </div>
           </BlurFade>
@@ -256,19 +260,19 @@ export default function LandingPage() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <div className="space-y-6">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-foreground leading-relaxed">
                       Marketing teams are drowning in video project backlogs. With time spent on repetitive tasks like voice alignment and brand consistency,
                       creating quality video content remains costly and time-consuming.
                     </p>
                     <div className="flex items-center gap-4 p-4 rounded-lg border border-muted card-highlight">
                       <div className="text-3xl font-bold text-destructive">60%</div>
-                      <div className="text-muted-foreground">
+                      <div className="text-foreground">
                         of time is spent on repetitive video editing tasks
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 rounded-lg border border-muted card-highlight">
-                      <div className="text-3xl font-bold text-accent">85%</div>
-                      <div className="text-muted-foreground">
+                      <div className="text-3xl font-bold text-destructive">85%</div>
+                      <div className="text-foreground">
                         creators report video production costs are too high to scale effectively
                       </div>
                     </div>
@@ -278,15 +282,15 @@ export default function LandingPage() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-accent">The Impact</h3>
                   <div className="grid gap-4">
-                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-muted/5">
-                      <div className="text-3xl font-bold text-accent">3.3x</div>
-                      <div className="text-muted-foreground">
+                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-foreground/50">
+                      <div className="text-3xl font-bold text-foreground">3.5x</div>
+                      <div className="text-foreground">
                         Improved customer understanding with video content
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-muted/5">
-                      <div className="text-3xl font-bold text-accent">3x</div>
-                      <div className="text-muted-foreground">
+                    <div className="flex items-start gap-4 p-4 rounded-lg border border-muted bg-foreground/50">
+                      <div className="text-3xl font-bold text-foreground">3x</div>
+                      <div className="text-foreground">
                         More leads generated compared to static content
                       </div>
                     </div>
@@ -294,9 +298,9 @@ export default function LandingPage() {
                 </div>
 
                 <div className="pt-4">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    DemoDrive eliminates the grunt work, enabling scalable content creation
-                    and unlocking new efficiency in product marketing and customer education.
+                  <p className="text-lg text-foreground leading-relaxed">
+                    DemoDrive eliminates the grunt work by using fine-tuned video pipelines with integrations to your existing tools (API, Slack).
+                    This enables scalable content creation and unlocking new efficiency in product marketing and customer education.
                   </p>
                 </div>
               </div>
@@ -323,54 +327,82 @@ export default function LandingPage() {
       </div>
       {/* Feature Timeline Section */}
       <div className="" id="features">
-          <BlurFadeText
-            delay={BLUR_FADE_DELAY * 7}
-              className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-          text="Key Features"
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 7}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+        text="AI Magic Features"
         />
 
         <FeatureTimeline
           baseDelay={BLUR_FADE_DELAY * 8}
           features={[
             {
-              title: "Rich Editor",
-              description: "Edit your video scripts, add images, videos, and more with our rich web native editor.",
+              title: "Motion Magic",
+              description: "Take photos of your listing and turn them into a video using AI moving the camera around.",
               media: {
                 type: 'video',
-                src: '/features/rich_editor.mp4',
+                src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4',
                 alt: 'Video demo showcase'
               }
             },
             {
-              title: "AI Copilot",
-              description: "AI script generation for your product demos, tutorials and walkthroughs.",
+              title: "Beat Sync",
+              description: "Automatic syncing of music to the video to make every transition feel perfect.",
               media: {
                 type: 'video',
-                src: '/features/storyboard.mp4',
+                src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+beat+sync.mp4',
                 alt: 'Video demo showcase'
               }
             },
-            {
-              title: "B-Roll Generation",
-              description: "Generate stunning, interactive video demonstrations of your product with AI-powered narration and automatic scene transitions. Perfect for onboarding and training materials.",
-              media: {
-                type: 'video',
-                src: '/features/b_roll.mp4',
-                alt: 'Video demo showcase'
-              }
-            },
-            {
-              title: "Customize Formats",
-              description: "Generate videos of different length, quality and aspect ratio.",
-              media: {
-                type: 'video',
-                src: '/features/create_project.mp4',
-                alt: 'Project management interface'
-              }
-            }
           ]}
         />
         </div>
+
+      <BlurFadeText
+        delay={BLUR_FADE_DELAY * 7}
+        className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+        text="Editor Features"
+      />
+        <FeatureTimeline
+          baseDelay={BLUR_FADE_DELAY * 8}
+        features={[{
+          title: "Rich Editor",
+          description: "Edit your video scripts, add images, videos, and more with our rich web native editor.",
+          media: {
+            type: 'video',
+            src: '/features/rich_editor.mp4',
+            alt: 'Video demo showcase'
+          }
+        },
+          {
+            title: "AI Copilot",
+            description: "AI script generation for your product demos, tutorials and walkthroughs.",
+            media: {
+              type: 'video',
+              src: '/features/ai_chat.mp4',
+              alt: 'Video demo showcase'
+            }
+          },
+          {
+            title: "B-Roll Generation",
+            description: "Generate stunning, interactive video demonstrations of your product with AI-powered narration and automatic scene transitions. Perfect for onboarding and training materials.",
+            media: {
+              type: 'video',
+              src: '/features/b_roll.mp4',
+              alt: 'Video demo showcase'
+            }
+          },
+          {
+            title: "Customize Formats",
+            description: "Generate videos of different length, quality and aspect ratio.",
+            media: {
+              type: 'video',
+              src: '/features/create_project.mp4',
+              alt: 'Project management interface'
+            }
+          }
+        ]}
+        />
 
       {/* Showcase Section */}
       <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
@@ -381,7 +413,7 @@ export default function LandingPage() {
         />
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 15}
-          className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+          className="text-center text-foreground mb-12 text-xl max-w-3xl mx-auto"
           text="Check out what others have created with DemoDrive's AI-powered tutorial generator."
         />
 
@@ -452,7 +484,7 @@ export default function LandingPage() {
                             <h3 className="font-semibold text-lg line-clamp-1">
                               {video.title}
                             </h3>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-foreground">
                               {video.author.name}
                             </p>
                           </div>
@@ -463,14 +495,6 @@ export default function LandingPage() {
                 );
               })}
             </div>
-
-            <BlurFade delay={BLUR_FADE_DELAY * 17}>
-              <div className="text-center mt-12">
-                <a href="https://app.demodrive.tech/showcase" className="text-accent hover:text-accent/80 font-medium flex items-center justify-center gap-2">
-                  View all showcase videos <ChevronRight className="h-4 w-4" />
-                </a>
-              </div>
-            </BlurFade>
           </>
         )}
       </div>
@@ -484,7 +508,7 @@ export default function LandingPage() {
         />
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 19}
-          className="text-center text-muted-foreground mb-12 text-xl max-w-3xl mx-auto"
+          className="text-center text-foreground mb-12 text-xl max-w-3xl mx-auto"
           text="Explore our collection of customizable animations for your videos and presentations."
         />
 
@@ -537,7 +561,7 @@ export default function LandingPage() {
                   <AccordionTrigger className="text-lg text-left">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-lg">
+                  <AccordionContent className="text-foreground text-lg">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
