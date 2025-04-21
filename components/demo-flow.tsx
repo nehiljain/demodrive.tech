@@ -69,7 +69,7 @@ const nodes: CustomNode[] = [
     id: '5',
     type: 'customCard',
     data: {
-      label: 'Short Clips',
+      label: 'Shorts Clips',
       icon: InstagramIcon,
       description: 'Short Marketing Videos',
     },
