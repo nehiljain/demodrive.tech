@@ -173,7 +173,7 @@ export default function ListingShorts() {
                 <div className="w-full max-w-[280px] sm:w-[200px] md:w-[300px] mx-auto">
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
                     <VideoPlayer
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a.mp4"
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a-compressed.mp4"
                       aspectRatio="aspect-[9/16]"
                     />
                   </div>
