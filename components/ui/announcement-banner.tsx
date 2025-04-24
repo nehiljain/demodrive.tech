@@ -5,7 +5,12 @@ import { ChevronRight } from 'lucide-react';
 export function AnnouncementBanner() {
   return (
     <div className="flex justify-center">
-      <div className="group relative inline-flex items-center rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f]">
+      <a
+        href="https://x.com/nehiljain/status/1911814479957942387"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative inline-flex items-center rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] cursor-pointer"
+      >
         <span
           className={cn(
             'absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:300%_100%] p-[1px]'
@@ -18,12 +23,13 @@ export function AnnouncementBanner() {
             WebkitClipPath: 'padding-box',
           }}
         />
+
         🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-neutral-500" />
         <AnimatedGradientText className="text-sm font-medium">
           Luma AI Hackathon 2025 Winners
         </AnimatedGradientText>
         <ChevronRight className="ml-1 size-4 stroke-neutral-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-      </div>
+      </a>
     </div>
   );
 }

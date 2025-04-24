@@ -7,6 +7,12 @@ const DESKTOP_HEIGHT = 350
 
 const VIDEOS = [
   {
+    video_url: "https://prod-assets.demodrive.tech/renders/b8348627-f4f5-4b0d-a03f-9bfa240de6c1/Dori%2BOrinda%2BRealtor.ca%2B916%2Bcompressed.mp4",
+    aspect_ratio: "9/16",
+    mobileWidth: (9 / 16) * DESKTOP_HEIGHT, // 9:16 ratio with mobile height
+    desktopWidth: (9 / 16) * DESKTOP_HEIGHT, // 9:16 ratio with desktop height
+  },
+  {
     video_url: "https://dev-assets.demodrive.tech/renders/a6ce3c29-e096-40e4-9219-f92957f14f24/a6ce3c29-e096-40e4-9219-f92957f14f24.mp4",
     aspect_ratio: "16/9",
     mobileWidth: (16/9) * MOBILE_HEIGHT, // 16:9 ratio with mobile height
@@ -21,7 +27,7 @@ const VIDEOS = [
   {
     video_url: "https://stage-assets.demodrive.tech/renders/ef1b0268-64fa-4127-b1e6-72e6cace6e83/ef1b0268-64fa-4127-b1e6-72e6cace6e83.mp4",
     aspect_ratio: "9/16", // Keeping original aspect ratio for this one
-    mobileWidth: (9/16) * MOBILE_HEIGHT, // 9:16 ratio with mobile height
+    mobileWidth: (9/16) * DESKTOP_HEIGHT, // 9:16 ratio with mobile height
     desktopWidth: (9/16) * DESKTOP_HEIGHT, // 9:16 ratio with desktop height
   },
   {
