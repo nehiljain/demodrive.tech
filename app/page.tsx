@@ -405,7 +405,7 @@ export default function LandingPage() {
         />
 
       {/* Showcase Section */}
-      <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
+      {/* <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 14}
           className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-center"
@@ -497,7 +497,7 @@ export default function LandingPage() {
             </div>
           </>
         )}
-      </div>
+      </div> */}
 
       {/* Animation Showcase Section */}
       {/* <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="animations">

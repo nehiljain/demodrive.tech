@@ -29,7 +29,7 @@ const navigation: NavigationItem[] = [
     icon: Users,
     dropdown: [
       { name: "Real Estate Agents", href: "/listing-shorts", icon: House },
-      { name: "Chefs", href: "/use-cases/chefs", icon: Soup },
+      // { name: "Chefs", href: "/use-cases/chefs", icon: Soup },
       { name: "Renovations", href: "/renovation", icon: Hammer },
     ]
   },

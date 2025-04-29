@@ -128,6 +128,20 @@ const GALLERY_VIDEOS = [
     video_url: "https://prod-assets.demodrive.tech/renders/43331d38-62d4-4d41-84ff-79a7a5c99a37/43331d38-62d4-4d41-84ff-79a7a5c99a37.mp4",
     aspect_ratio: "16/9",
     Icon: Video
+  },
+  {
+    title: "Real Estate MLS Listing",
+    description: "Professionally edited video for real estate listings",
+    Icon: FileText,
+    aspect_ratio: "16/9",
+    video_url: "https://dev-assets.demodrive.tech/video_assets/real-estate-mls-listing/Real+Estate+Video+Re+Music.mp4"
+  },
+  {
+    video_url: "https://dev-assets.demodrive.tech/20250212/output/Cravd_-_How_to_create_custom_menu_20250212_132853/CravdHowToCreateCustomMenu.mp4",
+    title: "Custom Menu Creation",
+    description: "Step-by-step guide to creating a custom menu",
+    Icon: Bell,
+    aspect_ratio: "16/9"
   }
 ];
 

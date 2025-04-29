@@ -4,21 +4,34 @@ import { useState, useRef, useEffect } from 'react';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
-import { VideoMarquee } from '@/components/video-marquee';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import { Button } from '@/components/ui/button';
 import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
-
-// Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
-import { TransformingArrow } from '@/components/ui/transforming-arrow'
 import { VideoPlayer } from '@/components/video-player';
+import { FileText, Upload, ArrowRight } from 'lucide-react'
+import { TransformingArrow } from '@/components/ui/transforming-arrow'
 import { MagicFeatureCards } from '@/components/magic-features';
 
-export default function ListingShorts() {
+export default function RenovationPage() {
   const BLUR_FADE_DELAY = 0.04;
   const listingShortUrl = 'http://app.demodrive.tech/open/listing-shorts';
+
+  // Example renovation images from user uploads
+  const beforeImages = [
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/491449036_18169053001331084_8012714954802911901_n.jpg',
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/490070110_18169053019331084_900180217511141331_n.jpg',
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/491442021_18169053040331084_7104822397698813303_n.jpg'
+  ];
+
+  const afterImages = [
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/491218931_18169053010331084_1044311958877831873_n.jpg',
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/491386866_18169053028331084_4187264279583180493_n.jpg',
+    'https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/491447848_18169053049331084_4678535619958897805_n.jpg',
+  ];
+
+
 
   return (
     <div className="min-h-screen dark text-foreground overflow-hidden bg-radial-fancy">
@@ -36,13 +49,13 @@ export default function ListingShorts() {
               yOffset={8}
             >
               <h2>
-                Turn photos into  <span className="text-accent">viral short tours</span>
+                Turn photos into <span className="text-accent">Before/After Videos</span>
               </h2>
             </BlurFade>
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 2}
               className="mt-6 text-lg leading-8 text-[#DFC8AF]"
-              text="In Minutes. With AI. No editing required. For Free."
+              text="With AI. No editing required."
             />
 
             <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
@@ -53,58 +66,65 @@ export default function ListingShorts() {
               </Link>
             </BlurFade>
 
-            {/* Image to Video Transformation Section */}
+            {/* Image to Video Transformation Section - Renovation Before/After */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
               <div className="mt-16 flex flex-col sm:flex-row gap-4 sm:gap-8 max-w-6xl mx-auto items-center justify-center px-1 sm:px-4">
-                {/* Left Column - Three Images */}
-                <div className="flex flex-row sm:flex-col gap-4 w-full sm:w-[160px] md:w-[200px] justify-center">
-                  {/* Image 1 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-5.png"
-                      alt="Listing photo 1"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
+                {/* Left Column - Before Images */}
+                <div className="flex flex-col gap-2 w-full sm:w-[240px] md:w-[420px]">
+                  <div className="text-sm font-medium text-accent mb-2">Before Photos</div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {beforeImages.map((img, index) => (
+                      <div key={`before-${index}`} className="relative aspect-square rounded-lg overflow-hidden border border-muted/50 shadow-lg">
+                        <Image
+                          src={`${img}`}
+                          alt={`Before renovation ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          priority
+                        />
+                      </div>
+                    ))}
                   </div>
-                  {/* Image 2 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img2.png"
-                      alt="Listing photo 2"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
+
+                  <div className="text-sm font-medium text-accent mt-4 mb-2">After Photos</div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {afterImages.map((img, index) => (
+                      <div key={`after-${index}`} className="relative aspect-square rounded-lg overflow-hidden border border-muted/50 shadow-lg">
+                        <Image
+                          src={`${img}`}
+                          alt={`After renovation ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          priority
+                        />
+                      </div>
+                    ))}
                   </div>
-                  {/* Image 3 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-1.png"
-                      alt="Listing photo 3"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
+
+                  <div className="flex items-center gap-2 justify-center mt-2 text-sm text-muted-foreground">
+                    <Upload size={14} />
+                    <span>Upload your before/after photos</span>
                   </div>
                 </div>
 
                 {/* Arrow Icon */}
                 <div className="flex items-center justify-center w-12 h-auto sm:w-12 sm:h-12 md:w-24">
-                  {/* <ChevronRight className="w-8 h-8 sm:w-12 sm:h-12 text-primary transform rotate-90 sm:rotate-0" /> */}
                   <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
                     <TransformingArrow />
                   </BlurFade>
                 </div>
 
-                {/* Right Column - Vertical Video */}
-                <div className="w-full max-w-[280px] sm:w-[200px] md:w-[300px] mx-auto">
+                {/* Right Column - Output Video */}
+                <div className="w-full max-w-[280px] sm:w-[240px] md:w-[300px] mx-auto">
+                  <div className="text-sm font-medium text-accent mb-2">AI-Generated Video</div>
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
                     <VideoPlayer
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a-compressed.mp4"
+                      src="https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/renovationsx-copy_916.mp4"
                       aspectRatio="aspect-[9/16]"
                     />
+                  </div>
+                  <div className="mt-2 text-sm text-muted-foreground">
+                    Professional before/after video tour
                   </div>
                 </div>
               </div>
@@ -112,21 +132,6 @@ export default function ListingShorts() {
           </div>
         </div>
       </div>
-
-      {/* Video Showcase Section */}
-      {/* <div className="w-full py-12">
-        <div className="mx-auto max-w-7xl relative z-[1]">
-          <BlurFade
-                delay={BLUR_FADE_DELAY * 7}
-                className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
-              >
-                <h2>
-                  We created 20 tours  <span className="text-accent">in 3 mins</span>
-                </h2>
-          </BlurFade>
-          <VideoMarquee />
-        </div>
-      </div> */}
 
       {/* Feature Section */}
       <div className="py-12" id="features">
@@ -137,10 +142,10 @@ export default function ListingShorts() {
           >
             <div className="flex flex-col gap-2">
               <div>Everything you need to</div>
-              <div className="text-accent">grow your reputation</div>
+              <div className="text-accent">showcase your renovations</div>
             </div>
           </BlurFade>
-          <MagicFeatureCards/>
+          <MagicFeatureCards />
         </div>
       </div>
 
