@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
@@ -10,7 +9,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import { VideoPlayer } from '@/components/video-player';
-import { FileText, Upload, ArrowRight } from 'lucide-react'
+import { Upload } from 'lucide-react'
 import { TransformingArrow } from '@/components/ui/transforming-arrow'
 import { MagicFeatureCards } from '@/components/magic-features';
 

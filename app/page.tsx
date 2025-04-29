@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -13,18 +12,7 @@ import dynamic from 'next/dynamic'
 
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
-import { Skeleton } from "@/components/ui/skeleton";
 import FeatureTimeline from "@/components/ui/feature-timeline";
-
-interface VideoMetadata {
-  id: string;
-  title: string;
-  video_url: string;
-  author: {
-    name: string;
-    avatar_url: string;
-  };
-}
 
 const logos = [
   {
@@ -123,45 +111,6 @@ const logos = [
 
 export default function LandingPage() {
   const BLUR_FADE_DELAY = 0.04;
-  const [videos, setVideos] = useState<VideoMetadata[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [thumbnailFormat, setThumbnailFormat] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    const fetchShowcase = async () => {
-      try {
-        const response = await fetch(
-          "https://storage.googleapis.com/demodrive-media/gallery/metadata.json",
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch showcase data");
-        }
-
-        const data = await response.json();
-        console.log("Showcase data:", data);
-        setVideos(data.videos);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching showcase data:", err);
-        setError(
-          err instanceof Error ? err.message : "Failed to load showcase videos"
-        );
-        setLoading(false);
-      }
-    };
-
-    fetchShowcase();
-  }, []);
-
-  const handleImageError = (videoId: string, currentFormat: string) => {
-    const newFormat = currentFormat === "jpg" ? "png" : "jpg";
-    setThumbnailFormat((prev) => ({
-      ...prev,
-      [videoId]: newFormat,
-    }));
-  };
 
   return (
     <div className="min-h-screen dark text-foreground bg-radial-fancy">

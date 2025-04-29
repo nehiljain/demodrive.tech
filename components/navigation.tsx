@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronDown, HomeIcon, Users, ShoppingBag, PieChart, House, SproutIcon, Hammer, Ham, Soup } from "lucide-react";
+import { Menu, ChevronDown, Users, House, Hammer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarButton, useInitCal } from "@/components/calendar-popup";

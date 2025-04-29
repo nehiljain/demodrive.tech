@@ -1,10 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
-import { VideoMarquee } from '@/components/video-marquee';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import { Button } from '@/components/ui/button';
 import React from 'react'

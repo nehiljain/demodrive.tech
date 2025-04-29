@@ -2,16 +2,12 @@
 
 import { useState, useRef, useEffect } from 'react';
 import BlurFade from '@/components/magicui/blur-fade';
-import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import { Button } from '@/components/ui/button';
 import React from 'react'
 import Link from 'next/link';
-import Image from 'next/image';
-import { BentoGrid, BentoCard } from '@/components/magicui/bento-grid';
 import { FileText, Bell, Video, Camera } from 'lucide-react'
-import { TransformingArrow } from '@/components/ui/transforming-arrow'
 
 // Video loading component with better error handling
 const VideoPlayer = ({
