@@ -24,10 +24,6 @@ const logos = [
     alt: "Copilotkit AI",
   },
   {
-    src: "/whiterabbit_logo.svg",
-    alt: "White Rabbit AI",
-  },
-  {
     src: "/dagworks_logo.png",
     alt: "DagWorks Inc",
   },

@@ -24,12 +24,15 @@ export function useInitCal() {
 }
 
 // Reusable button component
-export function CalendarButton({ className }: { className?: string }) {
+export const CalendarButton = ({ className, onClick }: { className?: string, onClick?: () => void }) => {
   const pathname = usePathname();
   const buttonText = pathname === '/listing-shorts' ? 'Create Free Tour' : 'Schedule Demo';
 
   return (
     <Button
+      onClick={() => {
+        onClick?.();
+      }}
       variant="golden"
       className={`relative flex items-center justify-center gap-2 rounded-full px-6 py-3 ${className}`}
       data-cal-namespace="30min"
@@ -40,4 +43,4 @@ export function CalendarButton({ className }: { className?: string }) {
       {/* <ArrowRight className="h-4 w-4" /> */}
     </Button>
   );
-}
+};

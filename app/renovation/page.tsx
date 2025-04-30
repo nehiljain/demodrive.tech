@@ -122,9 +122,6 @@ export default function RenovationPage() {
                       aspectRatio="aspect-[9/16]"
                     />
                   </div>
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    Professional before/after video tour
-                  </div>
                 </div>
               </div>
             </BlurFade>

@@ -42,7 +42,11 @@ const navigation: NavigationItem[] = [
 
 export default function Navigation() {
   useInitCal();
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  const handleNavigationClick = () => {
+    setIsSheetOpen(false);
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full pt-4 pointer-events-none">
@@ -107,49 +111,43 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="transition-transform duration-150">
               <div className="flex flex-col space-y-4 mt-8">
                 {navigation.map((item) => (
                   <div key={item.name} className="space-y-2">
                     {item.dropdown ? (
                       <>
-                        <button
-                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className="flex items-center justify-between w-full text-lg text-muted-foreground hover:text-accent transition-all duration-300"
-                        >
+                        <div className="flex items-center justify-between w-full text-lg text-muted-foreground">
                           <span className="flex items-center">
                             {item.icon && <item.icon className="w-5 h-5 mr-2" />}
                             {item.name}
                           </span>
-                          <ChevronDown
-                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`}
-                          />
-                        </button>
-
-                        {activeDropdown === item.name && (
-                          <div className="ml-4 space-y-2 border-l border-muted pl-4">
-                            {item.dropdown.map((dropdownItem) => (
-                              <Link
-                                key={dropdownItem.name}
-                                href={dropdownItem.href}
-                                className="block text-base text-muted-foreground hover:text-accent"
-                              >
-                                {dropdownItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
+                        </div>
+                        <div className="ml-4 space-y-2 border-l border-muted">
+                          {item.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.name}
+                              href={dropdownItem.href}
+                              onClick={handleNavigationClick}
+                              className="block text-base px-4 py-2 flex flex-row text-muted-foreground hover:text-accent"
+                            >
+                              {dropdownItem.icon && <dropdownItem.icon className="w-4 h-4 mr-2" />}
+                              {dropdownItem.name}
+                            </Link>
+                          ))}
+                        </div>
                       </>
                     ) : (
                       <Link
                         href={item.href || '#'}
+                        onClick={handleNavigationClick}
                         className="flex items-center text-lg text-muted-foreground hover:text-accent transition-all duration-300"
                       >
                         {item.icon && <item.icon className="w-5 h-5 mr-2" />}
@@ -158,7 +156,7 @@ export default function Navigation() {
                     )}
                   </div>
                 ))}
-                <CalendarButton className="w-full" />
+                <CalendarButton className="w-full" onClick={handleNavigationClick} />
               </div>
             </SheetContent>
           </Sheet>
