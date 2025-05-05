@@ -53,7 +53,7 @@ export const VideoPlayer = ({
 
             <video
                 ref={videoRef}
-                className={`w-full h-full ${objectFit}`}
+                className={`w-full h-full rounded-lg ${objectFit}`}
                 autoPlay
                 loop
                 muted
