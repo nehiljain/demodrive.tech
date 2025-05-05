@@ -1,7 +1,6 @@
 'use client';
 
 import BlurFade from '@/components/magicui/blur-fade';
-import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
 import React from 'react'

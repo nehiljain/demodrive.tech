@@ -17,21 +17,25 @@ const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import FeatureTimeline from "@/components/ui/feature-timeline";
 import {AnimatedGradientText} from "@/components/magicui/animated-gradient-text";
 import {VideoPlayer} from "@/components/video-player";
+import { Marquee } from "@/components/magicui/marquee";
 
 const logos = [
   {
-    src: "/revive_logo.avif",
+    src: "/logos/revive_logo.avif",
     alt: "Revive AI",
   },
   {
-    src: "/copilotkit-logo-dark.webp",
+    src: "/logos/copilotkit-logo-dark.webp",
     alt: "Copilotkit AI",
   },
   {
-    src: "/dagworks_logo.png",
+    src: "/logos/dagworks_logo.png",
     alt: "DagWorks Inc",
   },
-
+  {
+    src: "/logos/cactusai.svg",
+    alt: "CactusAI"
+  }
 ];
 
 // const heroTabs = [
@@ -127,7 +131,7 @@ export default function LandingPage() {
       href: "/listing-shorts",
       title: "Listing Shorts",
       buttonText: "Create Free Tour",
-      description: "Transform property photos into captivating video tours with AI-powered motion and beat sync. Perfect for real estate professionals.",
+      description: "Transform property photos into captivating video tours with AI-powered motion and beat sync.",
       videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4",
       colorFrom: "#ffaa40",
       colorTo: "#ff6040"
@@ -136,7 +140,7 @@ export default function LandingPage() {
       href: "/renovation",
       title: "Before/After Videos",
       buttonText: "Learn More",
-      description: "Create stunning before/after transformation videos from your renovation photos. Showcase your work with professionally animated transitions.",
+      description: "Create stunning before/after transformation videos from your renovation photos. ",
       videoSrc: "https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/renovationsx-copy_916.mp4",
       colorFrom: "#40b0ff",
       colorTo: "#4060ff"
@@ -145,7 +149,7 @@ export default function LandingPage() {
       href: "/conversation",
       title: "Podcast Shorts",
       buttonText: "Learn More",
-      description: "Turn long-form podcasts into viral short clips. We handle recording, editing, and auto-generating engaging shorts for social media distribution.",
+      description: "Turn long-form podcasts into viral short clips.",
       videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-2-compressed.mp4",
       colorFrom: "#9c40ff",
       colorTo: "#ff40d6"
@@ -209,11 +213,29 @@ export default function LandingPage() {
 
           {/* Logos Section */}
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <div className="mt-16 flex flex-col items-center">
+            <div className="py-2 w-screen flex flex-col items-center">
               <div className="text-md text-foreground mb-8">
                 Trusted by
               </div>
-              <div className="flex justify-center gap-8">
+              {/* Mobile: Marquee */}
+              <div className="md:hidden w-full">
+                <Marquee className="w-full [--duration:20s]" pauseOnHover>
+                  {logos.map((logo, i) => (
+                    <div key={i} className="flex justify-center w-[120px] mx-6">
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={160}
+                        height={50}
+                        className="h-8 object-contain"
+                      />
+                    </div>
+                  ))}
+                </Marquee>
+              </div>
+
+              {/* Desktop: Static Layout */}
+              <div className="hidden md:flex justify-center gap-8">
                 {logos.map((logo, i) => (
                   <div key={i} className="flex justify-center sm:w-[160px] w-[120px]">
                     <Image
@@ -227,12 +249,12 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-          </BlurFade>
+         </BlurFade>
         </div>
       </div>
 
       {/* Solutions/Use Cases Section */}
-      <div className="py-16" id="solutions">
+      <div className="py-2" id="solutions">
         <div className="mx-auto max-w-6xl px-6">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 7}
@@ -242,43 +264,42 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {useCases.map((useCase, index) => (
-              <div
-                key={index}
-                className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700 border-white
-                  ${activeUseCaseIndex === index
-                    ? 'scale-[1.02] shadow-xl'
-                    : ''} border-muted/50 hover:border-accent hover:scale-[1.02]`}
-              >
-                <h3 className="text-2xl font-bold mb-4">
-                  <AnimatedGradientText
-                    colorFrom={useCase.colorFrom}
-                    colorTo={useCase.colorTo}
-                  >
-                    {useCase.title}
-                  </AnimatedGradientText>
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  {useCase.description}
-                </p>
+              <Link key={index} href={useCase.href} className="block">
+                <div
+                  className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700 border-white
+                    ${activeUseCaseIndex === index
+                      ? 'scale-[1.02] shadow-xl'
+                      : ''} border-muted/50 hover:border-accent hover:scale-[1.02] cursor-pointer`}
+                >
+                  <h3 className="text-2xl font-bold mb-4">
+                    <AnimatedGradientText
+                      colorFrom={useCase.colorFrom}
+                      colorTo={useCase.colorTo}
+                    >
+                      {useCase.title}
+                    </AnimatedGradientText>
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    {useCase.description}
+                  </p>
 
-                <div className="relative aspect-[9/16] rounded-lg overflow-hidden mt-auto mb-4">
-                  <VideoPlayer
-                    src={useCase.videoSrc}
-                    aspectRatio="aspect-[9/16]"
-                  />
-                </div>
+                  <div className="relative aspect-[9/16] rounded-lg overflow-hidden mt-auto mb-4">
+                    <VideoPlayer
+                      src={useCase.videoSrc}
+                      aspectRatio="aspect-[9/16]"
+                    />
+                  </div>
 
-                {useCase.buttonText && <div className="flex flex-col mt-4">
-                  <Link href={useCase.href} className="w-full">
+                  {useCase.buttonText && <div className="flex flex-col mt-4">
                     <Button
                       variant="golden"
                       className="w-full"
                     >
                       {useCase.buttonText}
                     </Button>
-                  </Link>
-                </div>}
-              </div>
+                  </div>}
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -360,7 +381,7 @@ export default function LandingPage() {
           />
 
           <BlurFade delay={BLUR_FADE_DELAY * 20}>
-            <div className="w-full h-[400px] border border-muted rounded-xl overflow-hidden">
+            <div className="w-full border border-muted rounded-xl overflow-hidden">
               <DemoFlow />
             </div>
           </BlurFade>
@@ -377,7 +398,7 @@ export default function LandingPage() {
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 7.5}
           className="text-center text-foreground mb-8 text-lg max-w-3xl mx-auto"
-          text="Our AI features help make videos aesthetically pleasing while optimizing for viewer engagement and algorithm performance. Create content that looks amazing and performs even better."
+          text="Our AI features help make videos aesthetically pleasing while optimizing for viewer engagement and algorithm performance. "
         />
 
         <FeatureTimeline
@@ -414,7 +435,7 @@ export default function LandingPage() {
       <BlurFadeText
         delay={BLUR_FADE_DELAY * 7.5}
         className="text-center text-foreground mb-8 text-lg max-w-3xl mx-auto"
-        text="Sometimes AI doesn't get it exactly the way you want it. Our powerful editor puts you in control, letting you make precise adjustments to reach the finish line with perfect results."
+        text="Sometimes AI doesn't get the perfection. Our powerful editor puts you in control, letting you make precise adjustments."
       />
 
       <FeatureTimeline
