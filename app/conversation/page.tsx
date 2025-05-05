@@ -4,16 +4,13 @@ import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
-import { Button } from '@/components/ui/button';
 import React from 'react'
-import Link from 'next/link';
 import { VideoPlayer } from '@/components/video-player';
-import { Mic } from 'lucide-react'
+import { Mic, ScissorsIcon, VideoIcon } from 'lucide-react'
+import { CalendarButton } from '@/components/calendar-popup';
 
 export default function PodcastPage() {
   const BLUR_FADE_DELAY = 0.04;
-  const podcastAppUrl = 'http://app.demodrive.tech/open/podcast';
-
   // Sample podcast video shorts for the grid
   const videoShorts = [
     'https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short1-compressed.mp4',
@@ -36,21 +33,17 @@ export default function PodcastPage() {
               yOffset={8}
             >
               <h2>
-                Turn podcasts into <span className="text-accent">viral shorts</span>
+                Spend an hour, get <span className="text-accent">10 viral shorts</span>
               </h2>
             </BlurFade>
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 2}
               className="mt-6 text-lg leading-8 text-[#DFC8AF]"
-              text="With AI. No editing required."
+              text="With AI. No post editing required."
             />
 
             {/* <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
-              <Link href={podcastAppUrl} className="inline-block">
-                <Button variant="golden" size="lg">
-                  Create Free Content
-                </Button>
-              </Link>
+              <ScheduleDemo size="lg" />
             </BlurFade> */}
 
             {/* 3-Step Process Section */}
@@ -61,10 +54,11 @@ export default function PodcastPage() {
                   <div className="w-full max-w-md text-left">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">1</div>
-                      <h3 className="text-xl font-bold">We capture your content (Optional)</h3>
+                      <h3 className="text-xl flex gap-2 font-bold">We <VideoIcon/> a conversation with you
+</h3>
                     </div>
                     <p className="text-muted-foreground">
-                      Our team comes to your location with professional equipment to record your podcast or interview. Just focus on your conversation.
+                      Our team comes to your with professional equipment to record your podcast style interview. Its like having a coffee with a friend while talking about your startup, journey, customers.
                     </p>
                   </div>
 
@@ -89,10 +83,10 @@ export default function PodcastPage() {
                   <div className="w-full max-w-md text-left sm:order-2">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">2</div>
-                      <h3 className="text-xl font-bold">We edit the full episode</h3>
+                      <h3 className="text-xl flex gap-2 font-bold">We <ScissorsIcon/> and publish full episode</h3>
                     </div>
                     <p className="text-muted-foreground">
-                      Our AI automatically edits your entire podcast, enhancing audio quality, removing awkward pauses, and creating a polished final product.
+                      Our AI automatically edits your entire podcast, enhancing audio quality, removing awkward pauses, and creating a polished final product. Ready to post on your YT.
                     </p>
                   </div>
 
@@ -112,7 +106,7 @@ export default function PodcastPage() {
                       <h3 className="text-xl font-bold">AI creates viral shorts</h3>
                     </div>
                     <p className="text-muted-foreground">
-                      Our AI identifies the most engaging moments and automatically creates captioned short-form videos ready for YouTube, Instagram, and TikTok.
+                      Our AI identifies the most viral worthy moments and automatically creates captioned short-form videos ready for YouTube, Instagram, and TikTok. We also insert B-Roll automatically to keep the user engaged.
                     </p>
                   </div>
 
@@ -131,7 +125,7 @@ export default function PodcastPage() {
       </div>
 
       {/* Feature Section */}
-      <div className="py-12" id="features">
+      {/* <div className="py-12" id="features">
         <div className="mx-auto max-w-5xl px-6 relative z-[1]">
           <BlurFade
             delay={BLUR_FADE_DELAY * 8}
@@ -143,34 +137,26 @@ export default function PodcastPage() {
             </div>
           </BlurFade>
         </div>
-      </div>
+      </div> */}
 
       {/* Bottom CTA Section */}
-      <div className="relative py-16">
-        <div className="mx-auto max-w-5xl px-6 py-2 sm:py-12 lg:px-8 text-center relative z-[1]">
+      <div className="relative py-8">
+        <div className="mx-auto max-w-5xl px-6 py-2 sm:py-8 lg:px-8 text-center relative z-[1]">
           <div className="max-w-xl mx-auto flex flex-col items-center">
             <div className="space-y-4 mb-10">
-              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+              <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-[#f5f2eb]">
                 More content,
               </h2>
-              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+              <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-[#f5f2eb]">
                 more views,
               </h2>
-              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#f5f2eb]">
+              <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-[#f5f2eb]">
                 more listeners.
               </h2>
 
             </div>
 
-            <Link href={podcastAppUrl} className="inline-block">
-              <Button
-                variant="golden"
-                size="xl"
-                className="w-[280px]"
-              >
-                Schedule Demo
-              </Button>
-            </Link>
+            <CalendarButton />
           </div>
         </div>
       </div>

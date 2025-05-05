@@ -4,18 +4,16 @@ import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import Footer from '@/components/footer';
 import { AnnouncementBanner } from '@/components/ui/announcement-banner';
-import { Button } from '@/components/ui/button';
 import React from 'react'
-import Link from 'next/link';
 import Image from 'next/image';
 import { VideoPlayer } from '@/components/video-player';
 import { Upload } from 'lucide-react'
 import { TransformingArrow } from '@/components/ui/transforming-arrow'
 import { MagicFeatureCards } from '@/components/magic-features';
+import { CalendarButton } from '@/components/calendar-popup';
 
 export default function RenovationPage() {
   const BLUR_FADE_DELAY = 0.04;
-  const listingShortUrl = 'http://app.demodrive.tech/open/listing-shorts';
 
   // Example renovation images from user uploads
   const beforeImages = [
@@ -58,11 +56,7 @@ export default function RenovationPage() {
             />
 
             <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
-              <Link href={listingShortUrl} className="inline-block">
-                <Button variant="golden" size="lg">
-                  Create Free Tour
-                </Button>
-              </Link>
+              <CalendarButton />
             </BlurFade>
 
             {/* Image to Video Transformation Section - Renovation Before/After */}
@@ -165,15 +159,7 @@ export default function RenovationPage() {
               </p>
             </div>
 
-            <Link href={listingShortUrl} className="inline-block">
-              <Button
-                variant="golden"
-                size="xl"
-                className="w-[280px]"
-              >
-                Create Free Tour
-              </Button>
-            </Link>
+            <CalendarButton/>
           </div>
         </div>
       </div>
