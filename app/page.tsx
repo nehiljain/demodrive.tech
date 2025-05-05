@@ -135,7 +135,7 @@ export default function LandingPage() {
     {
       href: "/renovation",
       title: "Before/After Videos",
-      buttonText: "Schedule Demo",
+      buttonText: "Learn More",
       description: "Create stunning before/after transformation videos from your renovation photos. Showcase your work with professionally animated transitions.",
       videoSrc: "https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/renovationsx-copy_916.mp4",
       colorFrom: "#40b0ff",
@@ -144,7 +144,7 @@ export default function LandingPage() {
     {
       href: "/conversation",
       title: "Podcast Shorts",
-      buttonText: "Schedule Demo",
+      buttonText: "Learn More",
       description: "Turn long-form podcasts into viral short clips. We handle recording, editing, and auto-generating engaging shorts for social media distribution.",
       videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short1-compressed.mp4",
       colorFrom: "#9c40ff",
@@ -244,7 +244,7 @@ export default function LandingPage() {
             {useCases.map((useCase, index) => (
               <div
                 key={index}
-                className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700
+                className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700 border-white
                   ${activeUseCaseIndex === index
                     ? 'scale-[1.02] shadow-xl'
                     : ''} border-muted/50 hover:border-accent hover:scale-[1.02]`}
@@ -268,7 +268,7 @@ export default function LandingPage() {
                   />
                 </div>
 
-                <div className="flex flex-col mt-4">
+                {useCase.buttonText && <div className="flex flex-col mt-4">
                   <Link href={useCase.href} className="w-full">
                     <Button
                       variant="golden"
@@ -277,7 +277,7 @@ export default function LandingPage() {
                       {useCase.buttonText}
                     </Button>
                   </Link>
-                </div>
+                </div>}
               </div>
             ))}
           </div>
