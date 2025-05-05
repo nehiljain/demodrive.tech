@@ -142,7 +142,7 @@ export default function LandingPage() {
       colorTo: "#4060ff"
     },
     {
-      href: "/podcast",
+      href: "/conversation",
       title: "Podcast Shorts",
       buttonText: "Schedule Demo",
       description: "Turn long-form podcasts into viral short clips. We handle recording, editing, and auto-generating engaging shorts for social media distribution.",

@@ -31,7 +31,7 @@ const navigation: NavigationItem[] = [
       { name: "Real Estate Agents", href: "/listing-shorts", icon: House },
       // { name: "Chefs", href: "/use-cases/chefs", icon: Soup },
       { name: "Renovations", href: "/renovation", icon: Hammer },
-      { name: "Conversation", href: "/podcast", icon: MessagesSquare}
+      { name: "Conversation", href: "/conversation", icon: MessagesSquare}
     ]
   },
   {
