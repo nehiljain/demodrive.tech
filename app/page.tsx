@@ -1,11 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import WordRotate from "@/components/ui/word-rotate";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 import { WaitlistForm } from '@/components/waitlist-form'
 import dynamic from 'next/dynamic'
@@ -13,6 +15,8 @@ import dynamic from 'next/dynamic'
 // Dynamically import DemoFlow with SSR disabled since ReactFlow needs browser APIs
 const DemoFlow = dynamic(() => import('@/components/demo-flow'), { ssr: false })
 import FeatureTimeline from "@/components/ui/feature-timeline";
+import {AnimatedGradientText} from "@/components/magicui/animated-gradient-text";
+import {VideoPlayer} from "@/components/video-player";
 
 const logos = [
   {
@@ -107,6 +111,46 @@ const logos = [
 
 export default function LandingPage() {
   const BLUR_FADE_DELAY = 0.04;
+  const [activeUseCaseIndex, setActiveUseCaseIndex] = useState(0);
+
+  // Auto-rotate through usecases
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveUseCaseIndex((prevIndex) => (prevIndex + 1) % 3);
+    }, 5000); // Rotate every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const useCases = [
+    {
+      href: "/listing-shorts",
+      title: "Listing Shorts",
+      buttonText: "Create Free Tour",
+      description: "Transform property photos into captivating video tours with AI-powered motion and beat sync. Perfect for real estate professionals.",
+      videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4",
+      colorFrom: "#ffaa40",
+      colorTo: "#ff6040"
+    },
+    {
+      href: "/renovation",
+      title: "Before/After Videos",
+      buttonText: "Schedule Demo",
+      description: "Create stunning before/after transformation videos from your renovation photos. Showcase your work with professionally animated transitions.",
+      videoSrc: "https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/renovationsx-copy_916.mp4",
+      colorFrom: "#40b0ff",
+      colorTo: "#4060ff"
+    },
+    {
+      href: "/podcast",
+      title: "Podcast Shorts",
+      buttonText: "Schedule Demo",
+      description: "Turn long-form podcasts into viral short clips. We handle recording, editing, and auto-generating engaging shorts for social media distribution.",
+      videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short1-compressed.mp4",
+      colorFrom: "#9c40ff",
+      colorTo: "#ff40d6"
+    }
+  ];
 
   return (
     <div className="min-h-screen dark text-foreground bg-radial-fancy">
@@ -187,8 +231,60 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* Solutions/Use Cases Section */}
+      <div className="py-16" id="solutions">
+        <div className="mx-auto max-w-6xl px-6">
+          <BlurFadeText
+            delay={BLUR_FADE_DELAY * 7}
+            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+            text="Solutions for Every Creator"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {useCases.map((useCase, index) => (
+              <div
+                key={index}
+                className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700
+                  ${activeUseCaseIndex === index
+                    ? 'scale-[1.02] shadow-xl'
+                    : ''} border-muted/50 hover:border-accent hover:scale-[1.02]`}
+              >
+                <h3 className="text-2xl font-bold mb-4">
+                  <AnimatedGradientText
+                    colorFrom={useCase.colorFrom}
+                    colorTo={useCase.colorTo}
+                  >
+                    {useCase.title}
+                  </AnimatedGradientText>
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  {useCase.description}
+                </p>
+
+                <div className="relative aspect-video rounded-lg overflow-hidden mt-auto mb-4">
+                  <VideoPlayer
+                    src={useCase.videoSrc}
+                    aspectRatio="aspect-video"
+                  />
+                </div>
+
+                <div className="flex flex-col mt-4">
+                  <Link href={useCase.href} className="w-full">
+                    <Button
+                      variant="golden"
+                      className="w-full"
+                    >
+                      {useCase.buttonText}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* Problem Statement Section */}
-      <div className="py-20" id="problem">
+      {/* <div className="py-20" id="problem">
         <div className="mx-auto max-w-6xl px-6 relative z-[1]">
           <BlurFadeText
             delay={BLUR_FADE_DELAY * 6.5}
@@ -252,7 +348,7 @@ export default function LandingPage() {
             </BlurFade>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* How it Works Section */}
       <div className="py-24 lg:py-24 sm:py-6" id="flow-diagram">
@@ -274,8 +370,14 @@ export default function LandingPage() {
       <div className="" id="features">
         <BlurFadeText
           delay={BLUR_FADE_DELAY * 7}
-            className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
-        text="AI Magic Features"
+          className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
+          text="AI Magic Features"
+        />
+
+        <BlurFadeText
+          delay={BLUR_FADE_DELAY * 7.5}
+          className="text-center text-foreground mb-8 text-lg max-w-3xl mx-auto"
+          text="Our AI features help make videos aesthetically pleasing while optimizing for viewer engagement and algorithm performance. Create content that looks amazing and performs even better."
         />
 
         <FeatureTimeline
@@ -301,15 +403,22 @@ export default function LandingPage() {
             },
           ]}
         />
-        </div>
+      </div>
 
       <BlurFadeText
         delay={BLUR_FADE_DELAY * 7}
         className="text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center"
         text="Editor Features"
       />
-        <FeatureTimeline
-          baseDelay={BLUR_FADE_DELAY * 8}
+
+      <BlurFadeText
+        delay={BLUR_FADE_DELAY * 7.5}
+        className="text-center text-foreground mb-8 text-lg max-w-3xl mx-auto"
+        text="Sometimes AI doesn't get it exactly the way you want it. Our powerful editor puts you in control, letting you make precise adjustments to reach the finish line with perfect results."
+      />
+
+      <FeatureTimeline
+        baseDelay={BLUR_FADE_DELAY * 8}
         features={[{
           title: "Rich Editor",
           description: "Edit your video scripts, add images, videos, and more with our rich web native editor.",
@@ -347,7 +456,7 @@ export default function LandingPage() {
             }
           }
         ]}
-        />
+      />
 
       {/* Showcase Section */}
       {/* <div className="py-20 lg:py-24 sm:py-12 sm:px-6" id="showcase">
