@@ -13,8 +13,8 @@ export default function PodcastPage() {
   const BLUR_FADE_DELAY = 0.04;
   // Sample podcast video shorts for the grid
   const videoShorts = [
-    'https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short1-compressed.mp4',
-    'https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short2-compressed.mp4',
+    'https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-1-compressed.mp4',
+    'https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-2-compressed.mp4',
   ];
 
   return (
@@ -36,11 +36,6 @@ export default function PodcastPage() {
                 Spend an hour, get <span className="text-accent">10 viral shorts</span>
               </h2>
             </BlurFade>
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 2}
-              className="mt-6 text-lg leading-8 text-[#DFC8AF]"
-              text="With AI. No post editing required."
-            />
 
             {/* <BlurFade delay={BLUR_FADE_DELAY * 3} className="mt-8">
               <ScheduleDemo size="lg" />
@@ -92,7 +87,7 @@ export default function PodcastPage() {
 
                   <div className="w-full max-w-[320px] aspect-video rounded-lg overflow-hidden border border-muted/50 shadow-lg sm:order-1">
                     <VideoPlayer
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-fullvideo-compressed.mp4"
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-fullvideo-compressed.mp4"
                       aspectRatio="aspect-video"
                     />
                   </div>

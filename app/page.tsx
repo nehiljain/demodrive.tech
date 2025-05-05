@@ -146,7 +146,7 @@ export default function LandingPage() {
       title: "Podcast Shorts",
       buttonText: "Learn More",
       description: "Turn long-form podcasts into viral short clips. We handle recording, editing, and auto-generating engaging shorts for social media distribution.",
-      videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/podcast-short1-compressed.mp4",
+      videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-2-compressed.mp4",
       colorFrom: "#9c40ff",
       colorTo: "#ff40d6"
     }
@@ -261,10 +261,10 @@ export default function LandingPage() {
                   {useCase.description}
                 </p>
 
-                <div className="relative aspect-video rounded-lg overflow-hidden mt-auto mb-4">
+                <div className="relative aspect-[9/16] rounded-lg overflow-hidden mt-auto mb-4">
                   <VideoPlayer
                     src={useCase.videoSrc}
-                    aspectRatio="aspect-video"
+                    aspectRatio="aspect-[9/16]"
                   />
                 </div>
 
