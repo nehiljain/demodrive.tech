@@ -18,6 +18,34 @@ export default function ListingShorts() {
   const BLUR_FADE_DELAY = 0.04;
   const listingShortUrl = 'http://app.demodrive.tech/open/listing-shorts';
 
+  // Array of input photos
+  const inputPhotos = [
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-1.jpg',
+      alt: 'Listing photo 1'
+    },
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-2.jpg',
+      alt: 'Listing photo 2'
+    },
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-3.jpg',
+      alt: 'Listing photo 3'
+    },
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-4.jpg',
+      alt: 'Listing photo 4'
+    },
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-5.jpg',
+      alt: 'Listing photo 5'
+    },
+    {
+      src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/input-hero-6.jpg',
+      alt: 'Listing photo 6'
+    }
+  ]
+
   return (
     <div className="min-h-screen dark text-foreground overflow-hidden bg-radial-fancy">
       {/* Hero Section */}
@@ -54,38 +82,22 @@ export default function ListingShorts() {
             {/* Image to Video Transformation Section */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
               <div className="mt-16 flex flex-col sm:flex-row gap-4 sm:gap-8 max-w-6xl mx-auto items-center justify-center px-1 sm:px-4">
-                {/* Left Column - Three Images */}
-                <div className="flex flex-row sm:flex-col gap-4 w-full sm:w-[160px] md:w-[200px] justify-center">
-                  {/* Image 1 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-5.png"
-                      alt="Listing photo 1"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                  {/* Image 2 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img2.png"
-                      alt="Listing photo 2"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                  {/* Image 3 */}
-                  <div className="relative w-1/3 sm:w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg">
-                    <Image
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/hero-img-1.png"
-                      alt="Listing photo 3"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
+                {/* Left Column - Six Images in grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 w-full sm:w-[300px] md:w-[450px] justify-center">
+                  {inputPhotos.map((photo, index) => (
+                    <div
+                      key={index}
+                      className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-muted/50 shadow-lg"
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                  ))}
                 </div>
 
                 {/* Arrow Icon */}
@@ -100,7 +112,7 @@ export default function ListingShorts() {
                 <div className="w-full max-w-[280px] sm:w-[200px] md:w-[300px] mx-auto">
                   <div className="relative w-full aspect-[9/16] rounded-lg overflow-hidden border-accent-glow">
                     <VideoPlayer
-                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/6f40a586-b130-401e-bf15-80947d95b74a-compressed.mp4"
+                      src="https://prod-assets.demodrive.tech/video_uploads/landing_page/dori/fullvideo-voiceover-muted-compressed.mp4"
                       aspectRatio="aspect-[9/16]"
                     />
                   </div>
