@@ -132,7 +132,7 @@ export default function LandingPage() {
       href: "/listing-shorts",
       title: "Listing Shorts",
       buttonText: "Create Free Tour",
-      description: "Transform property photos into captivating video tours with AI-powered motion and beat sync.",
+      description: "Transform property photos into captivating video tours",
       videoSrc: "https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4",
       colorFrom: "#ffaa40",
       colorTo: "#ff6040"
@@ -141,7 +141,7 @@ export default function LandingPage() {
       href: "/renovation",
       title: "Before/After Videos",
       buttonText: "Learn More",
-      description: "Create stunning before/after transformation videos from your renovation photos. ",
+      description: "Create stunning before/after transformation videos",
       videoSrc: "https://prod-assets.demodrive.tech/renders/8e383b71-297e-4a8b-9f73-cf0d082a96f5/renovationsx-copy_916.mp4",
       colorFrom: "#40b0ff",
       colorTo: "#4060ff"
@@ -267,18 +267,21 @@ export default function LandingPage() {
             {useCases.map((useCase, index) => (
               <Link key={index} href={useCase.href} className="block">
                 <div
-                  className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700 border-white
+                  className={`rounded-xl border shadow-lg p-6 h-full flex flex-col transition-all duration-700 bg-black
                     ${activeUseCaseIndex === index
                       ? 'scale-[1.02] shadow-xl'
                       : ''} border-muted/50 hover:border-accent hover:scale-[1.02] cursor-pointer`}
                 >
-                  <h3 className="text-2xl font-bold mb-4">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center">
                     <AnimatedGradientText
                       colorFrom={useCase.colorFrom}
                       colorTo={useCase.colorTo}
                     >
                       {useCase.title}
                     </AnimatedGradientText>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                   </h3>
                   <p className="text-muted-foreground mb-6">
                     {useCase.description}
@@ -290,15 +293,6 @@ export default function LandingPage() {
                       aspectRatio="aspect-[9/16]"
                     />
                   </div>
-
-                  {useCase.buttonText && <div className="flex flex-col mt-4">
-                    <Button
-                      variant="golden"
-                      className="w-full"
-                    >
-                      {useCase.buttonText}
-                    </Button>
-                  </div>}
                 </div>
               </Link>
             ))}
