@@ -12,7 +12,7 @@ export default function PodcastPage() {
   const BLUR_FADE_DELAY = 0.04;
   // Sample podcast video shorts for the grid
   const videoShorts = [
-    'https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-1-compressed.mp4',
+    'https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-3-compressed.mp4',
     'https://prod-assets.demodrive.tech/video_uploads/landing_page/alex-short-2-compressed.mp4',
   ];
 
