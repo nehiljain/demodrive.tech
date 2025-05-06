@@ -18,6 +18,7 @@ import FeatureTimeline from "@/components/ui/feature-timeline";
 import {AnimatedGradientText} from "@/components/magicui/animated-gradient-text";
 import {VideoPlayer} from "@/components/video-player";
 import { Marquee } from "@/components/magicui/marquee";
+import { MagicFeatureCards } from "@/components/magic-features";
 
 const logos = [
   {
@@ -400,30 +401,9 @@ export default function LandingPage() {
           className="text-center text-foreground mb-8 text-lg max-w-3xl mx-auto"
           text="Our AI features help make videos aesthetically pleasing while optimizing for viewer engagement and algorithm performance. "
         />
-
-        <FeatureTimeline
-          baseDelay={BLUR_FADE_DELAY * 8}
-          features={[
-            {
-              title: "Motion Magic",
-              description: "Take photos of your listing and turn them into a video using AI moving the camera around.",
-              media: {
-                type: 'video',
-                src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+photos+to+motion.mp4',
-                alt: 'Video demo showcase'
-              }
-            },
-            {
-              title: "Beat Sync",
-              description: "Automatic syncing of music to the video to make every transition feel perfect.",
-              media: {
-                type: 'video',
-                src: 'https://prod-assets.demodrive.tech/video_uploads/landing_page/listing+shorts+ai+-+features+beat+sync.mp4',
-                alt: 'Video demo showcase'
-              }
-            },
-          ]}
-        />
+        <div className="mx-auto max-w-5xl px-6 relative z-[1]">
+          <MagicFeatureCards/>
+        </div>
       </div>
 
       <BlurFadeText
