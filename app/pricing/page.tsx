@@ -41,7 +41,7 @@ const plans: PricingPlan[] = [
         title: "Video Generation",
         icon: BarChart,
         subFeatures: [
-          { text: "20 videos/month", icon: Video },
+          { text: "10 videos/month", icon: Video },
           { text: "Max 1 min/video", icon: Timer },
           { text: "Free B-rolls & Audio", icon: FileAudio },
           { text: "No watermark", icon: Ban },
@@ -80,8 +80,8 @@ const plans: PricingPlan[] = [
         icon: Star,
         subFeatures: [
           { text: "4k exports", icon: Video },
-          { text: "100 videos/month", icon: Video },
-          { text: "20 Motion magic/video", icon: Sparkles },
+          { text: "50 videos/month, then per video pricing.", icon: Video },
+          { text: "10 Motion magic/video", icon: Sparkles },
           { text: "10 Custom Branded Templates", icon: Palette },
           { text: "API Access", icon: ChevronsLeftRightEllipsis }
         ]
